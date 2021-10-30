@@ -1,6 +1,6 @@
 <?php 
 
-    namespace sistema\model\bean\curso;
+    namespace Model\bean;
 
     class Curso {
 
