@@ -1,6 +1,7 @@
 <?php    
 
-    namespace sistema\model\dao;
+    namespace sistema\src\Model\dao;
+    use \Model\bean\curso;
 
     
 
