@@ -1,0 +1,10 @@
+{
+    "name":"sistema/src",
+    "autoload": {
+        "psr-4":{
+            "Controller\\":"controller/",
+            "Model\\":"model/",
+            "View\\":"view/"
+        }
+    }
+}
