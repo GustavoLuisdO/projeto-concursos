@@ -47,7 +47,7 @@
 
             // validar se existe alguma disciplina cadastrada
             if($disciplinas == 0){
-                die("<h3 class='m-4'>NÃO HÁ NENHUMA DISCIPLINA CADASTRADA! <br> <a class='btn btn-outline-dark m-4' href='../forms/incluirDisciplina.html'>CADASTRAR</a></h3>");
+                die("<h3 class='m-4'>NÃO HÁ NENHUMA DISCIPLINA CADASTRADA!</h3>");
             }
         ?>
         <!-- cabeçalho da tabela -->

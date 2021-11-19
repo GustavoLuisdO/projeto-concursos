@@ -56,6 +56,8 @@
       <form name="formProva" method="post" action="../validacoes/validaProva.php">
 
         <!-- ***** TABELA PROVA ***** -->
+        <!-- id prova -->
+        <input type="hidden" name="id_prova" id="id_prova">
         <!-- fileira cursos/disciplinas -->
         <div class="row">
 
@@ -125,87 +127,444 @@
 
         <hr><hr><hr>
         <!-- ***** TABELA QUESTÃO DISSERTATIVA ***** -->
+        <h3>Questões Dissertativas</h3>
+
+        <!-- dissertativa 1 -->
         <!-- id prova -->
-        <input type="hidden" name="id_prova" value="<?php ?>">
-        <!-- numero da questão -->
-        <div class="form-group col-6">
-          <label for="numero">Número da Questão</label>
-          <input class="form-control" type="number" name="numero" id="numero" placeholder="ex.. 01">
-        </div><!-- /numero da questão -->
+        <input type="hidden" name="id_prova" id="id_prova">
+        
+        <div class="form-group col-8">
+          <label for="numero_dissertativa">Número da Questão</label>
+          <input class="form-control" type="number" name="numero_dissertativa" id="numero_dissertativa" min="1" placeholder="ex.. 01">
+        </div>
+  
+        <div class="form-group col-8">
+          <label for="questao_dissertativa">Questão</label>
+          <textarea class="form-control" name="questao_dissertativa" id="questao_dissertativa" cols="30" rows="5"></textarea>
+        </div>
 
-        <!-- questão -->
-        <div class="form-group col-6">
-          <label for="questao">Questão</label>
-          <textarea class="form-control" name="questao" id="questao" cols="30" rows="5"></textarea>
-        </div><!-- questão -->
+        <div class="form-group col-8">
+          <label for="resposta_dissertativa">Resposta</label>
+          <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5"></textarea>
+        </div><!-- /dissertativa 1 --><hr>
 
-        <!-- resposta -->
-        <div class="form-group col-6">
-          <label for="resposta">Resposta</label>
-          <textarea class="form-control" name="resposta" id="resposta" cols="30" rows="5"></textarea>
-        </div><!-- resposta -->
+        <!-- dissertativa 2 -->
+        <!-- id prova -->
+        <input type="hidden" name="id_prova" id="id_prova">
+        
+        <div class="form-group col-8">
+          <label for="numero_dissertativa">Número da Questão</label>
+          <input class="form-control" type="number" name="numero_dissertativa" id="numero_dissertativa" min="1" placeholder="ex.. 02">
+        </div>
+  
+        <div class="form-group col-8">
+          <label for="questao_dissertativa">Questão</label>
+          <textarea class="form-control" name="questao_dissertativa" id="questao_dissertativa" cols="30" rows="5"></textarea>
+        </div>
+
+        <div class="form-group col-8">
+          <label for="resposta_dissertativa">Resposta</label>
+          <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5"></textarea>
+        </div><!-- /dissertativa 2 --><hr>
+
+        <!-- dissertativa 3 -->
+        <!-- id prova -->
+        <input type="hidden" name="id_prova" id="id_prova">
+        
+        <div class="form-group col-8">
+          <label for="numero_dissertativa">Número da Questão</label>
+          <input class="form-control" type="number" name="numero_dissertativa" id="numero_dissertativa" min="1" placeholder="ex.. 03">
+        </div>
+  
+        <div class="form-group col-8">
+          <label for="questao_dissertativa">Questão</label>
+          <textarea class="form-control" name="questao_dissertativa" id="questao_dissertativa" cols="30" rows="5"></textarea>
+        </div>
+
+        <div class="form-group col-8">
+          <label for="resposta_dissertativa">Resposta</label>
+          <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5"></textarea>
+        </div><!-- /dissertativa 3--><hr>
+
+        <!-- dissertativa 4 -->
+        <!-- id prova -->
+        <input type="hidden" name="id_prova" id="id_prova">
+        
+        <div class="form-group col-8">
+          <label for="numero_dissertativa">Número da Questão</label>
+          <input class="form-control" type="number" name="numero_dissertativa" id="numero_dissertativa" min="1" placeholder="ex.. 04">
+        </div>
+  
+        <div class="form-group col-8">
+          <label for="questao_dissertativa">Questão</label>
+          <textarea class="form-control" name="questao_dissertativa" id="questao_dissertativa" cols="30" rows="5"></textarea>
+        </div>
+
+        <div class="form-group col-8">
+          <label for="resposta_dissertativa">Resposta</label>
+          <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5"></textarea>
+        </div><!-- /dissertativa 4 --><hr>
+
+        <!-- dissertativa 5 -->
+        <!-- id prova -->
+        <input type="hidden" name="id_prova" id="id_prova">
+        
+        <div class="form-group col-8">
+          <label for="numero_dissertativa">Número da Questão</label>
+          <input class="form-control" type="number" name="numero_dissertativa" id="numero_dissertativa" min="1" placeholder="ex.. 05">
+        </div>
+  
+        <div class="form-group col-8">
+          <label for="questao_dissertativa">Questão</label>
+          <textarea class="form-control" name="questao_dissertativa" id="questao_dissertativa" cols="30" rows="5"></textarea>
+        </div>
+
+        <div class="form-group col-8">
+          <label for="resposta_dissertativa">Resposta</label>
+          <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5"></textarea>
+        </div><!-- /dissertativa 5 -->
         <!-- ***** /TABELA QUESTÃO DISSERTATIVA ***** -->
 
         <hr><hr><hr>
         <!-- ***** TABELA QUESTÃO ESCOLHA ***** -->
-        <!-- id prova -->
-        <input type="hidden" name="id_prova" value="<?php ?>">
-        <!-- numero da questão -->
-        <div class="form-group col-6">
-          <label for="numero">Número da Questão</label>
-          <input class="form-control" type="number" name="numero" id="numero" placeholder="ex.. 01">
-        </div><!-- /numero da questão -->
+        <h3>Questões de Múltiplas Escolhas</h3>
 
-        <!-- questão -->
-        <div class="form-group col-6">
-          <label for="questao">Questão</label>
-          <textarea class="form-control" name="questao" id="questao" cols="30" rows="5" maxlength="2000"></textarea>
-        </div><!-- questão -->
-        <!-- ***** /TABELA QUESTÃO ESCOLHA ***** -->
+        <!-- multipla escolha 1 -->
+        <section>
+          <!-- id prova -->
+          <input type="hidden" name="id_prova" id="id_prova">
+          <!-- numero da questão -->
+          <div class="form-group col-8">
+            <label for="numero_escolha">Número da Questão</label>
+            <input class="form-control" type="number" name="numero_escolha" id="numero_escolha" min="1" placeholder="ex.. 01">
+          </div>
+          <!-- questão -->
+          <div class="form-group col-8">
+            <label for="questao_escolha">Questão</label>
+            <textarea class="form-control" name="questao_escolha" id="questao_escolha" cols="30" rows="5" maxlength="2000"></textarea>
+          </div>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ***** -->
+          <!-- ***** TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          <!-- id questão escolha -->
+          <input type="hidden" name="id_questao_escolha">
+          <!-- alternativa A -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">a.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="A">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa B -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">b.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="B">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa C -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">c.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="C">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa D -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">d.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="D">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa E -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">e.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="E">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div><hr>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          
+        </section><!-- /multipla escolha 1 -->
 
-        <!-- ***** TABELA QUESTÃO ESCOLHA ITEM ***** -->
-        <!-- id questão escolha -->
-        <input type="hidden" name="id_questao_escolha" value="<?php ?>">
+        <!-- multipla escolha 2 -->
+        <section>
+          <!-- id prova -->
+          <input type="hidden" name="id_prova" id="id_prova">
+          <!-- numero da questão -->
+          <div class="form-group col-8">
+            <label for="numero_escolha">Número da Questão</label>
+            <input class="form-control" type="number" name="numero_escolha" id="numero_escolha" min="1" placeholder="ex.. 02">
+          </div>
+          <!-- questão -->
+          <div class="form-group col-8">
+            <label for="questao_escolha">Questão</label>
+            <textarea class="form-control" name="questao_escolha" id="questao_escolha" cols="30" rows="5" maxlength="2000"></textarea>
+          </div>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ***** -->
+          <!-- ***** TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          <!-- id questão escolha -->
+          <input type="hidden" name="id_questao_escolha">
+          <!-- alternativa A -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">a.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="A">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa B -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">b.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="B">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa C -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">c.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="C">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa D -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">d.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="D">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa E -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">e.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="E">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div><hr>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          
+        </section><!-- /multipla escolha 2 -->
 
-        <!-- alternativas -->
+        <!-- multipla escolha 3 -->
+        <section>
+          <!-- id prova -->
+          <input type="hidden" name="id_prova" id="id_prova">
+          <!-- numero da questão -->
+          <div class="form-group col-8">
+            <label for="numero_escolha">Número da Questão</label>
+            <input class="form-control" type="number" name="numero_escolha" id="numero_escolha" min="1" placeholder="ex.. 03">
+          </div>
+          <!-- questão -->
+          <div class="form-group col-8">
+            <label for="questao_escolha">Questão</label>
+            <textarea class="form-control" name="questao_escolha" id="questao_escolha" cols="30" rows="5" maxlength="2000"></textarea>
+          </div>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ***** -->
+          <!-- ***** TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          <!-- id questão escolha -->
+          <input type="hidden" name="id_questao_escolha">
+          <!-- alternativa A -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">a.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="A">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa B -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">b.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="B">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa C -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">c.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="C">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa D -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">d.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="D">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa E -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">e.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="E">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div><hr>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          
+        </section><!-- /multipla escolha 3 -->
 
-        <!-- alternativa A -->
-        <div class="form-check form-check-inline">
-        <label class="form-check-label" for="letra_numero">a</label>
-          <input class="form-check-input" type="radio" name="letra_numero" id="letra_numero" value="A">
-          <textarea class="form-control" name="questao" id="questao" cols="80" rows="1" maxlength="2000"></textarea>
-        </div><!-- /alternativa A -->
-        <br>
-        <!-- alternativa B -->
-        <div class="form-check form-check-inline">
-        <label class="form-check-label" for="letra_numero">b</label>
-          <input class="form-check-input" type="radio" name="letra_numero" id="letra_numero" value="B">
-          <textarea class="form-control" name="questao" id="questao" cols="80" rows="1" maxlength="2000"></textarea>
-        </div><!-- /alternativa B -->
-        <br>
-        <!-- alternativa C -->
-        <div class="form-check form-check-inline">
-        <label class="form-check-label" for="letra_numero">c</label>
-          <input class="form-check-input" type="radio" name="letra_numero" id="letra_numero" value="C">
-          <textarea class="form-control" name="questao" id="questao" cols="80" rows="1" maxlength="2000"></textarea>
-        </div><!-- /alternativa C -->
-        <br>
-        <!-- alternativa D -->
-        <div class="form-check form-check-inline">
-        <label class="form-check-label" for="letra_numero">d</label>
-          <input class="form-check-input" type="radio" name="letra_numero" id="letra_numero" value="B">
-          <textarea class="form-control" name="questao" id="questao" cols="80" rows="1" maxlength="2000"></textarea>
-        </div><!-- /alternativa D -->
-        <br>
-        <!-- alternativa E -->
-        <div class="form-check form-check-inline">
-        <label class="form-check-label" for="letra_numero">e</label>
-          <input class="form-check-input" type="radio" name="letra_numero" id="letra_numero" value="B">
-          <textarea class="form-control" name="questao" id="questao" cols="80" rows="1" maxlength="2000"></textarea>
-        </div><!-- /alternativa E-->
+        <!-- multipla escolha 4 -->
+        <section>
+          <!-- id prova -->
+          <input type="hidden" name="id_prova" id="id_prova">
+          <!-- numero da questão -->
+          <div class="form-group col-8">
+            <label for="numero_escolha">Número da Questão</label>
+            <input class="form-control" type="number" name="numero_escolha" id="numero_escolha" min="1" placeholder="ex.. 04">
+          </div>
+          <!-- questão -->
+          <div class="form-group col-8">
+            <label for="questao_escolha">Questão</label>
+            <textarea class="form-control" name="questao_escolha" id="questao_escolha" cols="30" rows="5" maxlength="2000"></textarea>
+          </div>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ***** -->
+          <!-- ***** TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          <!-- id questão escolha -->
+          <input type="hidden" name="id_questao_escolha">
+          <!-- alternativa A -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">a.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="A">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa B -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">b.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="B">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa C -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">c.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="C">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa D -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">d.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="D">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa E -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">e.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="E">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div><hr>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          
+        </section><!-- /multipla escolha 4 -->
+
+        <!-- multipla escolha 5 -->
+        <section>
+          <!-- id prova -->
+          <input type="hidden" name="id_prova" id="id_prova">
+          <!-- numero da questão -->
+          <div class="form-group col-8">
+            <label for="numero_escolha">Número da Questão</label>
+            <input class="form-control" type="number" name="numero_escolha" id="numero_escolha" min="1" placeholder="ex.. 05">
+          </div>
+          <!-- questão -->
+          <div class="form-group col-8">
+            <label for="questao_escolha">Questão</label>
+            <textarea class="form-control" name="questao_escolha" id="questao_escolha" cols="30" rows="5" maxlength="2000"></textarea>
+          </div>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ***** -->
+          <!-- ***** TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          <!-- id questão escolha -->
+          <input type="hidden" name="id_questao_escolha">
+          <!-- alternativa A -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">a.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="A">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa B -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">b.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="B">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa C -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">c.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="C">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa D -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">d.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="D">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa E -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">e.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="E">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div><hr>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          
+        </section><!-- /multipla escolha 5 -->
+
+        <!-- multipla escolha 6 -->
+        <section>
+          <!-- id prova -->
+          <input type="hidden" name="id_prova" id="id_prova">
+          <!-- numero da questão -->
+          <div class="form-group col-8">
+            <label for="numero_escolha">Número da Questão</label>
+            <input class="form-control" type="number" name="numero_escolha" id="numero_escolha" min="1" placeholder="ex.. 06">
+          </div>
+          <!-- questão -->
+          <div class="form-group col-8">
+            <label for="questao_escolha">Questão</label>
+            <textarea class="form-control" name="questao_escolha" id="questao_escolha" cols="30" rows="5" maxlength="2000"></textarea>
+          </div>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ***** -->
+          <!-- ***** TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          <!-- id questão escolha -->
+          <input type="hidden" name="id_questao_escolha">
+          <!-- alternativa A -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">a.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="A">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa B -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">b.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="B">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa C -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">c.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="C">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa D -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">d.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="D">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div>
+          <br>
+          <!-- alternativa E -->
+          <div class="form-check form-check-inline">
+          <label class="form-check-label" for="letra_numero">e.</label>
+            <input class="form-check-input" type="checkbox" name="letra_numero" id="letra_numero" value="E">
+            <textarea class="form-control" name="resposta_escolha_item" id="resposta_escolha_item" cols="90" rows="1" maxlength="2000"></textarea>
+          </div><hr>
+          <!-- ***** /TABELA QUESTÃO ESCOLHA ITEM ***** -->
+          
+        </section><!-- /multipla escolha 6 -->
         
-        <!-- /alternativas -->
-        <!-- ***** /TABELA QUESTÃO ESCOLHA ITEM ***** -->
           
         <br><br>
         <button class="btn btn-outline-dark" type="submit">Enviar</button>

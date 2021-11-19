@@ -48,7 +48,7 @@
 
             // validar se existe algum curso cadastrado
             if($cursos == 0){
-                die("<h3 class='m-4'>NÃO HÁ NENHUM CURSO CADASTRADO! <br> <a class='btn btn-outline-dark m-4' href='../forms/incluirCurso.html'>CADASTRAR</a></h3>");
+                die("<h3 class='m-4'>NÃO HÁ NENHUM CURSO CADASTRADO!</h3>");
             }
         ?>
         <!-- cabeçalho da tabela -->
