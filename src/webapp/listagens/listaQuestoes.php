@@ -73,7 +73,12 @@
                         <th scope="col"># Dificuldade</th>
                         <th scope="col">Enunciado</th>
                         <th scope="col">Tipo Questão</th>
-                        <th scope="col">Resposta</th>
+                        <th scope="col">Resposta Dissertativa</th>
+                        <th scope="col">Resposta Alt A</th>
+                        <th scope="col">Resposta Alt B</th>
+                        <th scope="col">Resposta Alt C</th>
+                        <th scope="col">Resposta Alt D</th>
+                        <th scope="col">Resposta Alt E</th>
                         <th scope="col">Alternativa</th>
                     </tr>
                 </thead>
@@ -91,20 +96,25 @@
                         
 
                         // colocar os dados em variaveis 
-                        $id_questao         = $dados["id"];
-                        $id_curso           = $dados["id_curso"];
-                        $descricao          = $dados["descricao"];
-                        $ano                = $dados["ano"];
-                        $numero             = $dados["numero"];
-                        $id_disciplina_1    = $dados["id_disciplina_1"];
-                        $id_disciplina_2    = $dados["id_disciplina_2"];
-                        $id_disciplina_3    = $dados["id_disciplina_3"];
-                        $id_disciplina_4    = $dados["id_disciplina_4"];
-                        $id_dificuldade     = $dados["id_dificuldade"];
-                        $enunciado          = $dados["enunciado"];
-                        $tipo_questao       = $dados["tipo_questao"];
-                        $resposta           = $dados["resposta"];
-                        $alternativa        = $dados["alternativa_correta"];
+                        $id_questao             = $dados["id"];
+                        $id_curso               = $dados["id_curso"];
+                        $descricao              = $dados["descricao"];
+                        $ano                    = $dados["ano"];
+                        $numero                 = $dados["numero"];
+                        $id_disciplina_1        = $dados["id_disciplina_1"];
+                        $id_disciplina_2        = $dados["id_disciplina_2"];
+                        $id_disciplina_3        = $dados["id_disciplina_3"];
+                        $id_disciplina_4        = $dados["id_disciplina_4"];
+                        $id_dificuldade         = $dados["id_dificuldade"];
+                        $enunciado              = $dados["enunciado"];
+                        $tipo_questao           = $dados["tipo_questao"];
+                        $resposta_dissertativa  = $dados["resposta_dissertativa"];
+                        $resposta_alt_a         = $dados["resposta_alt_a"];
+                        $resposta_alt_b         = $dados["resposta_alt_b"];
+                        $resposta_alt_c         = $dados["resposta_alt_c"];
+                        $resposta_alt_d         = $dados["resposta_alt_d"];
+                        $resposta_alt_e         = $dados["resposta_alt_e"];
+                        $alternativa            = $dados["alternativa_correta"];
                     
                         
                         // corpo da tabela
@@ -123,7 +133,12 @@
                         echo "      <td>$id_dificuldade</td>";
                         echo "      <th>$enunciado</th>";
                         echo "      <td>$tipo_questao</td>";
-                        echo "      <td>$resposta</td>";
+                        echo "      <td>$resposta_dissertativa</td>";
+                        echo "      <td>$resposta_alt_a</td>";
+                        echo "      <td>$resposta_alt_b</td>";
+                        echo "      <td>$resposta_alt_c</td>";
+                        echo "      <td>$resposta_alt_d</td>";
+                        echo "      <td>$resposta_alt_e</td>";
                         echo "      <td>$alternativa</td>";
 
                         echo "  </tr>";

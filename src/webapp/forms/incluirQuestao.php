@@ -56,7 +56,7 @@
     <!-- container -->
     <div class="container">
 
-    <header>
+      <header>
         <div class="row">
           <a href="../../../index.html" class="m-4">
             <button class="btn btn-outline-dark" type="button"><i class="fas fa-arrow-left fas-3x mr-2"></i>Voltar</button>
@@ -262,6 +262,7 @@
             <label class="form-check-label" for="tipo_questao">Dissertativa</label>
           </div>
          </div>
+         <!-- /tipo de resposta -->
          <hr>
 
          <!-- multipla escolha -->
@@ -271,7 +272,7 @@
               <label class="form-check-label" for="alternativa_correta">a.</label>
               <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="A">
 
-              <textarea class="form-control" name="resposta" id="resposta" cols="90" rows="1" maxlength="2000"></textarea>
+              <textarea class="form-control" name="resposta_alt_a" id="resposta_alt_a" cols="90" rows="1" maxlength="2000"></textarea>
             </div>
               <br>
             <!-- alternativa B -->
@@ -279,7 +280,7 @@
               <label class="form-check-label" for="alternativa_correta">b.</label>
               <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="B">
 
-              <textarea class="form-control" name="resposta" id="resposta" cols="90" rows="1" maxlength="2000"></textarea>
+              <textarea class="form-control" name="resposta_alt_b" id="resposta_alt_b" cols="90" rows="1" maxlength="2000"></textarea>
             </div>
               <br>
             <!-- alternativa C -->
@@ -287,15 +288,15 @@
               <label class="form-check-label" for="alternativa_correta">c.</label>
               <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="C">
 
-              <textarea class="form-control" name="resposta" id="resposta" cols="90" rows="1" maxlength="2000"></textarea>
+              <textarea class="form-control" name="resposta_alt_c" id="resposta_alt_c" cols="90" rows="1" maxlength="2000"></textarea>
             </div>
               <br>
             <!-- alternativa D -->
-            <div class="form-check form-check-inline">
+            <div class="form-check form-check-inline">  
               <label class="form-check-label" for="alternativa_correta">d.</label>
               <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="D">
 
-              <textarea class="form-control" name="resposta" id="resposta" cols="90" rows="1" maxlength="2000"></textarea>
+              <textarea class="form-control" name="resposta_alt_d" id="resposta_alt_d" cols="90" rows="1" maxlength="2000"></textarea>
             </div>
               <br>
             <!-- alternativa E -->
@@ -303,15 +304,15 @@
               <label class="form-check-label" for="alternativa_correta">e.</label>
               <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="E">
 
-              <textarea class="form-control" name="resposta" id="resposta" cols="90" rows="1" maxlength="2000"></textarea>
+              <textarea class="form-control" name="resposta_alt_e" id="resposta_alt_e" cols="90" rows="1" maxlength="2000"></textarea>
             </div>
           </div><!-- /multipla escolha -->
          
           <!-- dissertativa -->
           <div id="dissertativa" style="display: none;">
             <div class="form-group col-8">
-              <label for="resposta">Resposta</label>
-              <textarea class="form-control" name="resposta" id="resposta" cols="30" rows="5"></textarea>
+              <label for="resposta_dissertativa">Resposta</label>
+              <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="2000"></textarea>
             </div>
           </div><hr> <!-- /dissertativa -->
 
@@ -319,7 +320,8 @@
       
         
         <br><br>
-        <button class="btn btn-outline-dark" type="submit">Enviar</button>
+        <button class="btn btn-outline-dark m-4" type="submit">Incluir Questão</button>
+
       </form>
 
     </div><!-- /container -->
@@ -353,6 +355,8 @@
             }
             if(disciplina4.style.display == "none"){
               disciplina4.style.display = "block";
+              let btn = document.getElementById('btnAddDisciplina');
+              btn.style.display = "none"
               return;
             }
           });
