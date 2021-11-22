@@ -1,10 +1,10 @@
 <?php
 
     // receber os dados do formulário
-    $nome = $_POST["nome"];
+    $nome = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRIPPED);
 
     // validações
-    if($nome == ""){
+    if($nome == "" || $nome === false){
         die("NOME DO CURSO NÃO PODE SER NULO!");
     }
 

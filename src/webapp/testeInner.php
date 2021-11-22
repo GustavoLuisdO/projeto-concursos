@@ -121,4 +121,75 @@
 
         $cont_D ++;
     } */
+
+    /*
+    $sql_disciplinas1 = "SELECT DISTINCT q.*, q.`id_disciplina_1`, d.*, d.`nome` FROM `questao` as q 
+                        JOIN `disciplina` as d on q.`id_disciplina_1` = d.`id`";
+    $sql_disciplinas2 = "SELECT DISTINCT q.*, q.`id_disciplina_2`, d.*, d.`nome` FROM `questao` as q 
+                        JOIN `disciplina` as d on q.`id_disciplina_2` = d.`id`";
+    $sql_disciplinas3 = "SELECT DISTINCT q.*, q.`id_disciplina_3`, d.*, d.`nome` FROM `questao` as q 
+                        JOIN `disciplina` as d on q.`id_disciplina_3` = d.`id`";
+    $sql_disciplinas4 = "SELECT DISTINCT q.*, q.`id_disciplina_4`, d.*, d.`nome` FROM `questao` as q 
+                        JOIN `disciplina` as d on q.`id_disciplina_4` = d.`id`";
+
+    $registros_disciplinas1 = mysqli_query($con, $sql_disciplinas1) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+    $registros_disciplinas2 = mysqli_query($con, $sql_disciplinas2) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+    $registros_disciplinas3 = mysqli_query($con, $sql_disciplinas3) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+    $registros_disciplinas4 = mysqli_query($con, $sql_disciplinas4) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+
+    $disciplinas1 = mysqli_num_rows($registros_disciplinas1);
+    $disciplinas2 = mysqli_num_rows($registros_disciplinas2);
+    $disciplinas3 = mysqli_num_rows($registros_disciplinas3);
+    $disciplinas4 = mysqli_num_rows($registros_disciplinas4);
+
+    //var_dump($disciplinas1);
+    
+    $cont = 0;
+    while($cont < $disciplinas1){
+        $dados1 = mysqli_fetch_array($registros_disciplinas1);
+
+        $id_disciplina1 = $dados1["id_disciplina_1"];
+        $disciplina1    = $dados1["nome"];
+
+        echo "Id Disciplina 1 = $id_disciplina1 <br>";
+        echo "Nome Disciplina 1 = $disciplina1 <br> <hr>";
+
+        $cont ++;
+    }
+    $cont2 = 0;
+    while($cont2 < $disciplinas2){
+        $dados2 = mysqli_fetch_array($registros_disciplinas2);
+
+        $id_disciplina2 = $dados2["id_disciplina_2"];
+        $disciplina2    = $dados2["nome"];
+
+        echo "Id Disciplina 2 = $id_disciplina2 <br>";
+        echo "Nome Disciplina 2 = $disciplina2 <br> <hr>";
+
+        $cont2 ++;
+    }
+    $cont3 = 0;
+    while($cont3 < $disciplinas3){
+        $dados3 = mysqli_fetch_array($registros_disciplinas3);
+
+        $id_disciplina3 = $dados3["id_disciplina_3"];
+        $disciplina3    = $dados3["nome"];
+
+        echo "Id Disciplina 3 = $id_disciplina3 <br>";
+        echo "Nome Disciplina 3 = $disciplina3 <br> <hr>";
+
+        $cont3 ++;
+    }
+    $cont4 = 0;
+    while($cont4 < $disciplinas4){
+        $dados4 = mysqli_fetch_array($registros_disciplinas4);
+
+        $id_disciplina4 = $dados4["id_disciplina_4"];
+        $disciplina4    = $dados4["nome"];
+
+        echo "Id Disciplina 4 = $id_disciplina4 <br>";
+        echo "Nome Disciplina 4 = $disciplina4 <br> <hr>";
+
+        $cont4 ++;
+    } */
 ?>

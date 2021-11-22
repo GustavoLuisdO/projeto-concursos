@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/filtros.css">
+
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
 
@@ -18,62 +20,155 @@
     <div class="container">
 
         <?php
-
             // conexao com o banco
             include "../conexao.php";
-
-            // sql para trazer os cursos da tabela de questao
-            $sql_cursos = "SELECT DISTINCT q.*, q.`id_curso` as questao, c.*, c.`nome` as curso FROM `questao` AS q  INNER JOIN `curso` AS c ON q.`id_curso` = c.`id`";
-
-            // trazer as seleções do banco
-            $registros_cursos = mysqli_query($con, $sql_cursos) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
-            
-            // registros encontrados
-            $cursos = mysqli_num_rows($registros_cursos);
         ?>
 
         <header>
 
-            <form name="formListaQuestao" method="post" action="">
+            <form name="formListaQuestao" method="post" action="validaFiltros.php">
 
-                <div class="row text-center">
-                    <div class="col-5">
+                <div class="row text-center">   
+                    <!-- Página Inicial -->
+                    <div class="col-4">
+                        <a href="../../../index.html">
+                            <button class="btn btn-outline-dark" type="button">Página Inicial</button>
+                        </a>
+                    </div><!-- Página Inicial -->
+                    
+                    <!-- Titulo -->
+                    <div class="col-4">
+                        <h2 class="display-4">Filtros</h2>
+                    </div><!-- Titulo -->
 
-                        <select name="id_curso" id="id_curso">
-                            <option value="">Selecione o Curso</option>
-
-                            <?php
-
-                                $cont_cursos = 0;
-                                while($cont_cursos < $cursos){
-                                    
-                                    // armazernar cursos em array
-                                    $dados_cursos = mysqli_fetch_array($registros_cursos);
-
-                                    // dados
-                                    $id_curso   = $dados_cursos["id_curso"];
-                                    $nome_curso = $dados_cursos["nome"];
-
-                                    // mostrar as opções
-                                    echo "<option value='$id_curso'>$nome_curso</option>";
-
-                                    $cont_cursos ++;
-                                }
-                                
-
-                            ?>
-
-                        </select>
-
-                    </div>
+                    <!-- Cadastrar Questão -->
+                    <div class="col-4">
+                        <a href="../forms/incluirQuestao.php">
+                            <button class="btn btn-outline-dark" type="button">Cadastrar Questão</button>
+                        </a>
+                    </div><!-- Cadastrar Questão -->
                 </div>
 
-            </form>
-            
-            
+                <div class="row text-center mt-4">
+                    <!-- id curso -->
+                    <div class="col-4">
+                        <div class="form-group">
+                            <select class="form-control" name="id_curso" id="id_curso">
+                                <option value="">Selecione o Curso</option>
+                                <?php
+                                    include "../consultas/cursos.php";
+                                    $cont_cursos = 0;
+                                    while($cont_cursos < $cursos){
+                                
+                                        // armazernar cursos em array
+                                        $dados_cursos = mysqli_fetch_array($registros_cursos);
+                                        // dados
+                                        $id_curso   = $dados_cursos["id_curso"];
+                                        $nome_curso = $dados_cursos["nome"];
+                                        // mostrar as opções
+                                        echo "<option value='$id_curso'>$nome_curso</option>";
+                                            $cont_cursos ++;
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div><!-- /id curso -->
+
+                    <!-- disciplinas -->
+                    <div class="col-4">
+                        <div class="form-group">
+                            <select class="form-control" name="id_disciplina_1" id="id_disciplina_1">
+                                <option value="">Selecione a Disciplina</option>
+                                <?php
+                                    include "../consultas/disciplinas.php";
+                                    
+                                    $cont = 0;
+                                    while($cont < $disciplinas){
+
+                                        $dados = mysqli_fetch_array($registros_disciplinas);
+
+                                        $id_disciplina = $dados["id"];
+                                        $disciplina    = $dados["nome"];
+
+                                        echo "<option value='$id_disciplina'>$disciplina</option>";
+
+                                        $cont ++;
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div><!-- disciplinas -->
+
+                    <!-- id curso -->
+                    <div class="col-4">
+                        <div class="form-group">
+                            <select class="form-control" name="ano" id="ano">
+                                <option value="">Selecione o Ano</option>
+                                <?php
+                                    include "../consultas/anos.php";
+                                    $cont = 0;
+                                    while($cont < $anos){
+                                
+                                        // armazernar cursos em array
+                                        $dados = mysqli_fetch_array($registros_anos);
+                                        // dados
+                                        $ano = $dados["ano"];
+                                        
+                                        // mostrar as opções
+                                        echo "<option value='$ano'>$ano</option>";
+                                        
+                                        $cont ++;
+                                    }
+                                ?>
+                            </select>
+                        </div>
+                    </div><!-- /id curso -->
+                </div>
+
+                <div class="row text-center mt-4">
+                    <!-- tipo questao -->
+                    <div class="col-6">
+                        <div class="row form-group form-check">
+                            <h3>Tipo de Questão</h3>
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="tipo_questao" value="M">
+                                <label class="form-check-label mr-2" for="tipo_questao">Múltiplas Escolhas</label>
+
+                                <input class="form-check-input ml-2" type="checkbox" name="tipo_questao" value="D">
+                                <label class="form-check-label" for="tipo_questao">Dissertativa</label>
+                            </div>
+                        </div>
+                    </div><!-- /tipo questao -->
+
+                    <!-- grau de dificuldade -->
+                    <div class="col-6">
+                        <div class="row form-group form-check">
+                            <h3>Grau de Dificuldade</h3>
+
+                            <div class="form-check form-check-inline">
+                                <input class="form-check-input" type="checkbox" name="id_dificuldade" value="1">
+                                <label class="form-check-label mr-2" for="id_dificuldade">Fácil</label>
+
+                                <input class="form-check-input ml-2" type="checkbox" name="id_dificuldade" value="2">
+                                <label class="form-check-label mr-2" for="id_dificuldade">Mediana</label>
+
+                                <input class="form-check-input ml-2" type="checkbox" name="id_dificuldade" value="3">
+                                <label class="form-check-label" for="id_dificuldade">Dificil</label>
+                            </div>
+                        </div>
+                    </div><!-- /grau de dificuldade -->           
+                </div>
+
+            </form>      
         </header>
 
+        <main>
 
+            <div>
+
+            </div>
+
+        </main>
     </div>
 
     <!-- SCRIPT BOOTSTRAP -->

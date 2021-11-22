@@ -1,9 +1,9 @@
 <?php
 
     //receber os dados do formulario
-    $id                 = $_POST["id"];
-    $nome               = $_POST["nome"];
-    $duracao_meses      = $_POST["duracao_meses"];
+    $id                 = filter_input(INPUT_POST, "id", FILTER_VALIDATE_INT);
+    $nome               = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRIPPED);
+    $duracao_meses      = filter_input(INPUT_POST, "duracao_meses", FILTER_VALIDATE_INT);
 
      // validações
      if($nome == ""){

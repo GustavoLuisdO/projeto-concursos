@@ -1,15 +1,15 @@
 <?php
 
     // receber os dados do formulário
-    $nome               = $_POST["nome"];
-    $duracao_meses      = $_POST["duracao_meses"];
+    $nome               = filter_input(INPUT_POST, "nome", FILTER_SANITIZE_STRIPPED);
+    $duracao_meses      = filter_input(INPUT_POST, "duracao_meses", FILTER_VALIDATE_INT);
 
     // validações
-    if($nome == ""){
+    if($nome == "" || $nome === false){
         die("NOME DO CURSO NÃO PODE SER NULO!");
     }
 
-    if($duracao_meses == ""){
+    if($duracao_meses == "" || $duracao_meses === false ){
         die("DURAÇÃO DO CURSO NÃO PODE SER NULA!");
     }
 
