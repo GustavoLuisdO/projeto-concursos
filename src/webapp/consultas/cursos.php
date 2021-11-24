@@ -7,12 +7,10 @@
 
     $cursos = mysqli_num_rows($registros_cursos);
 
+    $sql_nome_cursos = "SELECT q.id_curso, c.nome FROM questao q 
+                JOIN curso c ON q.id_curso = c.id WHERE c.id = '$id_curso'";
+    //var_dump($sql_nome_cursos);
 
-    
-    //var_dump($cursos);
+    $registros_nome_cursos = mysqli_query($con, $sql_nome_cursos) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
 
-    /*
-        SELECT DISTINCT q.`id_curso` as questao, c.*,c.`nome` as curso FROM `questao` AS q  INNER JOIN `curso` AS c ON q.`id_curso` = c.`id`
-    
-        $relat_cursos = "SELECT q.`id_curso` as questao, c.*,c.`nome` as curso FROM `questao` AS q INNER JOIN `curso` AS c ON q.`id_curso` = c.`id`";
-    */
+    $nome_cursos = mysqli_num_rows($registros_nome_cursos);

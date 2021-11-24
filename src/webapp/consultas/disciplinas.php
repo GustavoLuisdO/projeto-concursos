@@ -1,46 +1,34 @@
 <?php
-    include "../conexao.php";
+    //include "../conexao.php";
 
     $sql_disciplinas = "SELECT id, nome FROM disciplina";
 
     $registros_disciplinas = mysqli_query($con, $sql_disciplinas) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
 
-    $disciplinas = mysqli_num_rows($registros_disciplinas);   
-
-    /*
-    $sql_disciplinas1 = "SELECT DISTINCT q.*, q.`id_disciplina_1`, d.*, d.`nome` FROM `questao` as q 
-                        JOIN `disciplina` as d on q.`id_disciplina_1` = d.`id`";
-    $sql_disciplinas2 = "SELECT DISTINCT q.*, q.`id_disciplina_2`, d.*, d.`nome` FROM `questao` as q 
-                        JOIN `disciplina` as d on q.`id_disciplina_2` = d.`id`";
-    $sql_disciplinas3 = "SELECT DISTINCT q.*, q.`id_disciplina_3`, d.*, d.`nome` FROM `questao` as q 
-                        JOIN `disciplina` as d on q.`id_disciplina_3` = d.`id`";
-    $sql_disciplinas4 = "SELECT DISTINCT q.*, q.`id_disciplina_4`, d.*, d.`nome` FROM `questao` as q 
-                        JOIN `disciplina` as d on q.`id_disciplina_4` = d.`id`";
-    */
-
-    /*
-    $registros_disciplinas1 = mysqli_query($con, $sql_disciplinas1) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
-    $registros_disciplinas2 = mysqli_query($con, $sql_disciplinas2) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
-    $registros_disciplinas3 = mysqli_query($con, $sql_disciplinas3) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
-    $registros_disciplinas4 = mysqli_query($con, $sql_disciplinas4) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
-    */     
-
-    /*
-    $disciplinas1 = mysqli_num_rows($registros_disciplinas1);
-    $disciplinas2 = mysqli_num_rows($registros_disciplinas2);
-    $disciplinas3 = mysqli_num_rows($registros_disciplinas3);
-    $disciplinas4 = mysqli_num_rows($registros_disciplinas4);
-    */
-
-    /*
-    var_dump($disciplinas);
-
-    var_dump($disciplinas1);
-    var_dump($disciplinas2);
-    var_dump($disciplinas3);
-    var_dump($disciplinas4);
-
+    $disciplinas = mysqli_num_rows($registros_disciplinas);
     
+    
+    // nome das disciplinas para listagem
+    $sql_disciplina_1 = "SELECT q.id_disciplina_1, d.nome FROM questao q 
+        JOIN disciplina d ON q.id_disciplina_1 = d.id WHERE d.id = '$id_disciplina_1'";
+    $sql_disciplina_2 = "SELECT q.id_disciplina_2, d.nome FROM questao q 
+        JOIN disciplina d ON q.id_disciplina_2 = d.id WHERE d.id = '$id_disciplina_2'";
+    $sql_disciplina_3 = "SELECT q.id_disciplina_3, d.nome FROM questao q 
+        JOIN disciplina d ON q.id_disciplina_3 = d.id WHERE d.id = '$id_disciplina_3'";
+    $sql_disciplina_4 = "SELECT q.id_disciplina_4, d.nome FROM questao q 
+        JOIN disciplina d ON q.id_disciplina_4 = d.id WHERE d.id = '$id_disciplina_4'";
+
+    $registros_disciplinas_1 = mysqli_query($con, $sql_disciplina_1) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+    $registros_disciplinas_2 = mysqli_query($con, $sql_disciplina_2) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+    $registros_disciplinas_3 = mysqli_query($con, $sql_disciplina_3) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+    $registros_disciplinas_4 = mysqli_query($con, $sql_disciplina_4) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
+
+    $disciplinas1 = mysqli_num_rows($registros_disciplinas_1);
+    $disciplinas2 = mysqli_num_rows($registros_disciplinas_2);
+    $disciplinas3 = mysqli_num_rows($registros_disciplinas_3);
+    $disciplinas4 = mysqli_num_rows($registros_disciplinas_4);
+
+    /*
     $cont = 0;
     while($cont < $disciplinas){
         $dados2 = mysqli_fetch_array($registros_disciplinas);

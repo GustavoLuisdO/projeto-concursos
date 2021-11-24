@@ -26,27 +26,38 @@
 
         <header>
 
-            <form name="formListaQuestao" method="post" action="listaFiltrosQuestoes.php">
+            <div class="row text-center">   
+                <!-- Página Inicial -->
+                <div class="col-4">
+                    <a href="../../../index.html">
+                        <button class="btn btn-outline-dark" type="button">Página Inicial</button>
+                    </a>
+                </div><!-- Página Inicial -->
+                    
+                <!-- Titulo -->
+                <div class="col-4">
+                    <h2 class="display-4">Filtros</h2>
+                </div><!-- Titulo -->
+
+                <!-- Cadastrar Questão -->
+                <div class="col-4">
+                    <a href="../forms/incluirQuestao.php">
+                        <button class="btn btn-outline-dark" type="button">Cadastrar Questão</button>
+                    </a>
+                </div><!-- Cadastrar Questão -->
+            </div>
+
+            <form name="formListaQuestao" method="post">
 
                 <div class="row text-center">   
-                    <!-- Página Inicial -->
-                    <div class="col-4">
-                        <a href="../../../index.html">
-                            <button class="btn btn-outline-dark" type="button">Página Inicial</button>
-                        </a>
-                    </div><!-- Página Inicial -->
-                    
-                    <!-- Titulo -->
-                    <div class="col-4">
-                        <h2 class="display-4">Filtros</h2>
-                    </div><!-- Titulo -->
-
-                    <!-- Cadastrar Questão -->
-                    <div class="col-4">
-                        <a href="../forms/incluirQuestao.php">
-                            <button class="btn btn-outline-dark" type="button">Cadastrar Questão</button>
-                        </a>
-                    </div><!-- Cadastrar Questão -->
+                    <div class="col-3"></div>
+                    <!-- Palavra Chave -->
+                    <div class="col-6">
+                        <div class="form-goup">
+                            <input class="form-control" type="search" name="enunciado" placeholder="Buscar por palavra-chave" maxlength="2000">
+                        </div>
+                    </div><!-- Palavra Chave -->
+                    <div class="col-3"></div>
                 </div>
 
                 <div class="row text-center mt-4">
@@ -175,6 +186,11 @@
            if(!empty($_POST)){
                 $sql_filtros .= " WHERE (1=1) ";
 
+                if(isset($_POST["enunciado"])){
+                    $palavras_chave_ = filter_input(INPUT_POST, "enunciado", FILTER_SANITIZE_STRIPPED);
+                    strlen($palavras_chave_) ? $sql_filtros .= "AND enunciado LIKE '%$palavras_chave_%' " : null;
+                }
+
                 if(isset($_POST["ano"])){
                     $ano_ = filter_input(INPUT_POST, "ano", FILTER_VALIDATE_INT);
                     strlen($ano_) ? $sql_filtros .= "AND ano = '$ano_' " : null;
@@ -237,31 +253,110 @@
 
             <!-- listagem -->
            <?php
+            // listar nome do curso
             $cont = 0;
 
             while($cont < $filtros){
 
-                // array com os filtros
+                // array com os filtros 
                 $dados = mysqli_fetch_array($resultado_filtros);
 
-                $id             = $dados["id"];
-                $id_curso       = $dados["id_curso"];
-                $descricao      = $dados["descricao"];
-                $ano            = $dados["ano"];
-                $numero         = $dados["numero"];
-                $enunciado      = $dados["enunciado"];
-                $dissertativa   = $dados["resposta_dissertativa"];
-                $correta        = $dados["alternativa_correta"];
+                // dados da tabela questão
+                $id                 = $dados["id"];
+                $id_curso           = $dados["id_curso"];
+                $descricao          = $dados["descricao"];
+                $ano                = $dados["ano"];
+                $numero             = $dados["numero"];
+                $id_disciplina_1    = $dados["id_disciplina_1"];
+                $id_disciplina_2    = $dados["id_disciplina_2"];
+                $id_disciplina_3    = $dados["id_disciplina_3"];
+                $id_disciplina_4    = $dados["id_disciplina_4"];
+                $id_dificuldade     = $dados["id_dificuldade"];
+                $enunciado          = $dados["enunciado"];
+                $tipo_questao       = $dados["tipo_questao"];
+                $dissertativa       = $dados["resposta_dissertativa"];
+                $alt_a              = $dados["resposta_alt_a"];
+                $alt_b              = $dados["resposta_alt_b"];
+                $alt_c              = $dados["resposta_alt_c"];
+                $alt_d              = $dados["resposta_alt_d"];
+                $alt_e              = $dados["resposta_alt_e"];
+                $alt_correta        = $dados["alternativa_correta"];
 
+                // registros tabela curso para listar o nome do curso
+                require "../consultas/cursos.php";
+                $dados_nome_curso = mysqli_fetch_array($registros_nome_cursos);
 
+                $nome_cursos_ = $dados_nome_curso["nome"];
+
+                // registros da tabela disciplina para listar o nome da disciplina
+                require "../consultas/disciplinas.php";
+
+                $dados_disciplina1 = mysqli_fetch_array($registros_disciplinas_1);
+                $dados_disciplina2 = mysqli_fetch_array($registros_disciplinas_2);
+                $dados_disciplina3 = mysqli_fetch_array($registros_disciplinas_3);
+                $dados_disciplina4 = mysqli_fetch_array($registros_disciplinas_4);
+
+                $disciplina_1 = $dados_disciplina1["nome"];
+                $disciplina_2 = $dados_disciplina2["nome"];
+                $disciplina_3 = $dados_disciplina3["nome"];
+                $disciplina_4 = $dados_disciplina4["nome"];
+
+                // listagem
                 echo "<b>ID = </b>$id <br>";
-                echo "<b>ID Curso = </b>$id_curso <br>";
+                echo "<b>Curso = </b>$nome_cursos_ <br>";
                 echo "<b>Descrição  = </b>$descricao <br>";
                 echo "<b>Ano  = </b> $ano <br>";
                 echo "<b>Número  = </b> $numero <br>";
-                echo "<b>Enunciado  = </b> $enunciado <br>";
-                echo "<b>Dissertativa  = </b> $dissertativa <br>";
-                echo "<b>Alt Correta  = </b> $correta <br><hr>";
+
+                echo "<div class='row'>";
+                    echo "<b>Disciplina(s) = </b> ";
+                    if($id_disciplina_1 != "" && $id_disciplina_1 != 0){
+                        echo " $disciplina_1";
+                    }
+                    if($id_disciplina_2 != "" && $id_disciplina_2 != 0){
+                        echo " | $disciplina_2";
+                    }
+                    if($id_disciplina_3 != "" && $id_disciplina_3 != 0){
+                        echo " | $disciplina_3";
+                    }
+                    if($id_disciplina_4 != "" && $id_disciplina_4 != 0){
+                        echo " | $disciplina_4";
+                    }
+
+                echo "</div>";
+
+                //echo "<b>Disciplina(s)  = </b> $disciplina_1 | $disciplina_2 | $disciplina_3 | $disciplina_4 <br>";
+                
+
+                // definir o grau de dificuldade que será listado
+                switch($id_dificuldade){
+                    case 1: echo "<b>Dificuldade = </b> Fácil <br>";
+                        break;
+                    case 2: echo "<b>Dificuldade = </b> Mediana <br>";
+                        break;
+                    case 3: echo "<b>Dificuldade = </b> Difícil <br>";
+                        break;
+                    default: echo "<h2>Erro ao listar a dificuldade</h2>";
+                }
+                
+                echo "<b>Enunciado = </b> $enunciado <br>";
+
+                // definir o tipo de questão que será listado
+                switch($tipo_questao){
+                    case 'M':   echo "<b>Tipo de Questão = </b> Multiplas Escolhas <br>";
+                                echo "<b>Alt A = </b> $alt_a <br>";
+                                echo "<b>Alt B = </b> $alt_b <br>";
+                                echo "<b>Alt C = </b> $alt_c <br>";
+                                echo "<b>Alt D = </b> $alt_d <br>";
+                                echo "<b>Alt E = </b> $alt_e <br>";
+                                echo "<b>Alt Correta = </b> $alt_correta <br><hr>";
+                                    break;
+                    
+                    case 'D':   echo "<b>Tipo de Questão = </b> Dissertativa <br>";
+                                echo "<b>Dissertativa = </b> $dissertativa <br><hr>";
+                                    break;
+                    default: echo "<h2>Erro ao listar o tipo de questão</h2>";
+                }
                 
                 $cont ++;
             }
