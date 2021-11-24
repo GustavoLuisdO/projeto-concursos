@@ -26,7 +26,7 @@
 
         <header>
 
-            <form name="formListaQuestao" method="post" action="validaFiltros.php">
+            <form name="formListaQuestao" method="post" action="listaFiltrosQuestoes.php">
 
                 <div class="row text-center">   
                     <!-- Página Inicial -->
@@ -57,17 +57,18 @@
                                 <option value="">Selecione o Curso</option>
                                 <?php
                                     include "../consultas/cursos.php";
-                                    $cont_cursos = 0;
-                                    while($cont_cursos < $cursos){
-                                
-                                        // armazernar cursos em array
-                                        $dados_cursos = mysqli_fetch_array($registros_cursos);
-                                        // dados
-                                        $id_curso   = $dados_cursos["id_curso"];
-                                        $nome_curso = $dados_cursos["nome"];
-                                        // mostrar as opções
-                                        echo "<option value='$id_curso'>$nome_curso</option>";
-                                            $cont_cursos ++;
+                                    
+                                    $cont = 0;
+                                    while($cont < $cursos){
+
+                                        $dados = mysqli_fetch_array($registros_cursos);
+
+                                        $id_curso   = $dados["id"];
+                                        $curso      = $dados["nome"];
+
+                                        echo "<option value='$id_curso'>$curso</option>";
+
+                                        $cont ++;
                                     }
                                 ?>
                             </select>
@@ -99,7 +100,7 @@
                         </div>
                     </div><!-- disciplinas -->
 
-                    <!-- id curso -->
+                    <!-- ano -->
                     <div class="col-4">
                         <div class="form-group">
                             <select class="form-control" name="ano" id="ano">
@@ -122,12 +123,12 @@
                                 ?>
                             </select>
                         </div>
-                    </div><!-- /id curso -->
+                    </div><!-- /ano -->
                 </div>
 
                 <div class="row text-center mt-4">
                     <!-- tipo questao -->
-                    <div class="col-6">
+                    <div class="col-5">
                         <div class="row form-group form-check">
                             <h3>Tipo de Questão</h3>
                             <div class="form-check form-check-inline">
@@ -140,8 +141,12 @@
                         </div>
                     </div><!-- /tipo questao -->
 
+                    <div class="col-2">
+                        <button type="submit" class="btn btn-outline-dark">Filtrar</button>
+                    </div>
+
                     <!-- grau de dificuldade -->
-                    <div class="col-6">
+                    <div class="col-5">
                         <div class="row form-group form-check">
                             <h3>Grau de Dificuldade</h3>
 
@@ -158,17 +163,109 @@
                         </div>
                     </div><!-- /grau de dificuldade -->           
                 </div>
-
-            </form>      
+                    
+            </form>  
         </header>
 
-        <main>
+        <!-- condições e concatenções para os filtros -->
+        <?php 
 
-            <div>
+           $sql_filtros = "SELECT * FROM questao";
 
-            </div>
+           if(!empty($_POST)){
+                $sql_filtros .= " WHERE (1=1) ";
 
-        </main>
+                if(isset($_POST["ano"])){
+                    $ano_ = filter_input(INPUT_POST, "ano", FILTER_VALIDATE_INT);
+                    strlen($ano_) ? $sql_filtros .= "AND ano = '$ano_' " : null;
+                }
+
+                if(isset($_POST["id_disciplina_1"])){
+                    $disciplina1_ = filter_input(INPUT_POST, "id_disciplina_1", FILTER_VALIDATE_INT);
+                    strlen($disciplina1_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina1_' " : null;
+                }
+
+                if(isset($_POST["id_curso"])){
+                    $curso_ = filter_input(INPUT_POST, "id_curso", FILTER_VALIDATE_INT);
+                    strlen($curso_) ? $sql_filtros .= "AND id_curso = '$curso_' " : null;
+                }
+
+                if(isset($_POST["tipo_questao"])){
+                    $tipo_ = filter_input(INPUT_POST, "tipo_questao", FILTER_SANITIZE_STRIPPED);
+                    $tipo_ = in_array($tipo_,['M', 'D']) ? $tipo_ : "";
+                    strlen($tipo_) ? $sql_filtros .= "AND tipo_questao = '$tipo_' " : null;
+                }
+
+                if(isset($_POST["id_dificuldade"])){
+                    $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade", FILTER_VALIDATE_INT);
+                    $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
+                    strlen($dificuldade_) ? $sql_filtros .= "AND id_dificuldade = '$dificuldade_' " : null;
+                }
+           }
+           $sql_filtros .= " ORDER BY id_curso";
+           var_dump($sql_filtros);
+
+
+            // resultado   
+            $resultado_filtros = mysqli_query($con, $sql_filtros) or 
+                    die("erro nos filtros ". mysqli_error($con));
+
+            $filtros = mysqli_num_rows($resultado_filtros);
+
+            // validação caso não tenho nenhum filtro
+            if($filtros == ""){
+                echo "<h3>Nenhum filtro encontrado!</h3>";
+            }
+
+            //var_dump($filtros);
+            ?><!-- /condições e concatenações para os filtros -->
+
+            <!-- relatório -->
+            
+             <div class="row">
+                <?php 
+
+                    if(strlen($filtros)){
+                        echo "<h5>Quantidade de Registros Encontrados = $filtros </h5>";
+                    }
+
+                ?>    
+             </div>
+             
+             <hr>
+            <!-- /relatório -->
+
+            <!-- listagem -->
+           <?php
+            $cont = 0;
+
+            while($cont < $filtros){
+
+                // array com os filtros
+                $dados = mysqli_fetch_array($resultado_filtros);
+
+                $id             = $dados["id"];
+                $id_curso       = $dados["id_curso"];
+                $descricao      = $dados["descricao"];
+                $ano            = $dados["ano"];
+                $numero         = $dados["numero"];
+                $enunciado      = $dados["enunciado"];
+                $dissertativa   = $dados["resposta_dissertativa"];
+                $correta        = $dados["alternativa_correta"];
+
+
+                echo "<b>ID = </b>$id <br>";
+                echo "<b>ID Curso = </b>$id_curso <br>";
+                echo "<b>Descrição  = </b>$descricao <br>";
+                echo "<b>Ano  = </b> $ano <br>";
+                echo "<b>Número  = </b> $numero <br>";
+                echo "<b>Enunciado  = </b> $enunciado <br>";
+                echo "<b>Dissertativa  = </b> $dissertativa <br>";
+                echo "<b>Alt Correta  = </b> $correta <br><hr>";
+                
+                $cont ++;
+            }
+        ?><!-- /listagem -->
     </div>
 
     <!-- SCRIPT BOOTSTRAP -->
