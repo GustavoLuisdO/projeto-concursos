@@ -91,13 +91,13 @@
 
                     echo "      <td>
                                     <a href='../forms/altCurso.php?id=$id&nome=$nome' class='btn btn-outline-dark'>
-                                        <i class='fas fa-edit fas-3x'></i>
+                                        <i class='fas fa-pen fas-3x'></i>
                                     </a>
                                 </td>";
 
                     echo "      <td>
                                     <a href='../forms/excCurso.php?id=$id&nome=$nome' class='btn btn-outline-dark'>
-                                        <i class='fas fa-trash-alt fas-3x'></i>
+                                        <i class='fas fa-trash fas-3x'></i>
                                     </a>
                                 </td>";
 

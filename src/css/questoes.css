@@ -23,3 +23,8 @@ form{
     text-overflow: ellipsis;
     white-space: nowrap;
 }
+
+/* textarea */
+textarea{
+    text-align: left;
+}
