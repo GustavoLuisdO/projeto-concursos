@@ -8,12 +8,12 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
-    <link rel="stylesheet" href="../../css/filtros.css">
+    <link rel="stylesheet" href="../../css/questoes.css">
 
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
 
-    <title>Listagem de Questões com Filtros</title>
+    <title>Listagem de Questões</title>
   </head>
   <body>
 
@@ -26,7 +26,7 @@
 
         <header>
 
-            <div class="row text-center">   
+            <div class="row text-center m-0">   
                 <!-- Página Inicial -->
                 <div class="col-4">
                     <a href="../../../index.html">
@@ -219,7 +219,7 @@
                 }
            }
            $sql_filtros .= " ORDER BY id_curso";
-           var_dump($sql_filtros);
+           //var_dump($sql_filtros);
 
 
             // resultado   
@@ -230,33 +230,35 @@
 
             // validação caso não tenho nenhum filtro
             if($filtros == ""){
-                echo "<h3>Nenhum filtro encontrado!</h3>";
+                echo "<h3 class='text-center'>Nenhum filtro encontrado!</h3>";
             }
 
             //var_dump($filtros);
-            ?><!-- /condições e concatenações para os filtros -->
+        ?><!-- /condições e concatenações para os filtros -->
 
             <!-- relatório -->
             
-             <div class="row">
-                <?php 
-
-                    if(strlen($filtros)){
-                        echo "<h5>Quantidade de Registros Encontrados = $filtros </h5>";
-                    }
-
-                ?>    
+             <div class="row text-center">
+                <div class="col-3"></div>
+                <div class="col-6">
+                    <?php
+                        if(strlen($filtros)){
+                            echo "<h5>Quantidade de Registros Encontrados = $filtros</h5>";
+                        }
+                    ?>
+                </div>
+                <div class="col-3"></div>
              </div>
              
              <hr>
             <!-- /relatório -->
 
             <!-- listagem -->
-           <?php
+        <?php
             // listar nome do curso
-            $cont = 0;
+            $cont_filtros = 0;
 
-            while($cont < $filtros){
+            while($cont_filtros < $filtros){
 
                 // array com os filtros 
                 $dados = mysqli_fetch_array($resultado_filtros);
@@ -300,65 +302,173 @@
                 $disciplina_2 = $dados_disciplina2["nome"];
                 $disciplina_3 = $dados_disciplina3["nome"];
                 $disciplina_4 = $dados_disciplina4["nome"];
+            ?>
 
-                // listagem
-                echo "<b>ID = </b>$id <br>";
-                echo "<b>Curso = </b>$nome_cursos_ <br>";
-                echo "<b>Descrição  = </b>$descricao <br>";
-                echo "<b>Ano  = </b> $ano <br>";
-                echo "<b>Número  = </b> $numero <br>";
+            <!-- accordion -->
+            <div class="accordion mb-2 mt-3" id="accordionQuestao">
 
-                echo "<div class='row'>";
-                    echo "<b>Disciplina(s) = </b> ";
-                    if($id_disciplina_1 != "" && $id_disciplina_1 != 0){
-                        echo " $disciplina_1";
-                    }
-                    if($id_disciplina_2 != "" && $id_disciplina_2 != 0){
-                        echo " | $disciplina_2";
-                    }
-                    if($id_disciplina_3 != "" && $id_disciplina_3 != 0){
-                        echo " | $disciplina_3";
-                    }
-                    if($id_disciplina_4 != "" && $id_disciplina_4 != 0){
-                        echo " | $disciplina_4";
-                    }
+                <!-- card -->
+                <div class="card">
+                    <div class="card-header" id="titulo">
+                        <h2 class="mb-0">
+                        <button class="btn btn-dark btn-block text-left" type="button" data-toggle="collapse" 
+                        data-target="#collapse1"
+                        aria-expanded="false" aria-controls="collapse1">
+                            <!-- curso -->
+                            <div class="row text-center border-bottom mb-1">
+                                <div class="col-2"></div>
+                                <div class="col-8">
+                                    <h5>
+                                        <?php echo "$nome_cursos_"; ?>
+                                    </h5>
+                                </div>
+                                <div class="col-2"></div>
+                            </div><!-- /curso -->
 
-                echo "</div>";
+                            <!-- id, enunciado, dificuldade -->
+                            <div class="row p-1">
+                                <div class="col-2">
+                                    <h5><?php echo $id; ?></h5>
+                                </div>
+                                
+                                <div class="col-8">
+                                    <p>
+                                        <?php echo $enunciado; ?>
+                                    </p>
+                                </div>
 
-                //echo "<b>Disciplina(s)  = </b> $disciplina_1 | $disciplina_2 | $disciplina_3 | $disciplina_4 <br>";
-                
+                                <div class="col-2">
+                                    <h5>
+                                        <?php
+                                            // definir o grau de dificuldade que será listado
+                                            switch($id_dificuldade){
+                                            case 1: echo "Fácil";
+                                                break;
+                                            case 2: echo "Mediana";
+                                                break;
+                                            case 3: echo "Difícil";
+                                                break;
+                                            default: echo "<h2>Erro ao listar a dificuldade</h2>";
+                                        }
+                                        ?>
+                                    </h5>
+                                </div>
+                            </div><!-- /id, enunciado, dificuldade -->
 
-                // definir o grau de dificuldade que será listado
-                switch($id_dificuldade){
-                    case 1: echo "<b>Dificuldade = </b> Fácil <br>";
-                        break;
-                    case 2: echo "<b>Dificuldade = </b> Mediana <br>";
-                        break;
-                    case 3: echo "<b>Dificuldade = </b> Difícil <br>";
-                        break;
-                    default: echo "<h2>Erro ao listar a dificuldade</h2>";
-                }
-                
-                echo "<b>Enunciado = </b> $enunciado <br>";
+                        </button>
+                        </h2>
+                    </div>
 
-                // definir o tipo de questão que será listado
-                switch($tipo_questao){
-                    case 'M':   echo "<b>Tipo de Questão = </b> Multiplas Escolhas <br>";
-                                echo "<b>Alt A = </b> $alt_a <br>";
-                                echo "<b>Alt B = </b> $alt_b <br>";
-                                echo "<b>Alt C = </b> $alt_c <br>";
-                                echo "<b>Alt D = </b> $alt_d <br>";
-                                echo "<b>Alt E = </b> $alt_e <br>";
-                                echo "<b>Alt Correta = </b> $alt_correta <br><hr>";
-                                    break;
-                    
-                    case 'D':   echo "<b>Tipo de Questão = </b> Dissertativa <br>";
-                                echo "<b>Dissertativa = </b> $dissertativa <br><hr>";
-                                    break;
-                    default: echo "<h2>Erro ao listar o tipo de questão</h2>";
-                }
-                
-                $cont ++;
+                    <div id="collapse1" class="collapse" aria-labelledby="titulo" data-parent="#accordionQuestao">
+                        <div class="card-body">
+                            
+                            <div class="row">
+                                <!-- descrição -->
+                                <div class="col-4">
+                                    <h6>Descrição</h6>
+                                    <input class="form-control" type="text" readonly value="<?php echo "$descricao"; ?>">
+                                </div><!-- /descrição -->
+                                
+                                <!-- ano -->
+                                <div class="col-4">
+                                    <h6>Ano</h6>
+                                    <input class="form-control" type="number" readonly value="<?php echo "$ano"; ?>">
+                                </div><!-- /ano -->
+                                
+                                <!-- numero -->
+                                <div class="col-4">
+                                    <h6>Número da Questão</h6>
+                                    <input class="form-control" type="number" readonly value="<?php echo "$numero"; ?>">
+                                </div><!-- /numero -->
+                            </div>
+                            
+
+                            <!-- disciplinas -->
+                            <div class="row text-center mt-3">
+                                <div class="col-3"></div>
+                                <div class="col-6">
+                                    <h6>Disciplina(s)</h6>
+                                </div>
+                                <div class="col-3"></div>
+                            </div>
+                            <div class="row text-center">
+                                        
+                                <!-- disciplina 1 -->
+                                <div class="col-3">
+                                        <?php 
+                                            if($id_disciplina_1 != "" && $id_disciplina_1 != 0){
+                                                echo "<select class='form-control' readonly>";
+                                                echo "<option>$disciplina_1</option>";
+                                                echo "</select>";
+                                            }
+                                        ?>
+                                </div><!-- /disciplina 1 -->
+                                
+                                <!-- disciplina 2 -->
+                                <div class="col-3">
+                                        <?php 
+                                            if($id_disciplina_2 != "" && $id_disciplina_2 != 0){
+                                                echo "<select class='form-control' readonly>";
+                                                echo "<option>$disciplina_2</option>";
+                                                echo "</select>";
+                                            }
+                                        ?>
+                                </div><!-- /disciplina 2 -->
+
+                                <!-- disciplina 3 -->
+                                <div class="col-3">
+                                        <?php 
+                                            if($id_disciplina_3 != "" && $id_disciplina_3 != 0){
+                                                echo "<select class='form-control' readonly>";
+                                                echo "<option>$disciplina_3</option>";
+                                                echo "</select>";
+                                            }
+                                        ?>
+                                </div><!-- /disciplina 3 -->
+
+                                <!-- disciplina 4 -->
+                                <div class="col-3">
+                                        <?php 
+                                            if($id_disciplina_4 != "" && $id_disciplina_4 != 0){
+                                                echo "<select class='form-control' readonly>";
+                                                echo "<option>$disciplina_4</option>";
+                                                echo "</select>";
+                                            }
+                                        ?>
+                                </div><!-- /disciplina 4 -->
+                                
+                            </div><!-- /disciplinas -->
+                            
+                            <?php                           
+
+                                echo "<b>Enunciado = </b> $enunciado <br>";
+
+                                // definir o tipo de questão que será listado
+                                switch($tipo_questao){
+                                    case 'M':   echo "<b>Tipo de Questão = </b> Multiplas Escolhas <br>";
+                                                echo "<b>Alt A = </b> $alt_a <br>";
+                                                echo "<b>Alt B = </b> $alt_b <br>";
+                                                echo "<b>Alt C = </b> $alt_c <br>";
+                                                echo "<b>Alt D = </b> $alt_d <br>";
+                                                echo "<b>Alt E = </b> $alt_e <br>";
+                                                echo "<b>Alt Correta = </b> $alt_correta <br><hr>";
+                                                    break;
+                                    
+                                    case 'D':   echo "<b>Tipo de Questão = </b> Dissertativa <br>";
+                                                echo "<b>Dissertativa = </b> $dissertativa <br><hr>";
+                                                    break;
+                                    default: echo "<h2>Erro ao listar o tipo de questão</h2>";
+                                }
+                            ?>
+
+                        </div>
+                    </div>
+                </div><!-- /card -->
+
+            </div><!-- /accordion -->
+
+            <?php
+                $cont_filtros ++;
             }
         ?><!-- /listagem -->
     </div>
