@@ -15,3 +15,11 @@ form{
     border: 2px solid #000;
     border-radius: 20px;
 }
+
+/* limitar caracteres do btn card */
+.limit-texto{
+    max-width: 90ch;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+}

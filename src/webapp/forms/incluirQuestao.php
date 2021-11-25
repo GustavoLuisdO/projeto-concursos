@@ -274,7 +274,7 @@
 
               <textarea class="form-control" name="resposta_alt_a" id="resposta_alt_a" cols="90" rows="1" maxlength="2000"></textarea>
             </div>
-              <br>
+            <br>
             <!-- alternativa B -->
             <div class="form-check form-check-inline">
               <label class="form-check-label" for="alternativa_correta">b.</label>

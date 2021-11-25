@@ -230,7 +230,7 @@
 
             // validação caso não tenho nenhum filtro
             if($filtros == ""){
-                echo "<h3 class='text-center'>Nenhum filtro encontrado!</h3>";
+                echo "<h3 class='text-center'>Nenhum resultado encontrado!</h3>";
             }
 
             //var_dump($filtros);
@@ -243,7 +243,7 @@
                 <div class="col-6">
                     <?php
                         if(strlen($filtros)){
-                            echo "<h5>Quantidade de Registros Encontrados = $filtros</h5>";
+                            echo "<h5>Registros encontrados = $filtros</h5>";
                         }
                     ?>
                 </div>
@@ -253,7 +253,7 @@
              <hr>
             <!-- /relatório -->
 
-            <!-- listagem -->
+        <!-- listagem -->
         <?php
             // listar nome do curso
             $cont_filtros = 0;
@@ -302,176 +302,357 @@
                 $disciplina_2 = $dados_disciplina2["nome"];
                 $disciplina_3 = $dados_disciplina3["nome"];
                 $disciplina_4 = $dados_disciplina4["nome"];
-            ?>
+        ?>
 
-            <!-- accordion -->
-            <div class="accordion mb-2 mt-3" id="accordionQuestao">
-
-                <!-- card -->
-                <div class="card">
-                    <div class="card-header" id="titulo">
-                        <h2 class="mb-0">
-                        <button class="btn btn-dark btn-block text-left" type="button" data-toggle="collapse" 
-                        data-target="#collapse1"
-                        aria-expanded="false" aria-controls="collapse1">
-                            <!-- curso -->
-                            <div class="row text-center border-bottom mb-1">
-                                <div class="col-2"></div>
-                                <div class="col-8">
-                                    <h5>
-                                        <?php echo "$nome_cursos_"; ?>
-                                    </h5>
-                                </div>
-                                <div class="col-2"></div>
-                            </div><!-- /curso -->
-
-                            <!-- id, enunciado, dificuldade -->
-                            <div class="row p-1">
-                                <div class="col-2">
-                                    <h5><?php echo $id; ?></h5>
-                                </div>
-                                
-                                <div class="col-8">
-                                    <p>
-                                        <?php echo $enunciado; ?>
-                                    </p>
-                                </div>
-
-                                <div class="col-2">
-                                    <h5>
-                                        <?php
-                                            // definir o grau de dificuldade que será listado
-                                            switch($id_dificuldade){
-                                            case 1: echo "Fácil";
-                                                break;
-                                            case 2: echo "Mediana";
-                                                break;
-                                            case 3: echo "Difícil";
-                                                break;
-                                            default: echo "<h2>Erro ao listar a dificuldade</h2>";
-                                        }
-                                        ?>
-                                    </h5>
-                                </div>
-                            </div><!-- /id, enunciado, dificuldade -->
-
-                        </button>
-                        </h2>
-                    </div>
-
-                    <div id="collapse1" class="collapse" aria-labelledby="titulo" data-parent="#accordionQuestao">
-                        <div class="card-body">
-                            
-                            <div class="row">
-                                <!-- descrição -->
-                                <div class="col-4">
-                                    <h6>Descrição</h6>
-                                    <input class="form-control" type="text" readonly value="<?php echo "$descricao"; ?>">
-                                </div><!-- /descrição -->
-                                
-                                <!-- ano -->
-                                <div class="col-4">
-                                    <h6>Ano</h6>
-                                    <input class="form-control" type="number" readonly value="<?php echo "$ano"; ?>">
-                                </div><!-- /ano -->
-                                
-                                <!-- numero -->
-                                <div class="col-4">
-                                    <h6>Número da Questão</h6>
-                                    <input class="form-control" type="number" readonly value="<?php echo "$numero"; ?>">
-                                </div><!-- /numero -->
-                            </div>
-                            
-
-                            <!-- disciplinas -->
-                            <div class="row text-center mt-3">
-                                <div class="col-3"></div>
-                                <div class="col-6">
-                                    <h6>Disciplina(s)</h6>
-                                </div>
-                                <div class="col-3"></div>
-                            </div>
-                            <div class="row text-center">
-                                        
-                                <!-- disciplina 1 -->
-                                <div class="col-3">
-                                        <?php 
-                                            if($id_disciplina_1 != "" && $id_disciplina_1 != 0){
-                                                echo "<select class='form-control' readonly>";
-                                                echo "<option>$disciplina_1</option>";
-                                                echo "</select>";
-                                            }
-                                        ?>
-                                </div><!-- /disciplina 1 -->
-                                
-                                <!-- disciplina 2 -->
-                                <div class="col-3">
-                                        <?php 
-                                            if($id_disciplina_2 != "" && $id_disciplina_2 != 0){
-                                                echo "<select class='form-control' readonly>";
-                                                echo "<option>$disciplina_2</option>";
-                                                echo "</select>";
-                                            }
-                                        ?>
-                                </div><!-- /disciplina 2 -->
-
-                                <!-- disciplina 3 -->
-                                <div class="col-3">
-                                        <?php 
-                                            if($id_disciplina_3 != "" && $id_disciplina_3 != 0){
-                                                echo "<select class='form-control' readonly>";
-                                                echo "<option>$disciplina_3</option>";
-                                                echo "</select>";
-                                            }
-                                        ?>
-                                </div><!-- /disciplina 3 -->
-
-                                <!-- disciplina 4 -->
-                                <div class="col-3">
-                                        <?php 
-                                            if($id_disciplina_4 != "" && $id_disciplina_4 != 0){
-                                                echo "<select class='form-control' readonly>";
-                                                echo "<option>$disciplina_4</option>";
-                                                echo "</select>";
-                                            }
-                                        ?>
-                                </div><!-- /disciplina 4 -->
-                                
-                            </div><!-- /disciplinas -->
-                            
-                            <?php                           
-
-                                echo "<b>Enunciado = </b> $enunciado <br>";
-
-                                // definir o tipo de questão que será listado
-                                switch($tipo_questao){
-                                    case 'M':   echo "<b>Tipo de Questão = </b> Multiplas Escolhas <br>";
-                                                echo "<b>Alt A = </b> $alt_a <br>";
-                                                echo "<b>Alt B = </b> $alt_b <br>";
-                                                echo "<b>Alt C = </b> $alt_c <br>";
-                                                echo "<b>Alt D = </b> $alt_d <br>";
-                                                echo "<b>Alt E = </b> $alt_e <br>";
-                                                echo "<b>Alt Correta = </b> $alt_correta <br><hr>";
-                                                    break;
-                                    
-                                    case 'D':   echo "<b>Tipo de Questão = </b> Dissertativa <br>";
-                                                echo "<b>Dissertativa = </b> $dissertativa <br><hr>";
-                                                    break;
-                                    default: echo "<h2>Erro ao listar o tipo de questão</h2>";
-                                }
-                            ?>
-
-                        </div>
-                    </div>
-                </div><!-- /card -->
-
-            </div><!-- /accordion -->
 
             <?php
+
+                // accordion
+                echo "<div class='accordion mb-2 mt-3' id='accordionQuestao'>";
+
+                // card
+                echo "  <div class='card'>
+                            <div class='card-header' id='titulo'>
+                                <h2 class='mb-0'>
+                                    <button class='btn btn-dark btn-block text-left' type='button' data-toggle='collapse'data-target='#collapse1$id' aria-expanded='false' aria-controls='collapse1$id'>";            
+                // curso
+                echo "              <div class='row text-center border-bottom mb-1'>
+                                        <div class='col-2'></div>
+                                        <div class='col-8'>
+                                            <h5>$nome_cursos_</h5>
+                                        </div>
+                                        <div class='col-2'></div>
+                                    </div>";
+                
+                // id
+                echo "              <div class='row p-1'>
+                                        <div class='col-1'>
+                                            <h5>$id</h5>
+                                        </div>";
+                // enunciado
+                echo "                  <div class='col-9 text-left'>
+                                            <p class='limit-texto'>$enunciado</p>
+                                        </div>";
+                
+                // dificuldade
+                echo "                  <div class='col-2'>
+                                            <h5>";
+                                                // definir o grau de dificuldade que será listado
+                                                switch($id_dificuldade){
+                                                    case 1: echo"Fácil";
+                                                        break;
+                                                    case 2: echo"Mediana";
+                                                        break;
+                                                    case 3: echo"Difícil";
+                                                        break;
+                                                    default: echo"<h2>Erro ao listar a dificuldade</h2>";
+                                                }
+                echo "                      </h5>
+                                        </div>
+                                    </div>
+    
+                                </button>
+                            </h2>
+                        </div>";// /header card
+    
+                echo "  <div id='collapse1$id' class='collapse' aria-labelledby='titulo' data-parent='#accordionQuestao'>
+                            <div class='card-body'>
+                                
+                                <div class='row'>";
+                // btn para alteração
+                echo "
+                    
+                ";
+
+                // descrição
+                echo "              <div class='col-4'>
+                                        <h6>Descrição</h6>
+                                        <input class='form-control' type='text' readonly value='$descricao'>
+                                    </div>";
+                                    
+                // ano
+                echo "               <div class='col-4'>
+                                        <h6>Ano</h6>
+                                        <input class='form-control' type='number' readonly value='$ano'>
+                                    </div>";
+                                    
+                // numero da questão
+                echo "               <div class='col-4'>
+                                        <h6>Número da Questão</h6>
+                                        <input class='form-control' type='number' readonly value='$numero'>
+                                    </div>
+                                </div>";
+                                
+    
+                // titulo disciplinas
+                echo "          <div class='row text-center mt-5'>
+                                    <div class='col-3'></div>
+                                    <div class='col-6'>
+                                        <h6>Disciplina(s)</h6>
+                                    </div>
+                                    <div class='col-3'></div>
+                                </div>";
+                
+                // listagem de disciplinas
+                echo "          <div class='row text-center'> ";
+                                            
+                // disciplina 1
+                echo "              <div class='col-3'>";
+                                        if($id_disciplina_1 != '' && $id_disciplina_1 != 0){
+                                            echo"
+                                            <select class='form-control' readonly>
+                                                <option>$disciplina_1</option>
+                                            </select>";
+                                        }
+                echo "                    </div>"; //disciplina 1
+                                    
+                // disciplina 2
+                echo "              <div class='col-3'>";
+                                        if($id_disciplina_2 != '' && $id_disciplina_2 != 0){
+                                            echo"
+                                            <select class='form-control' readonly>
+                                                <option>$disciplina_2</option>
+                                            </select>";
+                                        }
+                echo "              </div>"; //disciplina 2
+    
+                // disciplina 3
+                echo "              <div class='col-3'>";
+                                        if($id_disciplina_3 != '' && $id_disciplina_3 != 0){
+                                            echo"
+                                            <select class='form-control' readonly>
+                                                <option>$disciplina_3</option>
+                                            </select>";
+                                        }
+                echo "              </div>"; //disciplina 3
+    
+                // disciplina 4
+                echo "              <div class='col-3'>";
+                                        if($id_disciplina_4 != '' && $id_disciplina_4 != 0){
+                                            echo"
+                                            <select class='form-control' readonly>
+                                                <option>$disciplina_4</option>
+                                            </select>";
+                                        }
+                echo "              </div>"; //disciplina 4
+                                    
+                echo "          </div>"; // /disciplinas
+
+                // titulo enunciado
+                echo "          <div class='row text-left mt-5'>
+                                    <div class='col-1'></div>
+                                        <div class='col-10'>
+                                           <h6>Enunciado</h6>
+                                        </div>
+                                    <div class='col-1'></div>
+                                </div>";
+                // enunciado
+                echo "
+                                <div class='row'>
+                                    <div class='col-1'></div>
+                                    <div class='form-group col-10'>
+                                        <textarea class='form-control'cols='110' rows='5' readonly>
+                                            $enunciado
+                                        </textarea>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                ";
+            ?>
+
+            <?php
+                // definir o tipo de questão que será listado
+                switch($tipo_questao){
+                    
+                    // case múltiplas escolhas
+                    case 'M':   echo "
+                                <div class='row'> 
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                        <h6>Múltiplas Escolhas</h6>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>";
+            ?>
+                <!-- alternartivas -->
+                <?php
+                    // alternativa a
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>a.</label>
+                                        <input class='form-check-input' type='radio' value='A'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'A'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            $alt_a
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa a
+                ?>
+                <?php
+                    // alternativa b
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>b.</label>
+                                        <input class='form-check-input' type='radio' value='B'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'B'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            $alt_b
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa b
+                ?>
+                <?php
+                    // alternativa c
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>c.</label>
+                                        <input class='form-check-input' type='radio' value='C'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'C'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            $alt_c
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa c
+                ?>
+                <?php
+                    // alternativa d
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>d.</label>
+                                        <input class='form-check-input' type='radio' value='D'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'D'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            $alt_d
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa d
+                ?>
+                <?php
+                    // alternativa e
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>e.</label>
+                                        <input class='form-check-input' type='radio' value='E'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'E'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            $alt_e
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa e
+
+                    break; // fim case multiplas escolhas
+                ?>
+                <!-- /alternativas -->
+                
+                <!-- dissertativa -->
+                <?php
+                    // case dissertativa
+                    case 'D':
+                    // titulo dissertativa
+                    echo "
+                                <div class='row'> 
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                        <h6>Dissertativa</h6>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    ";
+                    // resposta dissertativa
+                    echo "
+                                <div class='row'>
+                                    <div class='col-1'></div>
+                                    <div class='form-group col-10'>
+                                        <textarea class='form-control'cols='110' rows='5' maxlength='2000' readonly>
+                                            $dissertativa
+                                        </textarea>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    ";
+                    
+                    break; // fim case dissertativa
+
+                    default: echo "<h2>Erro ao listar o tipo de questão</h2>";
+                } //fim switch
+                
+                ?>
+                <!-- /dissertativa -->
+                        
+
+            <?php
+                echo "
+                            </div>
+                        </div>
+                    </div><!-- /card -->
+                </div><!-- /accordion -->
+                ";
+
                 $cont_filtros ++;
             }
         ?><!-- /listagem -->
-    </div>
+
+    </div><!-- container -->
 
     <!-- SCRIPT BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
