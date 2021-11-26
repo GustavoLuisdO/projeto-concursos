@@ -29,8 +29,10 @@
             <div class="row text-center m-0">   
                 <!-- Página Inicial -->
                 <div class="col-4">
-                    <a href="../../../index.html">
-                        <button class="btn btn-outline-dark" type="button">Página Inicial</button>
+                    <a href="../../../index.html" class="m-4">
+                        <button class="btn btn-outline-dark" type="button">
+                            <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+                        </button>
                     </a>
                 </div><!-- Página Inicial -->
                     
@@ -41,8 +43,10 @@
 
                 <!-- Cadastrar Questão -->
                 <div class="col-4">
-                    <a href="../forms/incluirQuestao.php">
-                        <button class="btn btn-outline-dark" type="button">Cadastrar Questão</button>
+                    <a href="../forms/incluirQuestao.php" class="m-4">
+                        <button class="btn btn-outline-dark" type="button">
+                            <i class="fas fa-plus fas-3x mr-2"></i>Incluir Questão
+                        </button>
                     </a>
                 </div><!-- Cadastrar Questão -->
             </div>
@@ -602,12 +606,12 @@
                                     </div>";
                 
                 // id
-                echo "              <div class='row p-1'>
-                                        <div class='col-1'>
+                echo "              <div class='row p-1'>";
+                                        /*<div class='col-1'>
                                             <h5>$id</h5>
-                                        </div>";
+                                        </div>*/
                 // enunciado
-                echo "                  <div class='col-9 text-left'>
+                echo "                  <div class='col-10 text-left'>
                                             <p class='limit-texto'>$enunciado</p>
                                         </div>";
                 

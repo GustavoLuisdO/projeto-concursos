@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/incluirQuestao.css">
+
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
     <title>Incluir Questão</title>
@@ -58,20 +60,30 @@
 
       <header>
         <div class="row">
-          <a href="../../../index.html" class="m-4">
-            <button class="btn btn-outline-dark" type="button"><i class="fas fa-arrow-left fas-3x mr-2"></i>Voltar</button>
-          </a>
+          
           <h1 class="m-3">Incluir Questão</h1>
+
+          <a href="../../../index.html" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+            </button>
+          </a>
+
+          <a href="../listagens/listaQuestoes.php" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Questões
+            </button>
+          </a>
+
         </div>
       </header>
 
       <form name="formQuestao" method="post" action="../validacoes/validaQuestao.php">
 
-        <!-- fileira info questão -->
         <div class="row">
-
+          <div class="col-2"></div>
           <!-- cursos -->
-          <div class="form-group col-5">
+          <div class="form-group col-8">
               <label for="id_curso">Curso</label>
               <select class="form-control" name="id_curso" id="id_curso">
                 <option value="">Selecione o Curso</option>
@@ -92,9 +104,13 @@
                 ?>
               </select>
           </div><!-- /cursos -->
-          
+          <div class="col-2"></div>
+        </div>  
+
+        <div class="row">
+          <div class="col-2"></div>
           <!-- descrição da prova -->
-          <div class="form-group col-5">
+          <div class="form-group col-6">
             <label for="descricao">Descrição</label>
             <input class="form-control" type="text" name="descricao" id="descricao" required placeholder="Enade 2021" maxlength="255">
           </div><!-- /descrição da prova -->
@@ -104,22 +120,30 @@
             <label for="ano">Ano</label>
             <input class="form-control" type="text" name="ano" id="ano" required placeholder="2021" maxlength="4">
           </div><!-- /ano da prova -->
- 
-        </div><!-- fileira info questão -->
+          <div class="col-2"></div>
+        </div>
       
       <section>
         <div class="row">
           <!-- numero da questão -->
+          <div class="col-2"></div>
           <div class="form-group col-2">
             <label for="numero">Número da Questão</label>
             <input class="form-control" type="number" name="numero" id="numero" min="1" placeholder="ex..1">
           </div><!-- /numero da questão -->
+          <div class="col-8"></div>
         </div>
-
-        <div class="row">
-           <!-- disciplinas -->
+        <hr>
+        <!-- disciplinas -->         
+        <div class="row text-center">
+          <div class="col-4"></div>
+          <div class="col-4">
+            <label>Disciplina(s)</label>
+          </div>
+          <div class="col-4"></div>
+        </div>
+        <div class="row d-flex">
           <div class="form-group col-3"><!-- disciplina 1 -->
-              <label for="id_disciplina_1">Disciplina</label>
               <select class="form-control" name="id_disciplina_1" id="id_disciplina_1">
                 <option value="">Selecione a Disciplina</option>
                 <?php
@@ -142,7 +166,6 @@
           </div><!-- /disciplina 1 -->
 
           <div class="form-group col-3 disciplinas" id="disciplina_2" style="display: none;"><!-- disciplina 2 -->
-              <label for="id_disciplina_2">Disciplina</label>
               <select class="form-control" name="id_disciplina_2" id="id_disciplina_2">
                 <option value="">Selecione outra Disciplina</option>
                 <?php
@@ -165,7 +188,6 @@
           </div><!-- /disciplina 2 -->
 
           <div class="form-group col-3 disciplinas" id="disciplina_3" style="display: none;"><!-- disciplina 3 -->
-              <label for="id_disciplina_3">Disciplina</label>
               <select class="form-control" name="id_disciplina_3" id="id_disciplina_3">
                 <option value="">Selecione outra Disciplina</option>
                 <?php
@@ -188,7 +210,6 @@
           </div><!-- /disciplina 3 -->
 
           <div class="form-group col-3 disciplinas" id="disciplina_4" style="display: none;"><!-- disciplina 4 -->
-              <label for="id_disciplina_4">Disciplina</label>
               <select class="form-control" name="id_disciplina_4" id="id_disciplina_4">
                 <option value="">Selecione outra Disciplina</option>
                 <?php
@@ -210,117 +231,163 @@
               </select>
           </div><!-- /disciplina 4 -->
 
-          <button type="button" id="btnAddDisciplina" class="btn btn-outline-dark"><i class="fas fa-plus-circle fas-3x"></i></button>
+          <button type="button" id="btnAddDisciplina" class="btn btn-outline-dark">
+            <i class="fas fa-plus fas-3x"></i>
+          </button>
           
           <!-- /disciplinas -->
         </div>
+        <hr>
 
         <!-- dificuldade -->
-        <div class="form-group col-6">
-
-          <label for="id_dificuldade">Dificuldade</label>
-          <select class="form-control" name="id_dificuldade" id="id_dificuldade">
-              <option value="">Selecione a Dificuldade</option>
-              <?php
-                $contador_dificuldades = 0;
-                while($contador_dificuldades < $dificuldades){
-                  // colocar as dificuldade em um array
-                  $dados_dificuldade = mysqli_fetch_array($registros_dificuldades);
+        <div class="row">
+          <div class="col-4"></div>
+          <div class="form-group col-4">
+            <label for="id_dificuldade">Dificuldade</label>
+            <select class="form-control" name="id_dificuldade" id="id_dificuldade">
+                <option value="">Selecione a Dificuldade</option>
+                <?php
+                  $contador_dificuldades = 0;
+                  while($contador_dificuldades < $dificuldades){
+                    // colocar as dificuldade em um array
+                    $dados_dificuldade = mysqli_fetch_array($registros_dificuldades);
           
-                  //armazenar os dados
-                  $id_dificuldade         = $dados_dificuldade["id"];
-                  $descricao_dificuldade  = $dados_dificuldade["descricao_dif"];
-
-                  // mostrar as opções
-                  echo "<option value='$id_dificuldade'>$descricao_dificuldade</option>";
+                    //armazenar os dados
+                    $id_dificuldade         = $dados_dificuldade["id"];
+                    $descricao_dificuldade  = $dados_dificuldade["descricao_dif"];
+                    // mostrar as opções
+                    echo "<option value='$id_dificuldade'>$descricao_dificuldade</option>";
           
-                  $contador_dificuldades ++;
-                }
-              ?>
-          </select>
-                  
+                    $contador_dificuldades ++;
+                  }
+                ?>
+            </select>
+          </div>
+          <div class="col-4"></div>
         </div><!-- /dificuldade -->
         
         <!-- enunciado -->
-        <div class="form-group col-8">
-          <label for="enunciado">Enunciado</label>
-          <textarea class="form-control" name="enunciado" id="enunciado" cols="30" rows="5"></textarea>
+        <div class="row">
+          <div class="col-2"></div>
+          <div class="form-group col-8">
+            <label for="enunciado">Enunciado</label>
+            <textarea class="form-control" name="enunciado" id="enunciado" rows="5"></textarea>
+          </div>
+          <div class="col-2"></div>
         </div><!-- /enunciado -->
+
       </section>
 
       <!-- tipo de resposta -->
       <section>
-
-         <div class="row">
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipo_questao" checked="checked" id="tipo_questao" value="M">
-            <label class="form-check-label" for="tipo_questao">Múltplas Escolhas</label>
+        <div class="row text-center">
+          <div class="col-2"></div>
+            <div class="col-8">
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipo_questao" checked="checked" id="tipo_questao" value="M">
+                <label class="form-check-label" for="tipo_questao">Múltplas Escolhas</label>
+              </div>
+              <div class="form-check form-check-inline">
+                <input class="form-check-input" type="radio" name="tipo_questao" id="tipo_questao" value="D">
+                <label class="form-check-label" for="tipo_questao">Dissertativa</label>
+              </div>
           </div>
-
-          <div class="form-check form-check-inline">
-            <input class="form-check-input" type="radio" name="tipo_questao" id="tipo_questao" value="D">
-            <label class="form-check-label" for="tipo_questao">Dissertativa</label>
-          </div>
-         </div>
+          <div class="col-2"></div>
+        </div>
          <!-- /tipo de resposta -->
          <hr>
 
          <!-- multipla escolha -->
-         <div id="multipla" style="display: block;">
+          <div id="multipla" style="display: block;">
             <!-- alternativa A -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">a.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="A">
-
-              <textarea class="form-control" name="resposta_alt_a" id="resposta_alt_a" cols="90" rows="1" maxlength="2000"></textarea>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="alternativa_correta">a.</label>
+                  <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="A">
+                  <textarea class="form-control" name="resposta_alt_a" id="resposta_alt_a" cols="88" rows="1" maxlength="2000"></textarea>
+                </div>
+              </div>
+              <div class="col-2"></div>
             </div>
             <br>
+
             <!-- alternativa B -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">b.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="B">
-
-              <textarea class="form-control" name="resposta_alt_b" id="resposta_alt_b" cols="90" rows="1" maxlength="2000"></textarea>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="alternativa_correta">b.</label>
+                  <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="B">
+                  <textarea class="form-control" name="resposta_alt_b" id="resposta_alt_b" cols="88" rows="1" maxlength="2000"></textarea>
+                </div>
+              </div>
+              <div class="col-2"></div>
             </div>
-              <br>
+            
+            <br>
             <!-- alternativa C -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">c.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="C">
-
-              <textarea class="form-control" name="resposta_alt_c" id="resposta_alt_c" cols="90" rows="1" maxlength="2000"></textarea>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="alternativa_correta">c.</label>
+                  <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="C">
+                  <textarea class="form-control" name="resposta_alt_c" id="resposta_alt_c" cols="88" rows="1" maxlength="2000"></textarea>
+                </div>
+              </div>
+              <div class="col-2"></div>
             </div>
-              <br>
+              
+            <br>
             <!-- alternativa D -->
-            <div class="form-check form-check-inline">  
-              <label class="form-check-label" for="alternativa_correta">d.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="D">
-
-              <textarea class="form-control" name="resposta_alt_d" id="resposta_alt_d" cols="90" rows="1" maxlength="2000"></textarea>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="alternativa_correta">d.</label>
+                  <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="D">
+                  <textarea class="form-control" name="resposta_alt_d" id="resposta_alt_d" cols="88" rows="1" maxlength="2000"></textarea>
+                </div>
+              </div>
+              <div class="col-2"></div>
             </div>
-              <br>
+              
+            <br>
             <!-- alternativa E -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">e.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="E">
-
-              <textarea class="form-control" name="resposta_alt_e" id="resposta_alt_e" cols="90" rows="1" maxlength="2000"></textarea>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="form-check form-check-inline">
+                  <label class="form-check-label" for="alternativa_correta">e.</label>
+                  <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="E">
+                  <textarea class="form-control" name="resposta_alt_e" id="resposta_alt_e" cols="88" rows="1" maxlength="2000"></textarea>
+                </div>
+              </div>
+              <div class="col-2"></div>
             </div>
           </div><!-- /multipla escolha -->
          
           <!-- dissertativa -->
           <div id="dissertativa" style="display: none;">
-            <div class="form-group col-8">
-              <label for="resposta_dissertativa">Resposta</label>
-              <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="2000"></textarea>
+            <div class="row">
+              <div class="col-2"></div>
+              <div class="col-8">
+                <div class="form-group">
+                  <label for="resposta_dissertativa">Resposta</label>
+                  <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="2000"></textarea>
+                </div>
+              </div>
+              <div class="col-2"></div>
             </div>
-          </div><hr> <!-- /dissertativa -->
+          </div><!-- /dissertativa -->
 
       </section><!-- /tipo de resposta -->
       
-        
-        <br><br>
+      <div class="row float-right">
         <button class="btn btn-outline-dark m-4" type="submit">Incluir Questão</button>
+      </div>
 
       </form>
 

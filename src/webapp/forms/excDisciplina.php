@@ -11,6 +11,8 @@
 
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
+    <link rel="stylesheet" href="../../css/incluirCurso-Disciplina.css">
+
     <title>Excluir Disciplina</title>
   </head>
   <body>
@@ -44,8 +46,28 @@
             $dados = mysqli_fetch_array($registros);
 
             // monstrar disciplina que será excluida
-            echo "<h2>Excluir Disciplina [$nome]</h2>";
+            //echo "<h2>Excluir Disciplina [$nome]</h2>";
         ?>
+
+      <header>
+        <div class="row">
+          
+          <h1 class="m-3">Excluir Disciplina</h1>
+
+          <a href="../../../index.html" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+            </button>
+          </a>
+
+          <a href="../listagens/listaDisciplinas.php" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Disciplinas
+            </button>
+          </a>
+
+        </div>
+      </header>
         
       <form name="formExcDisciplina" method="post" action="../validacoes/validaExcDisciplina.php">
         
@@ -54,12 +76,20 @@
             value="<?php echo $id; ?>">
         </div>
 
-        <div class="form-group">
-            <label for="nome">Nome da Disciplina</label>
-            <input class="form-control" type="text" id="nome" name="nome" readonly maxlength="100" value="<?php echo $dados['nome'] ?>">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <div class="form-group">
+                <label for="nome">Nome da Disciplina</label>
+                <input class="form-control" type="text" id="nome" name="nome" readonly maxlength="100" value="<?php echo $dados['nome'] ?>">
+            </div>
+          </div>
+          <div class="col-3"></div>
         </div>
 
-        <button class="btn btn-outline-dark" type="submit">Excluir Disciplina</button>
+        <div class="row float-right mt-3">
+          <button class="btn btn-outline-dark" id="btn" type="submit">Excluir Disciplina</button>
+        </div>
       </form>
       
     </div>

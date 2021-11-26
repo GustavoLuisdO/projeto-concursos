@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/incluirCurso-Disciplina.css">
+
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
     <title>Alterar Disciplina</title>
@@ -44,8 +46,28 @@
             $dados = mysqli_fetch_array($registros);
 
             // monstrar disciplina que está sendo alterado
-            echo "<h2>Alterar Disciplina [$nome]</h2>";
+            //echo "<h2>Alterar Disciplina [$nome]</h2>";
         ?>
+
+      <header>
+        <div class="row">
+          
+          <h1 class="m-3">Alterar Disciplina</h1>
+
+          <a href="../../../index.html" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+            </button>
+          </a>
+
+          <a href="../listagens/listaDisciplinas.php" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Disciplinas
+            </button>
+          </a>
+
+        </div>
+      </header>
         
       <form name="formAltDisciplina" method="post" action="../validacoes/validaAltDisciplina.php">
         
@@ -54,12 +76,20 @@
             value="<?php echo $id; ?>">
         </div>
 
-        <div class="form-group">
-            <label for="nome">Nome da Disciplina</label>
-            <input class="form-control" type="text" id="nome" name="nome" required maxlength="100" value="<?php echo $dados['nome'] ?>">
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <div class="form-group">
+                <label for="nome">Nome da Disciplina</label>
+                <input class="form-control" type="text" id="nome" name="nome" required maxlength="100" value="<?php echo $dados['nome'] ?>">
+            </div>
+          </div>
+          <div class="col-3"></div>
         </div>
 
-        <button class="btn btn-outline-dark" type="submit">Alterar Disciplina</button>
+        <div class="row float-right mt-3">
+          <button class="btn btn-outline-dark" id="btn" type="submit">Alterar Disciplina</button>
+        </div>
       </form>
       
     </div>

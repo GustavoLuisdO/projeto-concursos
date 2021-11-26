@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/listaCursos-Questoes.css">
+
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
 
@@ -18,17 +20,22 @@
     <div class="container">
 
         <header>
-            <div class="row p-3 text-center">
+            <div class="row">
+            
+                <h1 class="m-3">Listagem de Cursos</h1>
 
-                <h3 class="m-2">Listagem de Cursos</h3>
-                <div class="ml-5">
-                    <a href="../../../index.html">
-                        <button class="btn btn-outline-dark m-2">Página Inicial</button>
-                    </a>
-                    <a href="../forms/incluirCurso.html">
-                        <button class="btn btn-outline-dark m-2">Cadastrar Curso</button>
-                    </a>
-                </div>
+                <a href="../../../index.html" class="m-4">
+                    <button class="btn btn-outline-dark" type="button">
+                        <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+                    </button>
+                </a>
+
+                <a href="../forms/incluirCurso.html" class="m-4">
+                    <button class="btn btn-outline-dark" type="button">
+                        <i class="fas fa-plus fas-3x mr-2"></i>Incluir Curso
+                    </button>
+                </a>
+
             </div>
         </header>
 
@@ -38,7 +45,7 @@
             include "../conexao.php";
 
             // seleção de dados
-            $sql = "SELECT * FROM curso";
+            $sql = "SELECT * FROM curso ORDER BY nome ASC";
 
             // enviar seleção para o banco
             $registros = mysqli_query($con, $sql) or die("ERRO NA LISTAGEM DE CURSOS ". mysqli_error($con));
@@ -60,7 +67,7 @@
                     <tr>
                         <th scope="col">#</th>
                         <th scope="col">Nome do Curso</th>
-                        <th scope="col">Duração do Curso (meses)</th>
+                        <th scope="col">Duração do Curso (anos)</th>
                         <th scope="col" colspan="2">Ações</th>
                     </tr>
                 </thead>

@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/incluirCurso-Disciplina.css">
+
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
     <title>Incluir Disciplina</title>
@@ -19,20 +21,40 @@
 
       <header>
         <div class="row">
-          <a href="../../../index.html" class="m-4">
-            <button class="btn btn-outline-dark" type="button"><i class="fas fa-arrow-left fas-3x mr-2"></i>Voltar</button>
-          </a>
+          
           <h1 class="m-3">Incluir Disciplina</h1>
+
+          <a href="../../../index.html" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+            </button>
+          </a>
+
+          <a href="../listagens/listaDisciplinas.php" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Disciplinas
+            </button>
+          </a>
+
         </div>
       </header>
 
       <form name="formDisciplina" method="post" action="../validacoes/validaDisciplina.php">
-          <div class="form-group">
-            <label for="nome">Nome da Disciplina</label>
-            <input class="form-control" type="text" id="nome" name="nome" required maxlength="100">
+          
+        <div class="row">
+          <div class="col-3"></div>
+          <div class="col-6">
+            <div class="form-group">
+              <label for="nome">Nome da Disciplina</label>
+              <input class="form-control" type="text" id="nome" name="nome" required maxlength="100">
+            </div>
           </div>
+          <div class="col-3"></div>
+        </div>
 
-          <button class="btn btn-outline-dark" type="submit">Enviar</button>
+        <div class="row float-right mt-3">
+          <button class="btn btn-outline-dark" id="btn" type="submit">Incluir Disciplina</button>
+        </div>
       </form>
 
     </div>

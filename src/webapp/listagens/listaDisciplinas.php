@@ -8,26 +8,33 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/listaCursos-Questoes.css">
+
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
-    <title>Listagem de Cursos</title>
+    <title>Listagem de Disciplinas</title>
   </head>
   <body>
 
     <div class="container">
 
         <header>
-            <div class="row p-3 text-center">
+            <div class="row">
+            
+                <h1 class="m-3">Listagem de Disciplinas</h1>
 
-                <h3 class="m-2">Listagem de Disciplinas</h3>
-                <div class="ml-5">
-                    <a href="../../../index.html">
-                        <button class="btn btn-outline-dark m-2">Página Inicial</button>
-                    </a>
-                    <a href="../forms/incluirDisciplina.html">
-                        <button class="btn btn-outline-dark m-2">Cadastrar Disciplina</button>
-                    </a>
-                </div>
+                <a href="../../../index.html" class="m-4">
+                    <button class="btn btn-outline-dark" type="button">
+                        <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+                    </button>
+                </a>
+
+                <a href="../forms/incluirDisciplina.html" class="m-4">
+                    <button class="btn btn-outline-dark" type="button">
+                        <i class="fas fa-plus fas-3x mr-2"></i>Incluir Disciplina
+                    </button>
+                </a>
+
             </div>
         </header>
 
@@ -37,7 +44,7 @@
             include "../conexao.php";
 
             // seleção de dados
-            $sql = "SELECT * FROM disciplina";
+            $sql = "SELECT * FROM disciplina ORDER BY nome ASC";
 
             // enviar seleção para o banco
             $registros = mysqli_query($con, $sql) or die("erro na listagem de disciplinas ". mysqli_error($con));

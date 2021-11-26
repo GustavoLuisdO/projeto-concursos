@@ -1,0 +1,17 @@
+/* header */
+header{
+    width: 80%;
+    margin: 20px auto;
+}
+
+/* label's */
+label{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* btn */
+.btn-outline-dark{
+    border-radius: 20px;
+    font-weight: bold;
+}

@@ -1,0 +1,31 @@
+/* header */
+header{
+    width: 75%;
+    margin: 20px auto;
+}
+
+/* label's */
+label{
+    font-size: 1em;
+    font-weight: bold;
+}
+/* input's */
+.form-control{
+    border-radius: 20px;
+    border-color: #000;
+}
+
+/* input type number */
+input[type="number"]{
+    min-width: 190px;
+    width: 55%;
+}
+
+/* btn incluir */
+.btn-outline-dark{
+    border-radius: 20px;
+    font-weight: bold;
+}
+#btn{
+    margin-right: 204px;
+}

@@ -1,0 +1,28 @@
+/* header */
+header{
+    width: 75%;
+    margin: 20px auto;
+}
+
+/* label's */
+label{
+    font-size: 1em;
+    font-weight: bold;
+}
+
+/* input's */
+.form-control{
+    border-radius: 20px;
+    border-color: #000;
+}
+
+/* todos btn */
+.btn-outline-dark{
+    border-radius: 20px;
+    font-weight: bold;
+}
+
+/* btn adicionar disciplina */
+#btnAddDisciplina{
+    margin-bottom: 16px;
+}
