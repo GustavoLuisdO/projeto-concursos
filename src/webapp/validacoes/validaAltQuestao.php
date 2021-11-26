@@ -59,6 +59,15 @@
     if($enunciado == "" || $enunciado === false){
         die("ESCREVA O ENUNCIADO DA QUESTÃO!");
     }
+    $enunciado = ltrim($enunciado);
+
+    $resposta_dissertativa = ltrim($resposta_dissertativa);
+
+    $resposta_alt_a = ltrim($resposta_alt_a);
+    $resposta_alt_b = ltrim($resposta_alt_b);
+    $resposta_alt_c = ltrim($resposta_alt_c);
+    $resposta_alt_d = ltrim($resposta_alt_d);
+    $resposta_alt_e = ltrim($resposta_alt_e);
 
 
     // conexao com o banco

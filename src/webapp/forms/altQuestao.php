@@ -43,6 +43,16 @@
             // colocar o curso em um array
             $dados = mysqli_fetch_array($registros);
 
+            ltrim($dados["enunciado"]);
+
+            ltrim($dados["resposta_dissertativa"]);
+
+            ltrim($dados["resposta_alt_a"]);
+            ltrim($dados["resposta_alt_b"]);
+            ltrim($dados["resposta_alt_c"]);
+            ltrim($dados["resposta_alt_d"]);
+            ltrim($dados["resposta_alt_e"]);
+
             // monstrar questão que está sendo alterada
             echo "<h2>Alterar Questão [$id]</h2>";
 

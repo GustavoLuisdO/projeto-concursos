@@ -136,6 +136,247 @@
                         </div>
                     </div><!-- /ano -->
                 </div>
+                                
+                <div class="row text-center mt-2">
+                    <!-- id curso 2 -->
+                    <div class="col-4">
+                        <div id="curso_2" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="" id="">
+                                    <option value="">Selecione o Curso</option>
+                                    <?php
+                                        include "../consultas/cursos.php";
+                        
+                                        $cont = 0;
+                                        while($cont < $cursos){
+                                            $dados = mysqli_fetch_array($registros_cursos);
+                                            $id_curso   = $dados["id"];
+                                            $curso      = $dados["nome"];
+                                            echo "<option value='$id_curso'>$curso</option>";
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /id curso 2 -->
+
+                    <!-- disciplinas 2 -->
+                    <div class="col-4">
+                        <div id="disciplina_2" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="id_disciplina_2" id="id_disciplina_2">
+                                    <option value="">Selecione a Disciplina</option>
+                                    <?php
+                                        include "../consultas/disciplinas.php";
+                        
+                                        $cont = 0;
+                                        while($cont < $disciplinas){
+                                            $dados = mysqli_fetch_array($registros_disciplinas);
+                                            $id_disciplina = $dados["id"];
+                                            $disciplina    = $dados["nome"];
+                                            echo "<option value='$id_disciplina'>$disciplina</option>";
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- disciplinas 2 -->
+
+                    <!-- ano 2 -->
+                    <div class="col-4">
+                        <div id="ano_2" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="" id="">
+                                    <option value="">Selecione o Ano</option>
+                                    <?php
+                                        include "../consultas/anos.php";
+                                        $cont = 0;
+                                        while($cont < $anos){
+                        
+                                            // armazernar cursos em array
+                                            $dados = mysqli_fetch_array($registros_anos);
+                                            // dados
+                                            $ano = $dados["ano"];
+                        
+                                            // mostrar as opções
+                                            echo "<option value='$ano'>$ano</option>";
+                        
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- /ano 2 -->
+                </div>
+
+                <div class="row text-center mt-2">
+                    <!-- id curso 3 -->
+                    <div class="col-4">
+                        <div id="curso_3" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="" id="">
+                                    <option value="">Selecione o Curso</option>
+                                    <?php
+                                        include "../consultas/cursos.php";
+                        
+                                        $cont = 0;
+                                        while($cont < $cursos){
+                                            $dados = mysqli_fetch_array($registros_cursos);
+                                            $id_curso   = $dados["id"];
+                                            $curso      = $dados["nome"];
+                                            echo "<option value='$id_curso'>$curso</option>";
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /id curso 3 -->
+
+                    <!-- disciplinas 3 -->
+                    <div class="col-4">
+                        <div id="disciplina_3" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="id_disciplina_3" id="id_disciplina_3">
+                                    <option value="">Selecione a Disciplina</option>
+                                    <?php
+                                        include "../consultas/disciplinas.php";
+                        
+                                        $cont = 0;
+                                        while($cont < $disciplinas){
+                                            $dados = mysqli_fetch_array($registros_disciplinas);
+                                            $id_disciplina = $dados["id"];
+                                            $disciplina    = $dados["nome"];
+                                            echo "<option value='$id_disciplina'>$disciplina</option>";
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- disciplinas 3 -->
+
+                    <!-- ano 3 -->
+                    <div class="col-4">
+                        <div id="ano_3" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="" id="">
+                                    <option value="">Selecione o Ano</option>
+                                    <?php
+                                        include "../consultas/anos.php";
+                                        $cont = 0;
+                                        while($cont < $anos){
+                        
+                                            // armazernar cursos em array
+                                            $dados = mysqli_fetch_array($registros_anos);
+                                            // dados
+                                            $ano = $dados["ano"];
+                        
+                                            // mostrar as opções
+                                            echo "<option value='$ano'>$ano</option>";
+                        
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- /ano 3 -->
+                </div>
+
+                <div class="row text-center mt-2">
+                    <!-- id curso 4 -->
+                    <div class="col-4">
+                        <div id="curso_4" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="" id="">
+                                    <option value="">Selecione o Curso</option>
+                                    <?php
+                                        include "../consultas/cursos.php";
+                        
+                                        $cont = 0;
+                                        while($cont < $cursos){
+                                            $dados = mysqli_fetch_array($registros_cursos);
+                                            $id_curso   = $dados["id"];
+                                            $curso      = $dados["nome"];
+                                            echo "<option value='$id_curso'>$curso</option>";
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div>
+                    <!-- /id curso 4 -->
+
+                    <!-- disciplinas 4 -->
+                    <div class="col-4">
+                        <div id="disciplina_4" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="id_disciplina_4" id="id_disciplina_4">
+                                    <option value="">Selecione a Disciplina</option>
+                                    <?php
+                                        include "../consultas/disciplinas.php";
+                        
+                                        $cont = 0;
+                                        while($cont < $disciplinas){
+                                            $dados = mysqli_fetch_array($registros_disciplinas);
+                                            $id_disciplina = $dados["id"];
+                                            $disciplina    = $dados["nome"];
+                                            echo "<option value='$id_disciplina'>$disciplina</option>";
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- disciplinas 4 -->
+
+                    <!-- ano 4 -->
+                    <div class="col-4">
+                        <div id="ano_4" style="display: none;">
+                            <div class="form-group">
+                                <select class="form-control" name="" id="">
+                                    <option value="">Selecione o Ano</option>
+                                    <?php
+                                        include "../consultas/anos.php";
+                                        $cont = 0;
+                                        while($cont < $anos){
+                        
+                                            // armazernar cursos em array
+                                            $dados = mysqli_fetch_array($registros_anos);
+                                            // dados
+                                            $ano = $dados["ano"];
+                        
+                                            // mostrar as opções
+                                            echo "<option value='$ano'>$ano</option>";
+                        
+                                            $cont ++;
+                                        }
+                                    ?>
+                                </select>
+                            </div>
+                        </div>
+                    </div><!-- /ano 4 -->
+                </div>
+
+                <!-- botões para selecionar mais de um curso, disciplina ou ano -->
+                <div class="row text-center mb-3">
+                    <div class="col-4">
+                        <button type="button" id="btnAddCurso" class="btn btn-outline-dark"><i class="fas fa-plus-circle fas-3x"></i></button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="btnAddDisciplina" class="btn btn-outline-dark"><i class="fas fa-plus-circle fas-3x"></i></button>
+                    </div>
+                    <div class="col-4">
+                        <button type="button" id="btnAddAno" class="btn btn-outline-dark"><i class="fas fa-plus-circle fas-3x"></i></button>
+                    </div>
+                </div><!-- /botões para selecionar mais de um curso, disciplina ou ano -->
 
                 <div class="row text-center mt-4">
                     <!-- tipo questao -->
@@ -198,7 +439,19 @@
 
                 if(isset($_POST["id_disciplina_1"])){
                     $disciplina1_ = filter_input(INPUT_POST, "id_disciplina_1", FILTER_VALIDATE_INT);
-                    strlen($disciplina1_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina1_' " : null;
+                    strlen($disciplina1_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina1_' OR id_disciplina_2 = '$disciplina1_' OR id_disciplina_3 = '$disciplina1_' Or id_disciplina_4 = '$disciplina1_' " : null;
+                }
+                if(isset($_POST["id_disciplina_2"])){
+                    $disciplina2_ = filter_input(INPUT_POST, "id_disciplina_2", FILTER_VALIDATE_INT);
+                    strlen($disciplina2_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina2_' OR id_disciplina_2 = '$disciplina2_' OR id_disciplina_3 = '$disciplina2_' Or id_disciplina_4 = '$disciplina2_' " : null;
+                }
+                if(isset($_POST["id_disciplina_3"])){
+                    $disciplina3_ = filter_input(INPUT_POST, "id_disciplina_3", FILTER_VALIDATE_INT);
+                    strlen($disciplina3_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina3_' OR id_disciplina_2 = '$disciplina3_' OR id_disciplina_3 = '$disciplina3_' Or id_disciplina_4 = '$disciplina3_' " : null;
+                }
+                if(isset($_POST["id_disciplina_4"])){
+                    $disciplina4_ = filter_input(INPUT_POST, "id_disciplina_4", FILTER_VALIDATE_INT);
+                    strlen($disciplina4_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina4_' OR id_disciplina_2 = '$disciplina4_' OR id_disciplina_3 = '$disciplina4_' Or id_disciplina_4 = '$disciplina4_' " : null;
                 }
 
                 if(isset($_POST["id_curso"])){
@@ -219,7 +472,7 @@
                 }
            }
            $sql_filtros .= " ORDER BY id_curso";
-           //var_dump($sql_filtros);
+           var_dump($sql_filtros);
 
 
             // resultado   
@@ -465,6 +718,7 @@
                                     <div class='col-1'></div>
                                 </div>";
                 // enunciado
+                ltrim($enunciado);
                 echo "
                                 <div class='row'>
                                     <div class='col-1'></div>
@@ -507,7 +761,8 @@
                                             echo 'checked'; 
                                             } 
                     echo "                  >"; //fechar o input
-                                        
+                         
+                    ltrim($alt_a);
                     echo "              <textarea class='form-control' cols='110' rows='1' 
                                                  maxlength='2000' readonly>
                                             $alt_a
@@ -532,7 +787,7 @@
                                             echo 'checked'; 
                                             } 
                     echo "                  >"; //fechar o input
-                                        
+                    ltrim($alt_b);          
                     echo "              <textarea class='form-control' cols='110' rows='1' 
                                                  maxlength='2000' readonly>
                                             $alt_b
@@ -557,7 +812,7 @@
                                             echo 'checked'; 
                                             } 
                     echo "                  >"; //fechar o input
-                                        
+                    ltrim($alt_c);         
                     echo "              <textarea class='form-control' cols='110' rows='1' 
                                                  maxlength='2000' readonly>
                                             $alt_c
@@ -582,7 +837,7 @@
                                             echo 'checked'; 
                                             } 
                     echo "                  >"; //fechar o input
-                                        
+                    ltrim($alt_d);        
                     echo "              <textarea class='form-control' cols='110' rows='1' 
                                                  maxlength='2000' readonly>
                                             $alt_d
@@ -607,9 +862,9 @@
                                             echo 'checked'; 
                                             } 
                     echo "                  >"; //fechar o input
-                                        
+                    ltrim($alt_e);           
                     echo "              <textarea class='form-control' cols='110' rows='1' 
-                                                 maxlength='2000' readonly>
+                                                 maxlength='2000' readonly style='text-align: left;'>
                                             $alt_e
                                         </textarea>
                                       </div>
@@ -637,6 +892,7 @@
                                 </div>
                     ";
                     // resposta dissertativa
+                    ltrim($dissertativa);
                     echo "
                                 <div class='row'>
                                     <div class='col-1'></div>
@@ -676,5 +932,98 @@
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.1/dist/umd/popper.min.js" integrity="sha384-9/reFTGAW83EW2RDu2S0VKaIzap3H66lZH81PoYlFhbGU+6BZp6G7niu735Sk7lN" crossorigin="anonymous"></script>
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.6.1/dist/js/bootstrap.min.js" integrity="sha384-VHvPCCyXqtD5DqJeNxl2dtTyhF78xXNXdkwX1CZeRusQfRKp+tA7hAShOK/B/fQ2" crossorigin="anonymous"></script>
+
+    <!-- script para adicionar curso -->
+    <script>
+
+      let addCurso = document.querySelectorAll('button[id="btnAddCurso"]');
+                                  
+      let curso2 = document.getElementById("curso_2");
+      let curso3 = document.getElementById("curso_3");
+      let curso4 = document.getElementById("curso_4");
+      
+        for (let i = 0; i < addCurso.length; i++) {
+          addCurso[i].addEventListener("click", function() {
+            
+            if(curso2.style.display == "none"){
+              curso2.style.display = "block";
+              return;
+            }
+            if(curso3.style.display == "none"){
+              curso3.style.display = "block";
+              return;
+            }
+            if(curso4.style.display == "none"){
+              curso4.style.display = "block";
+              let btn = document.getElementById('btnAddCurso');
+              btn.style.display = "none"
+              return;
+            }
+          });
+        }
+
+    </script>
+
+    <!-- script para adicionar disciplina -->
+    <script>
+
+      let addDisciplina = document.querySelectorAll('button[id="btnAddDisciplina"]');
+                                  
+      let disciplina2 = document.getElementById("disciplina_2");
+      let disciplina3 = document.getElementById("disciplina_3");
+      let disciplina4 = document.getElementById("disciplina_4");
+      
+        for (let i = 0; i < addDisciplina.length; i++) {
+          addDisciplina[i].addEventListener("click", function() {
+            
+            if(disciplina2.style.display == "none"){
+              disciplina2.style.display = "block";
+              return;
+            }
+            if(disciplina3.style.display == "none"){
+              disciplina3.style.display = "block";
+              return;
+            }
+            if(disciplina4.style.display == "none"){
+              disciplina4.style.display = "block";
+              let btn = document.getElementById('btnAddDisciplina');
+              btn.style.display = "none"
+              return;
+            }
+          });
+        }
+
+    </script>
+
+    <!-- script para adicionar ano -->
+    <script>
+
+      let addAno = document.querySelectorAll('button[id="btnAddAno"]');
+                                  
+      let ano2 = document.getElementById("ano_2");
+      let ano3 = document.getElementById("ano_3");
+      let ano4 = document.getElementById("ano_4");
+      
+        for (let i = 0; i < addAno.length; i++) {
+          addAno[i].addEventListener("click", function() {
+            
+            if(ano2.style.display == "none"){
+              ano2.style.display = "block";
+              return;
+            }
+            if(ano3.style.display == "none"){
+              ano3.style.display = "block";
+              return;
+            }
+            if(ano4.style.display == "none"){
+              ano4.style.display = "block";
+              let btn = document.getElementById('btnAddAno');
+              btn.style.display = "none"
+              return;
+            }
+          });
+        }
+
+    </script>
   </body>
 </html>
