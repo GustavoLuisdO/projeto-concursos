@@ -11,7 +11,7 @@
 
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
-    <title>Alterar Questão</title>
+    <title>Excluir Questão</title>
   </head>
   <body>
     
@@ -44,43 +44,10 @@
             $dados = mysqli_fetch_array($registros);
 
             // monstrar questão que está sendo alterada
-            echo "<h2>Alterar Questão [$id]</h2>";
-
-            /* ********* TRAZER OS CURSOS CADASTRADOS ********* */
-            // trazer os dados da tabela curso
-            $sql_curso = "SELECT id, nome FROM curso ORDER BY id";
-
-            // trazer a seleção do banco
-            $registros_cursos = mysqli_query($con, $sql_curso) or die("ERRO NA BUSCA DOS CURSOS!". mysqli_error($con));
-
-            // registros encontrados
-            $cursos = mysqli_num_rows($registros_cursos);
-
-
-            /* ********* TRAZER AS DISCIPLINAS CADASTRADAS ********* */
-            // trazer os dados da tabela disciplina
-            $sql_disciplina = "SELECT id, nome FROM disciplina ORDER BY id";
-
-            // trazer as seleções do banco
-            $registros_disciplinas = mysqli_query($con, $sql_disciplina) or die("ERRO NA BUSCA DAS DISCIPLINAS!". mysqli_error($con));
-            $registros_disciplinas2 = mysqli_query($con, $sql_disciplina) or die("ERRO NA BUSCA DAS DISCIPLINAS!". mysqli_error($con));
-            $registros_disciplinas3 = mysqli_query($con, $sql_disciplina) or die("ERRO NA BUSCA DAS DISCIPLINAS!". mysqli_error($con));
-            $registros_disciplinas4 = mysqli_query($con, $sql_disciplina) or die("ERRO NA BUSCA DAS DISCIPLINAS!". mysqli_error($con));
-            // registros encontrados
-            $disciplinas = mysqli_num_rows($registros_disciplinas);
-
-            /* ********* TRAZER AS DIFICULDADES CADASTRADAS ********* */
-            // trazer os dados da tabela dificuldade
-            $sql_dificuldade = "SELECT id, descricao_dif FROM dificuldade ORDER BY id";
-
-            // trazer a seleção do banco
-            $registros_dificuldades = mysqli_query($con, $sql_dificuldade) or die("ERRO NA BUSCA DAS DIFICULDADES!". mysqli_error($con));
-
-            // registros encontrados
-            $dificuldades = mysqli_num_rows($registros_dificuldades);
+            echo "<h2>Excluir Questão [código = $id]</h2>";
         ?>
 
-      <form name="formAltQuestao" method="post" action="../validacoes/validaAltQuestao.php">
+      <form name="formExcQuestao" method="post" action="../validacoes/validaExcQuestao.php">
         
         <div class="form-group">
             <input type="hidden" name="id" readonly size="1" 
@@ -93,7 +60,7 @@
           <!-- cursos -->
           <div class="form-group col-5">
               <label for="id_curso">Curso</label>
-              <select class="form-control" name="id_curso" id="id_curso">
+              <select class="form-control" name="id_curso" id="id_curso" readonly>
                 <?php 
                   //mostrar o curso atual
                   // registros tabela curso para listar o nome do curso
@@ -114,37 +81,19 @@
                 <option value="<?php echo $id_curso_atual; ?>">
                   <?php echo "$nome_curso_atual"; ?>
                 </option>
-
-                <!-- trazer as outras opções de cursos -->
-                <?php
-                $contador_cursos = 0;
-                  while($contador_cursos < $cursos){
-                    // colocar os cursos em um array
-                    $dados_cursos = mysqli_fetch_array($registros_cursos);
-
-                    //armazenar os dados
-                    $id_tb_curso   = $dados_cursos["id"];
-                    $nome_curso = $dados_cursos["nome"];
-
-                    // mostrar as opções
-                    echo "<option value='$id_tb_curso'>$nome_curso</option>";
-                    
-                    $contador_cursos ++;
-                  }
-                ?>
               </select>
           </div><!-- /cursos -->
           
           <!-- descrição da prova -->
           <div class="form-group col-5">
             <label for="descricao">Descrição</label>
-            <input class="form-control" type="text" name="descricao" id="descricao" required placeholder="Enade 2021" maxlength="255" value="<?php echo $dados["descricao"] ?>">
+            <input class="form-control" type="text" name="descricao" id="descricao" required placeholder="Enade 2021" maxlength="255" value="<?php echo $dados["descricao"] ?>" readonly>
           </div><!-- /descrição da prova -->
 
           <!-- ano da prova -->
           <div class="form-group col-2">
             <label for="ano">Ano</label>
-            <input class="form-control" type="text" name="ano" id="ano" required placeholder="2021" maxlength="4" value="<?php echo $dados["ano"] ?>">
+            <input class="form-control" type="text" name="ano" id="ano" required placeholder="2021" maxlength="4" value="<?php echo $dados["ano"] ?>" readonly>
           </div><!-- /ano da prova -->
  
         </div><!-- fileira info questão -->
@@ -154,7 +103,7 @@
           <!-- numero da questão -->
           <div class="form-group col-2">
             <label for="numero">Número da Questão</label>
-            <input class="form-control" type="number" name="numero" id="numero" min="1" placeholder="ex..1" value="<?php echo $dados["numero"] ?>">
+            <input class="form-control" type="number" name="numero" id="numero" min="1" placeholder="ex..1" value="<?php echo $dados["numero"] ?>" readonly>
           </div><!-- /numero da questão -->
         </div>
 
@@ -164,7 +113,7 @@
           <!-- disciplina 1 -->
           <div class="form-group col-3">
               <label for="id_disciplina_1">Disciplina</label>
-              <select class="form-control" name="id_disciplina_1" id="id_disciplina_1">
+              <select class="form-control" name="id_disciplina_1" id="id_disciplina_1" readonly>
                 <?php 
                   //mostrar a disciplina atual
                   // registros tabela disciplina para listar o nome da disciplina
@@ -185,23 +134,6 @@
                 <option value="<?php echo $id_disciplina_atual; ?>">
                   <?php echo "$disciplina_atual"; ?>
                 </option>
-
-                <?php
-                  $contador_disciplinas = 0;
-                  while($contador_disciplinas < $disciplinas){
-                    // colocar as disciplinas em um array
-                    $dados_disciplinas = mysqli_fetch_array($registros_disciplinas);
-          
-                    //armazenar os dados
-                    $id_disciplina   = $dados_disciplinas["id"];
-                    $nome_disciplina = $dados_disciplinas["nome"];
-
-                    // mostrar as opções
-                    echo "<option value='$id_disciplina'>$nome_disciplina</option>";
-          
-                    $contador_disciplinas ++;
-                  }
-                ?>
               </select>
           </div><!-- /disciplina 1 -->
 
@@ -214,7 +146,7 @@
           ?>
           <div class="form-group col-3 disciplinas" id="disciplina_2" style="<?php echo"$display"; ?>">
             <label for="id_disciplina_2">Disciplina</label>
-            <select class="form-control" name="id_disciplina_2" id="id_disciplina_2">
+            <select class="form-control" name="id_disciplina_2" id="id_disciplina_2" readonly>
 
               <?php 
                   //mostrar a disciplina atual
@@ -236,23 +168,6 @@
                 <option value="<?php echo $id_disciplina_atual; ?>">
                   <?php echo "$disciplina_atual"; ?>
                 </option>
-
-                <?php
-                  $contador_disciplinas = 0;
-                  while($contador_disciplinas < $disciplinas){
-                    // colocar as disciplinas em um array
-                    $dados_disciplinas = mysqli_fetch_array($registros_disciplinas2);
-              
-                    //armazenar os dados
-                    $id_disciplina   = $dados_disciplinas["id"];
-                    $nome_disciplina = $dados_disciplinas["nome"];
-
-                    // mostrar as opções
-                    echo "<option value='$id_disciplina'>$nome_disciplina</option>";
-              
-                    $contador_disciplinas ++;
-                  }
-                ?>
               </select>
           </div><!-- /disciplina 2 -->
 
@@ -265,7 +180,7 @@
           ?>
           <div class="form-group col-3 disciplinas" id="disciplina_3" style="<?php echo"$display"; ?>">
             <label for="id_disciplina_3">Disciplina</label>
-            <select class="form-control" name="id_disciplina_3" id="id_disciplina_3">
+            <select class="form-control" name="id_disciplina_3" id="id_disciplina_3" readonly>
 
               <?php 
                   //mostrar a disciplina atual
@@ -286,23 +201,6 @@
               <option value="<?php echo $id_disciplina_atual; ?>">
                 <?php echo "$disciplina_atual"; ?>
               </option>
-
-              <?php
-                  $contador_disciplinas = 0;
-                  while($contador_disciplinas < $disciplinas){
-                    // colocar as disciplinas em um array
-                    $dados_disciplinas = mysqli_fetch_array($registros_disciplinas3);
-              
-                    //armazenar os dados
-                    $id_disciplina   = $dados_disciplinas["id"];
-                    $nome_disciplina = $dados_disciplinas["nome"];
-
-                    // mostrar as opções
-                    echo "<option value='$id_disciplina'>$nome_disciplina</option>";
-              
-                    $contador_disciplinas ++;
-                  }
-                ?>
             </select>
           </div><!-- /disciplina 3 -->
 
@@ -317,7 +215,7 @@
           ?>   
           <div class="form-group col-3 disciplinas" id="disciplina_4" style="<?php echo"$display"; ?>">
             <label for="id_disciplina_4">Disciplina</label>
-            <select class="form-control" name="id_disciplina_4" id="id_disciplina_4">
+            <select class="form-control" name="id_disciplina_4" id="id_disciplina_4" readonly>
               
               <?php 
                   //mostrar a disciplina atual
@@ -339,27 +237,8 @@
                 <option value="<?php echo $id_disciplina_atual; ?>">
                   <?php echo "$disciplina_atual"; ?>
                 </option>
-
-              <?php
-                $contador_disciplinas = 0;
-                while($contador_disciplinas < $disciplinas){
-                  // colocar as disciplinas em um array
-                  $dados_disciplinas = mysqli_fetch_array($registros_disciplinas4);
-            
-                  //armazenar os dados
-                  $id_disciplina   = $dados_disciplinas["id"];
-                  $nome_disciplina = $dados_disciplinas["nome"];
-
-                  // mostrar as opções
-                  echo "<option value='$id_disciplina'>$nome_disciplina</option>";
-                                    
-                  $contador_disciplinas ++;
-                }
-              ?>
             </select>
           </div><!-- /disciplina 4 -->
-
-          <button type="button" id="btnAddDisciplina" class="btn btn-outline-dark" style="<?php echo"$display_btn"; ?>"><i class="fas fa-plus-circle fas-3x"></i></button>
           
           <!-- /disciplinas -->
         </div>
@@ -367,7 +246,7 @@
         <!-- dificuldade -->
         <div class="form-group col-6">
           <label for="id_dificuldade">Dificuldade</label>
-          <select class="form-control" name="id_dificuldade" id="id_dificuldade">
+          <select class="form-control" name="id_dificuldade" id="id_dificuldade" readonly>
 
             <?php 
               //mostrar a dificuldade atual
@@ -389,130 +268,201 @@
             <option value="<?php echo $id_dificuldade_atual; ?>">
               <?php echo "$dificuldade_atual"; ?>
             </option>
-                
-            <?php
-              $contador_dificuldades = 0;
-              while($contador_dificuldades < $dificuldades){
-              // colocar as dificuldade em um array
-              $dados_dificuldade = mysqli_fetch_array($registros_dificuldades);
             
-              //armazenar os dados
-              $id_dificuldade         = $dados_dificuldade["id"];
-              $descricao_dificuldade  = $dados_dificuldade["descricao_dif"];
-
-              // mostrar as opções
-              echo "<option value='$id_dificuldade'>$descricao_dificuldade</option>";
-            
-                $contador_dificuldades ++;
-              }
-            ?>
           </select>
         </div><!-- /dificuldade -->
         
         <!-- enunciado -->
         <div class="form-group col-8">
           <label for="enunciado">Enunciado</label>
-          <textarea class="form-control" name="enunciado" id="enunciado" cols="30" rows="5">
+          <textarea class="form-control" name="enunciado" id="enunciado" cols="30" rows="5" readonly>
             <?php echo $dados["enunciado"] ?>
           </textarea>
         </div><!-- /enunciado -->
       </section>
 
         <!-- tipo de resposta -->
-        <section>
-          <div class="row">
-            <div class="form-check form-check-inline">
-              <input class="form-check-input" type="radio" name="tipo_questao" id="tipo_questao" value="M" <?php if($dados["tipo_questao"] == 'M'){ echo "checked"; } ?>>
-              <label class="form-check-label" for="tipo_questao">Múltplas Escolhas</label>
-            </div>
+        <?php
+            // definir o tipo de questão que será listado
+            switch($dados["tipo_questao"]){
+                    
+                // case múltiplas escolhas
+                case 'M':   echo "
+                                <div class='row'> 
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                        <h6>Múltiplas Escolhas</h6>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>";
+            ?>
+                <!-- alternartivas -->
+                <?php
+                    // alternativa a
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>a.</label>
+                                        <input class='form-check-input' type='radio' value='A'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'A'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            ".$dados["resposta_alt_a"]."
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa a
+                ?>
+                <?php
+                    // alternativa b
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>b.</label>
+                                        <input class='form-check-input' type='radio' value='B'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'B'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            ".$dados["resposta_alt_b"]."
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa b
+                ?>
+                <?php
+                    // alternativa c
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>c.</label>
+                                        <input class='form-check-input' type='radio' value='C'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'C'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            ".$dados["resposta_alt_c"]."
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa c
+                ?>
+                <?php
+                    // alternativa d
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>d.</label>
+                                        <input class='form-check-input' type='radio' value='D'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'D'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                            ".$dados["resposta_alt_d"]."
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa d
+                ?>
+                <?php
+                    // alternativa e
+                    echo "      <div class='row mt-1'>
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                      <div class='form-check form-check-inline'>
+                                        <label class='form-check-label' for='alternativa_correta'>e.</label>
+                                        <input class='form-check-input' type='radio' value='E'
+                    ";
+                    // veficação para check 
+                                        if($dados['alternativa_correta'] == 'E'){ 
+                                            echo 'checked'; 
+                                            } 
+                    echo "                  >"; //fechar o input
+                                        
+                    echo "              <textarea class='form-control' cols='110' rows='1' 
+                                                 maxlength='2000' readonly>
+                                                 ".$dados["resposta_alt_e"]."
+                                        </textarea>
+                                      </div>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    "; // fim alternativa e
 
-            <div class="form-check form-check-inline">
-                <input class="form-check-input" type="radio" name="tipo_questao" id="tipo_questao" value="D" <?php if($dados["tipo_questao"] == 'D'){ echo "checked"; } ?>>
-                <label class="form-check-label" for="tipo_questao">Dissertativa</label>
-            </div>
-          </div>
-          <!-- /tipo de resposta -->
-          <hr>
+                    break; // fim case multiplas escolhas
+                ?>
+                <!-- /alternativas -->
+                
+                <!-- dissertativa -->
+                <?php
+                    // case dissertativa
+                    case 'D':
+                    // titulo dissertativa
+                    echo "
+                                <div class='row'> 
+                                    <div class='col-1'></div>
+                                    <div class='col-10'>
+                                        <h6>Dissertativa</h6>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    ";
+                    // resposta dissertativa
+                    echo "
+                                <div class='row'>
+                                    <div class='col-1'></div>
+                                    <div class='form-group col-10'>
+                                        <textarea class='form-control'cols='110' rows='5' maxlength='2000' readonly>
+                                            ".$dados['resposta_dissertativa']."
+                                        </textarea>
+                                    </div>
+                                    <div class='col-1'></div>
+                                </div>
+                    ";
+                    
+                    break; // fim case dissertativa
 
-          <!-- multipla escolha -->
-          <?php
-            $display = "display:none";
-            if($dados["tipo_questao"] == 'M'){
-              $display = "display:block";
-            }
-          ?>
-          <div id="multipla" style="<?php echo "$display"; ?>">
-            <!-- alternativa A -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">a.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="A" <?php if($dados["alternativa_correta"] == 'A'){ echo "checked"; } ?>>
-
-              <textarea class="form-control" name="resposta_alt_a" id="resposta_alt_a" cols="90" rows="1" maxlength="2000">
-                <?php echo $dados["resposta_alt_a"] ?>
-              </textarea>
-            </div>
-            <br>
-            <!-- alternativa B -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">b.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="B" <?php if($dados["alternativa_correta"] == 'B'){ echo "checked"; } ?>>
-
-              <textarea class="form-control" name="resposta_alt_b" id="resposta_alt_b" cols="90" rows="1" maxlength="2000">
-                <?php echo $dados["resposta_alt_b"] ?>
-              </textarea>
-            </div>
-            <br>
-            <!-- alternativa C -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">c.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="C" <?php if($dados["alternativa_correta"] == 'C'){ echo "checked"; } ?>>
-
-              <textarea class="form-control" name="resposta_alt_c" id="resposta_alt_c" cols="90" rows="1" maxlength="2000">
-                <?php echo $dados["resposta_alt_c"] ?>
-               </textarea>
-            </div>
-            <br>
-            <!-- alternativa D -->
-            <div class="form-check form-check-inline">  
-              <label class="form-check-label" for="alternativa_correta">d.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="D" <?php if($dados["alternativa_correta"] == 'D'){ echo "checked"; } ?>>
-
-              <textarea class="form-control" name="resposta_alt_d" id="resposta_alt_d" cols="90" rows="1" maxlength="2000">
-                <?php echo $dados["resposta_alt_d"] ?>
-              </textarea>
-            </div>
-            <br>
-            <!-- alternativa E -->
-            <div class="form-check form-check-inline">
-              <label class="form-check-label" for="alternativa_correta">e.</label>
-              <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="E" <?php if($dados["alternativa_correta"] == 'E'){ echo "checked"; } ?>>
-
-              <textarea class="form-control" name="resposta_alt_e" id="resposta_alt_e" cols="90" rows="1" maxlength="2000">
-                <?php echo $dados["resposta_alt_e"] ?>
-              </textarea>
-            </div>
-          </div><!-- /multipla escolha -->
-         
-          <!-- dissertativa -->
-          <?php 
-            $display = "display:none";
-            if($dados["tipo_questao"] == 'D'){
-              $display = "display:block";
-            }
-          ?>
-          <div id="dissertativa" style="<?php echo "$display"; ?>">
-            <div class="form-group col-8">
-            <label for="resposta_dissertativa">Resposta</label>
-            <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="2000">
-              <?php echo $dados["resposta_dissertativa"] ?>
-            </textarea>
-            </div>
-          </div><hr> <!-- /dissertativa -->
-
-        </section><!-- /tipo de resposta -->
+                    default: echo "<h2>Erro ao listar o tipo de questão</h2>";
+                } //fim switch
+                
+                ?>
+                <!-- /dissertativa -->
 
         <br><br>
-        <button class="btn btn-outline-dark m-4" type="submit">Alterar Questão</button>
+        <button class="btn btn-outline-dark m-4" type="submit">Excluir Questão</button>
 
       </form>
 
