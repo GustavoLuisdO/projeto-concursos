@@ -1,7 +1,7 @@
 <?php
     //include "../conexao.php";
 
-    $sql_disciplinas = "SELECT id, nome FROM disciplina";
+    $sql_disciplinas = "SELECT id, nome FROM disciplina ORDER BY nome ASC";
 
     $registros_disciplinas = mysqli_query($con, $sql_disciplinas) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
 

@@ -142,7 +142,7 @@
                     <div class="col-4">
                         <div id="curso_2" style="display: none;">
                             <div class="form-group">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="id_curso2" id="id_curso2">
                                     <option value="">Selecione o Curso</option>
                                     <?php
                                         include "../consultas/cursos.php";
@@ -189,7 +189,7 @@
                     <div class="col-4">
                         <div id="ano_2" style="display: none;">
                             <div class="form-group">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="ano2" id="ano2">
                                     <option value="">Selecione o Ano</option>
                                     <?php
                                         include "../consultas/anos.php";
@@ -218,7 +218,7 @@
                     <div class="col-4">
                         <div id="curso_3" style="display: none;">
                             <div class="form-group">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="id_curso3" id="id_curso3">
                                     <option value="">Selecione o Curso</option>
                                     <?php
                                         include "../consultas/cursos.php";
@@ -265,7 +265,7 @@
                     <div class="col-4">
                         <div id="ano_3" style="display: none;">
                             <div class="form-group">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="ano3" id="ano3">
                                     <option value="">Selecione o Ano</option>
                                     <?php
                                         include "../consultas/anos.php";
@@ -294,7 +294,7 @@
                     <div class="col-4">
                         <div id="curso_4" style="display: none;">
                             <div class="form-group">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="id_curso4" id="id_curso4">
                                     <option value="">Selecione o Curso</option>
                                     <?php
                                         include "../consultas/cursos.php";
@@ -341,7 +341,7 @@
                     <div class="col-4">
                         <div id="ano_4" style="display: none;">
                             <div class="form-group">
-                                <select class="form-control" name="" id="">
+                                <select class="form-control" name="ano4" id="ano4">
                                     <option value="">Selecione o Ano</option>
                                     <?php
                                         include "../consultas/anos.php";
@@ -436,6 +436,18 @@
                     $ano_ = filter_input(INPUT_POST, "ano", FILTER_VALIDATE_INT);
                     strlen($ano_) ? $sql_filtros .= "AND ano = '$ano_' " : null;
                 }
+                if(isset($_POST["ano2"])){
+                    $ano2_ = filter_input(INPUT_POST, "ano2", FILTER_VALIDATE_INT);
+                    strlen($ano_) ? $sql_filtros .= "OR ano = '$ano2_' " : null;
+                }
+                if(isset($_POST["ano3"])){
+                    $ano3_ = filter_input(INPUT_POST, "ano3", FILTER_VALIDATE_INT);
+                    strlen($ano_) ? $sql_filtros .= "OR ano = '$ano3_' " : null;
+                }
+                if(isset($_POST["ano4"])){
+                    $ano4_ = filter_input(INPUT_POST, "ano4", FILTER_VALIDATE_INT);
+                    strlen($ano_) ? $sql_filtros .= "OR ano = '$ano4_' " : null;
+                }
 
                 if(isset($_POST["id_disciplina_1"])){
                     $disciplina1_ = filter_input(INPUT_POST, "id_disciplina_1", FILTER_VALIDATE_INT);
@@ -458,6 +470,18 @@
                     $curso_ = filter_input(INPUT_POST, "id_curso", FILTER_VALIDATE_INT);
                     strlen($curso_) ? $sql_filtros .= "AND id_curso = '$curso_' " : null;
                 }
+                if(isset($_POST["id_curso2"])){
+                    $curso2_ = filter_input(INPUT_POST, "id_curso2", FILTER_VALIDATE_INT);
+                    strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso2_' " : null;
+                }
+                if(isset($_POST["id_curso3"])){
+                    $curso3_ = filter_input(INPUT_POST, "id_curso3", FILTER_VALIDATE_INT);
+                    strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso3_' " : null;
+                }
+                if(isset($_POST["id_curso4"])){
+                    $curso4_ = filter_input(INPUT_POST, "id_curso4", FILTER_VALIDATE_INT);
+                    strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso4_' " : null;
+                }
 
                 if(isset($_POST["tipo_questao"])){
                     $tipo_ = filter_input(INPUT_POST, "tipo_questao", FILTER_SANITIZE_STRIPPED);
@@ -472,7 +496,7 @@
                 }
            }
            $sql_filtros .= " ORDER BY id_curso";
-           var_dump($sql_filtros);
+           //var_dump($sql_filtros);
 
 
             // resultado   

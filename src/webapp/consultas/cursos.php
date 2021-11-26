@@ -1,7 +1,7 @@
 <?php
     //include "../conexao.php";
 
-    $sql_cursos = "SELECT id, nome FROM curso";
+    $sql_cursos = "SELECT id, nome FROM curso ORDER BY nome ASC";
 
     $registros_cursos = mysqli_query($con, $sql_cursos) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
 

@@ -1,6 +1,6 @@
 <?php
 
-    $sql_anos = "SELECT DISTINCT ano FROM questao";
+    $sql_anos = "SELECT DISTINCT ano FROM questao ORDER BY ano DESC";
 
     $registros_anos = mysqli_query($con, $sql_anos) or die("ERRO NA BUSCA DOS FILTROS!". mysqli_error($con));
 
