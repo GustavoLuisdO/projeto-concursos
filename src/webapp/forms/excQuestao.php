@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/incluirQuestao.css">
+
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
 
     <title>Excluir Questão</title>
@@ -44,8 +46,28 @@
             $dados = mysqli_fetch_array($registros);
 
             // monstrar questão que está sendo alterada
-            echo "<h2>Excluir Questão [código = $id]</h2>";
+            //echo "<h2>Excluir Questão [código = $id]</h2>";
         ?>
+
+      <header>
+        <div class="row">
+          
+          <h1 class="m-3">Excluir Questão</h1>
+
+          <a href="../../../index.html" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-house-damage fas-3x mr-2"></i></i>Página Inicial
+            </button>
+          </a>
+
+          <a href="../listagens/listaQuestoes.php" class="m-4">
+            <button class="btn btn-outline-dark" type="button">
+              <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Questões
+            </button>
+          </a>
+
+        </div>
+      </header>
 
       <form name="formExcQuestao" method="post" action="../validacoes/validaExcQuestao.php">
         
@@ -54,38 +76,41 @@
             value="<?php echo $id; ?>">
         </div>
 
-        <!-- fileira info questão -->
+        <!-- cursos -->
         <div class="row">
+          <div class="col-2"></div>
+          <div class="col-8">
+            <div class="form-group">
+                  <label for="id_curso">Curso</label>
+                  <select class="form-control" name="id_curso" id="id_curso" readonly>
+                    <?php
+                      //mostrar o curso atual
+                      // registros tabela curso para listar o nome do curso
+                      $sql_nome_curso = "SELECT q.id_curso, c.nome FROM questao q
+                          JOIN curso c ON q.id_curso = c.id WHERE c.id = '".$dados['id_curso']."'";
+            
+                      $registros_nome_curso = mysqli_query($con, $sql_nome_curso) or
+                          die("ERRO NA BUSCA DO CURSO!". mysqli_error($con));
+            
+                      $nome_curso = mysqli_num_rows($registros_nome_curso);
+                      $dados_nome_curso = mysqli_fetch_array($registros_nome_curso);
+                      $id_curso_atual = $dados_nome_curso["id_curso"];
+                      $nome_curso_atual = $dados_nome_curso["nome"];
+            
+                    ?>
+                    <option value="<?php echo $id_curso_atual; ?>">
+                      <?php echo "$nome_curso_atual"; ?>
+                    </option>
+                  </select>
+              </div>
+          </div>
+          <div class="col-2"></div>
+        </div><!-- /cursos -->    
 
-          <!-- cursos -->
-          <div class="form-group col-5">
-              <label for="id_curso">Curso</label>
-              <select class="form-control" name="id_curso" id="id_curso" readonly>
-                <?php 
-                  //mostrar o curso atual
-                  // registros tabela curso para listar o nome do curso
-                  $sql_nome_curso = "SELECT q.id_curso, c.nome FROM questao q 
-                      JOIN curso c ON q.id_curso = c.id WHERE c.id = '".$dados['id_curso']."'";
-                  
-                  $registros_nome_curso = mysqli_query($con, $sql_nome_curso) or 
-                      die("ERRO NA BUSCA DO CURSO!". mysqli_error($con));
-                  
-                  $nome_curso = mysqli_num_rows($registros_nome_curso);
-
-                  $dados_nome_curso = mysqli_fetch_array($registros_nome_curso);
-
-                  $id_curso_atual = $dados_nome_curso["id_curso"];
-                  $nome_curso_atual = $dados_nome_curso["nome"];
-                  
-                ?>
-                <option value="<?php echo $id_curso_atual; ?>">
-                  <?php echo "$nome_curso_atual"; ?>
-                </option>
-              </select>
-          </div><!-- /cursos -->
-          
+        <div class="row">
+          <div class="col-2"></div>
           <!-- descrição da prova -->
-          <div class="form-group col-5">
+          <div class="form-group col-6">
             <label for="descricao">Descrição</label>
             <input class="form-control" type="text" name="descricao" id="descricao" required placeholder="Enade 2021" maxlength="255" value="<?php echo $dados["descricao"] ?>" readonly>
           </div><!-- /descrição da prova -->
@@ -95,16 +120,18 @@
             <label for="ano">Ano</label>
             <input class="form-control" type="text" name="ano" id="ano" required placeholder="2021" maxlength="4" value="<?php echo $dados["ano"] ?>" readonly>
           </div><!-- /ano da prova -->
- 
-        </div><!-- fileira info questão -->
+          <div class="col-2"></div>
+        </div>
       
       <section>
         <div class="row">
+          <div class="col-2"></div>
           <!-- numero da questão -->
           <div class="form-group col-2">
             <label for="numero">Número da Questão</label>
             <input class="form-control" type="number" name="numero" id="numero" min="1" placeholder="ex..1" value="<?php echo $dados["numero"] ?>" readonly>
           </div><!-- /numero da questão -->
+          <div class="col-8"></div>
         </div>
 
         <!-- disciplinas -->

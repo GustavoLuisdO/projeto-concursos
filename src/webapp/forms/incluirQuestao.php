@@ -142,7 +142,7 @@
           </div>
           <div class="col-4"></div>
         </div>
-        <div class="row d-flex">
+        <div class="row">
           <div class="form-group col-3"><!-- disciplina 1 -->
               <select class="form-control" name="id_disciplina_1" id="id_disciplina_1">
                 <option value="">Selecione a Disciplina</option>
@@ -300,7 +300,7 @@
          <!-- multipla escolha -->
           <div id="multipla" style="display: block;">
             <!-- alternativa A -->
-            <div class="row">
+            <div class="row mb-2">
               <div class="col-2"></div>
               <div class="col-8">
                 <div class="form-check form-check-inline">
@@ -311,10 +311,9 @@
               </div>
               <div class="col-2"></div>
             </div>
-            <br>
 
             <!-- alternativa B -->
-            <div class="row">
+            <div class="row mb-2">
               <div class="col-2"></div>
               <div class="col-8">
                 <div class="form-check form-check-inline">
@@ -326,9 +325,8 @@
               <div class="col-2"></div>
             </div>
             
-            <br>
             <!-- alternativa C -->
-            <div class="row">
+            <div class="row mb-2">
               <div class="col-2"></div>
               <div class="col-8">
                 <div class="form-check form-check-inline">
@@ -340,9 +338,8 @@
               <div class="col-2"></div>
             </div>
               
-            <br>
             <!-- alternativa D -->
-            <div class="row">
+            <div class="row mb-2">
               <div class="col-2"></div>
               <div class="col-8">
                 <div class="form-check form-check-inline">
@@ -354,7 +351,6 @@
               <div class="col-2"></div>
             </div>
               
-            <br>
             <!-- alternativa E -->
             <div class="row">
               <div class="col-2"></div>
