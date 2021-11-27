@@ -8,43 +8,62 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="src/css/index.css">
+
     <link rel="shortcut icon" href="src/img/favicon-16x16.png" type="image/x-icon">
 
     <title>Página Inicial</title>
   </head>
   <body>
 
+    <div class="container">
 
-    <main class="container m-5">
+      <header>
+        <h2 class="display-4">Bem vindo(a)!</h2>
+      </header>
 
-        <div class="row">
-            <a href="src/webapp/forms/incluirCurso.html" class="m-2">
-              <button class="btn btn-outline-dark">Cadastrar Curso</button>
+      <main>
+          <div class="btns row">
+              <a href="src/webapp/forms/incluirCurso.html" class="m-2">
+                <button class="btn btn-outline-dark">
+                  <i class="fas fa-plus fas-3x mr-2"></i>Cadastrar Curso
+                </button>
+              </a>
+              <a href="src/webapp/listagens/listaCursos.php" class="m-2">
+                <button class="btn btn-outline-dark">
+                  <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Cursos
+                </button>
+              </a>
+          </div><hr>
+
+          <div class="btns row">
+              <a href="src/webapp/forms/incluirDisciplina.html" class="m-2">
+                <button class="btn btn-outline-dark">
+                  <i class="fas fa-plus fas-3x mr-2"></i>Cadastrar Disciplina
+                </button>
+              </a>
+              <a href="src/webapp/listagens/listaDisciplinas.php" class="m-2">
+                <button class="btn btn-outline-dark">
+                  <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Disciplinas
+                </button>
+              </a>
+          </div><hr>
+
+          <div class="btns row">
+            <a href="src/webapp/forms/incluirQuestao.php" class="m-2">
+              <button class="btn btn-outline-dark">
+                <i class="fas fa-plus fas-3x mr-2"></i>Cadastrar Questão
+              </button>
             </a>
-            <a href="src/webapp/listagens/listaCursos.php" class="m-2">
-              <button class="btn btn-outline-dark">Listagem de Cursos</button>
+            <a href="src/webapp/listagens/listaQuestoes.php" class="m-2">
+              <button class="btn btn-outline-dark">
+                <i class="fas fa-th-list fas-3x mr-2"></i>Listagem de Questões
+              </button>
             </a>
-        </div><hr>
+          </div>
+      </main>
 
-        <div class="row">
-            <a href="src/webapp/forms/incluirDisciplina.html" class="m-2">
-              <button class="btn btn-outline-dark">Cadastrar Disciplina</button>
-            </a>
-            <a href="src/webapp/listagens/listaDisciplinas.php" class="m-2">
-              <button class="btn btn-outline-dark">Listagem de Disciplinas</button>
-            </a>
-        </div><hr>
-
-        <div class="row">
-          <a href="src/webapp/forms/incluirQuestao.php" class="m-2">
-            <button class="btn btn-outline-dark">Cadastrar Questão</button>
-          </a>
-          <a href="src/webapp/listagens/listaQuestoes.php" class="m-2">
-            <button class="btn btn-outline-dark">Listagem de Questões</button>
-          </a>
-        </div>
-
-    </main>
+    </div>
 
 
     <!-- SCRIPT BOOTSTRAP -->

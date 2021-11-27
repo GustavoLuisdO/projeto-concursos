@@ -1,0 +1,33 @@
+/* body */
+body{
+    background: #eeeaea;
+}
+
+/* header */
+header{
+    width: 50%;
+    margin: 30px auto;
+    text-align: center;
+}
+
+/* main */
+main{
+    min-width: 700px;
+    width: 750px;
+    margin: 20px auto;
+    padding: 20px;
+    border: none;
+    border-radius: 25px;
+    box-shadow: 5px 5px 25px #000;
+}
+
+.btns{
+    margin: 10px auto;
+    justify-content: space-around;
+}
+
+/* todos btn */
+.btn-outline-dark{
+    border-radius: 20px;
+    font-weight: bold;
+}
