@@ -388,16 +388,16 @@
                         <div class="row form-group form-check">
                             <h3>Tipo de Questão</h3>
                             <div class="form-check form-check-inline">
-                                <input class="form-check-input" type="checkbox" name="tipo_questao" value="M">
+                                <input class="form-check-input" type="checkbox" name="tipo_questaoM" value="M">
                                 <label class="form-check-label mr-2" for="tipo_questao">Múltiplas Escolhas</label>
 
-                                <input class="form-check-input ml-2" type="checkbox" name="tipo_questao" value="D">
+                                <input class="form-check-input ml-2" type="checkbox" name="tipo_questaoD" value="D">
                                 <label class="form-check-label" for="tipo_questao">Dissertativa</label>
                             </div>
                         </div>
                     </div><!-- /tipo questao -->
 
-                    <div class="col-2">
+                    <div class="col-2 mt-4">
                         <button type="submit" class="btn btn-outline-dark">Filtrar</button>
                     </div>
 
@@ -431,28 +431,33 @@
            if(!empty($_POST)){
                 $sql_filtros .= " WHERE (1=1) ";
 
+                // palavra-chave
                 if(isset($_POST["enunciado"])){
                     $palavras_chave_ = filter_input(INPUT_POST, "enunciado", FILTER_SANITIZE_STRIPPED);
                     strlen($palavras_chave_) ? $sql_filtros .= "AND enunciado LIKE '%$palavras_chave_%' " : null;
                 }
 
+                // anos
                 if(isset($_POST["ano"])){
                     $ano_ = filter_input(INPUT_POST, "ano", FILTER_VALIDATE_INT);
                     strlen($ano_) ? $sql_filtros .= "AND ano = '$ano_' " : null;
-                }
-                if(isset($_POST["ano2"])){
-                    $ano2_ = filter_input(INPUT_POST, "ano2", FILTER_VALIDATE_INT);
-                    strlen($ano_) ? $sql_filtros .= "OR ano = '$ano2_' " : null;
-                }
-                if(isset($_POST["ano3"])){
-                    $ano3_ = filter_input(INPUT_POST, "ano3", FILTER_VALIDATE_INT);
-                    strlen($ano_) ? $sql_filtros .= "OR ano = '$ano3_' " : null;
-                }
-                if(isset($_POST["ano4"])){
-                    $ano4_ = filter_input(INPUT_POST, "ano4", FILTER_VALIDATE_INT);
-                    strlen($ano_) ? $sql_filtros .= "OR ano = '$ano4_' " : null;
-                }
 
+                    if(isset($_POST["ano2"])){
+                        $ano2_ = filter_input(INPUT_POST, "ano2", FILTER_VALIDATE_INT);
+                        strlen($ano_) ? $sql_filtros .= "OR ano = '$ano2_' " : null;
+                    }
+                    if(isset($_POST["ano3"])){
+                        $ano3_ = filter_input(INPUT_POST, "ano3", FILTER_VALIDATE_INT);
+                        strlen($ano_) ? $sql_filtros .= "OR ano = '$ano3_' " : null;
+                    }
+                    if(isset($_POST["ano4"])){
+                        $ano4_ = filter_input(INPUT_POST, "ano4", FILTER_VALIDATE_INT);
+                        strlen($ano_) ? $sql_filtros .= "OR ano = '$ano4_' " : null;
+                    }
+                }
+                
+
+                // disciplinas
                 if(isset($_POST["id_disciplina_1"])){
                     $disciplina1_ = filter_input(INPUT_POST, "id_disciplina_1", FILTER_VALIDATE_INT);
                     strlen($disciplina1_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina1_' OR id_disciplina_2 = '$disciplina1_' OR id_disciplina_3 = '$disciplina1_' Or id_disciplina_4 = '$disciplina1_' " : null;
@@ -470,46 +475,76 @@
                     strlen($disciplina4_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina4_' OR id_disciplina_2 = '$disciplina4_' OR id_disciplina_3 = '$disciplina4_' Or id_disciplina_4 = '$disciplina4_' " : null;
                 }
 
+                // cursos
                 if(isset($_POST["id_curso"])){
                     $curso_ = filter_input(INPUT_POST, "id_curso", FILTER_VALIDATE_INT);
                     strlen($curso_) ? $sql_filtros .= "AND id_curso = '$curso_' " : null;
-                }
-                if(isset($_POST["id_curso2"])){
-                    $curso2_ = filter_input(INPUT_POST, "id_curso2", FILTER_VALIDATE_INT);
-                    strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso2_' " : null;
-                }
-                if(isset($_POST["id_curso3"])){
-                    $curso3_ = filter_input(INPUT_POST, "id_curso3", FILTER_VALIDATE_INT);
-                    strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso3_' " : null;
-                }
-                if(isset($_POST["id_curso4"])){
-                    $curso4_ = filter_input(INPUT_POST, "id_curso4", FILTER_VALIDATE_INT);
-                    strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso4_' " : null;
-                }
 
-                if(isset($_POST["tipo_questao"])){
-                    $tipo_ = filter_input(INPUT_POST, "tipo_questao", FILTER_SANITIZE_STRIPPED);
-                    $tipo_ = in_array($tipo_,['M', 'D']) ? $tipo_ : "";
+                    if(isset($_POST["id_curso2"]) != ""){
+                        $curso2_ = filter_input(INPUT_POST, "id_curso2", FILTER_VALIDATE_INT);
+                        strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso2_' " : null;
+                    }
+                    if(isset($_POST["id_curso3"]) != ""){
+                        $curso3_ = filter_input(INPUT_POST, "id_curso3", FILTER_VALIDATE_INT);
+                        strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso3_' " : null;
+                    }
+                    if(isset($_POST["id_curso4"]) != ""){
+                        $curso4_ = filter_input(INPUT_POST, "id_curso4", FILTER_VALIDATE_INT);
+                        strlen($curso_) ? $sql_filtros .= "OR id_curso = '$curso4_' " : null;
+                    }
+                }
+                
+                //tipo_questao
+                if(isset($_POST["tipo_questaoD"])){
+                    $tipo_ = filter_input(INPUT_POST, "tipo_questaoD", FILTER_SANITIZE_STRIPPED);
+                    $tipo_ = in_array($tipo_,['D']) ? $tipo_ : "";
+                    strlen($tipo_) ? $sql_filtros .= "AND tipo_questao = '$tipo_' " : null;
+            
+                    if(isset($_POST["tipo_questaoM"])){
+                        $tipo_ = filter_input(INPUT_POST, "tipo_questaoM", FILTER_SANITIZE_STRIPPED);
+                        $tipo_ = in_array($tipo_,['M']) ? $tipo_ : "";
+                        strlen($tipo_) ? $sql_filtros .= "OR tipo_questao = '$tipo_' " : null;
+                    }
+                }
+                if(isset($_POST["tipo_questaoM"])){
+                    $tipo_ = filter_input(INPUT_POST, "tipo_questaoM", FILTER_SANITIZE_STRIPPED);
+                    $tipo_ = in_array($tipo_,['M']) ? $tipo_ : "";
                     strlen($tipo_) ? $sql_filtros .= "AND tipo_questao = '$tipo_' " : null;
                 }
 
-                $dificuldade_ = $sql_filtros .= "AND id_dificuldade = '0' ";
+                // dificuldade
+                $dificuldade_ = $sql_filtros .= "";
                 if(isset($_POST["id_dificuldade"])){
                     $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade", FILTER_VALIDATE_INT);
-                    $dificuldade2_ = filter_input(INPUT_POST, "id_dificuldade2", FILTER_VALIDATE_INT);
-                    $dificuldade3_ = filter_input(INPUT_POST, "id_dificuldade3", FILTER_VALIDATE_INT);
                     $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
-                    strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' OR id_dificuldade = '$dificuldade2_' OR id_dificuldade = '$dificuldade3_' " : null;
+                    strlen($dificuldade_) ? $sql_filtros .= "AND id_dificuldade = '$dificuldade_' " : null;
+
+                    if(isset($_POST["id_dificuldade2"])){
+                        $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade2", FILTER_VALIDATE_INT);
+                        $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
+                        strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' " : null;
+                    }
+                    if(isset($_POST["id_dificuldade3"])){
+                        $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade3", FILTER_VALIDATE_INT);
+                        $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
+                        strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' " : null;
+                    }
                 }
-                if(isset($_POST["id_dificuldade2"])){
+                if(isset($_POST["id_dificuldade"]) == "" && isset($_POST["id_dificuldade2"])){
                     $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade2", FILTER_VALIDATE_INT);
-                    $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
-                    strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' " : null;
+                    $dificuldade_ = in_array($dificuldade_,['2']) ? $dificuldade_ : "";
+                    strlen($dificuldade_) ? $sql_filtros .= "AND id_dificuldade = '$dificuldade_' " : null;
+                    
+                    if(isset($_POST["id_dificuldade3"])){
+                        $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade3", FILTER_VALIDATE_INT);
+                        $dificuldade_ = in_array($dificuldade_,['3']) ? $dificuldade_ : "";
+                        strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' " : null;
+                    }
                 }
-                if(isset($_POST["id_dificuldade3"])){
+                if(isset($_POST["id_dificuldade"]) == "" && isset($_POST["id_dificuldade2"]) == "" && isset($_POST["id_dificuldade3"])){
                     $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade3", FILTER_VALIDATE_INT);
                     $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
-                    strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' " : null;
+                    strlen($dificuldade_) ? $sql_filtros .= "AND id_dificuldade = '$dificuldade_' " : null;
                 }
                 
            }
