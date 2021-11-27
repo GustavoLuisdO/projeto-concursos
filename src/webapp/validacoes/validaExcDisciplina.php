@@ -14,4 +14,4 @@
     mysqli_query($con, $sql) or die("ERRO AO EXCLUIR DISCIPLINA ". mysqli_error($con));
 
     // redirecionar para listagem de disciplinas
-    header('location: ../listagens/listaDisciplinas.php');
+    header('location: ../listagens/listaDisciplinas.php?status=success');

@@ -82,6 +82,5 @@
          die("erro ao inserir questão ". mysqli_error($con));
 
      // redirecionar para página de listagem
-     header('location: ../listagens/listaQuestoes.php');
-
+     header('location: ../forms/incluirQuestao.php?status=success');
 ?>

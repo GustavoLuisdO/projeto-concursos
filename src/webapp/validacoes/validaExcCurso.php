@@ -14,4 +14,4 @@
     mysqli_query($con, $sql) or die("ERRO AO EXCLUIR CURSO". mysqli_error($con));
 
     // redirecionar para listagem de cursos
-    header('location: ../listagens/listaCursos.php');
+    header('location: ../listagens/listaCursos.php?status=success');

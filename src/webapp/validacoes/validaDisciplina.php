@@ -11,11 +11,19 @@
     // conexao com o banco
     include "../conexao.php";
 
-    // inserir no banco
-    $sql = "INSERT INTO disciplina (nome) VALUES ('$nome')";
+    // verificação para ver se já existe
+    $sql_exists = mysqli_query($con, "SELECT nome FROM disciplina WHERE nome = '$nome'");
+    if(mysqli_fetch_array($sql_exists)){
+        die("<h2>Esta disciplina já está cadastrada! clique <a href='../forms/incluirDisciplina.html'>aqui</a></h2>");
+    }else{
+        // inserir no banco
+        $sql = "INSERT INTO disciplina (nome) VALUES ('$nome')";
 
-    // enviar inserção para o banco
-    mysqli_query($con, $sql) or die("erro ao inserir disciplina ". mysqli_error($con));
+        // enviar inserção para o banco
+        mysqli_query($con, $sql) or die("erro ao inserir disciplina ". mysqli_error($con));
 
-    // redirecionar para listagem de disciplinas
-    header('location: ../listagens/listaDisciplinas.php');
+        // redirecionar para listagem de disciplinas
+        header('location: ../listagens/listaDisciplinas.php?status=success');
+    }
+
+    

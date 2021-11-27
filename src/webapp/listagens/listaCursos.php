@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/alerta.css">
+
     <link rel="stylesheet" href="../../css/listaCursos-Questoes.css">
 
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
@@ -17,16 +19,42 @@
   </head>
   <body>
 
-    <div class="container">
+    <?php
+        // exibir msg de sucesso 
+        $mensagem = "";
 
-        <?php
+        if(isset($_GET["status"])){
 
-            if(isset($_SESSION['msg'])){
-                echo $_SESSION['msg'];
-                unset($_SESSION['msg']);
+            switch($_GET["status"]){
+
+                case 'success': 
+                    $mensagem = "<div class='row fixed-top' id='alerta'>
+                                    <div id='alerta-sucesso' class='alert alert-success alert-dismissible fade show' role='alert'>
+                                        <strong>Ação executada com sucesso!</strong>
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                            <span aria-hidden='true'>&times;</span>
+                                        </button>
+                                    </div>
+                                </div>";
+                    break;
+
+                case 'error' : 
+                    $mensagem = "<div class='row fixed-top' id='alerta'>
+                                    <div id='alerta-erro' class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <strong>Ação não executada!</strong>
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                            <span aria-hidden='true'>&times;</span>
+                                        </button>
+                                    </div>
+                                </div>";
+                break;
             }
+        }
+    ?>
+
+    <div class="container">
         
-        ?>
+        <?=$mensagem?>
 
         <header>
             <div class="row">

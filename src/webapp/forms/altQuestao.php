@@ -455,9 +455,7 @@
           <div class="col-8">
             <div class="form-group">
               <label for="enunciado">Enunciado</label>
-              <textarea class="form-control" name="enunciado" id="enunciado" cols="30" rows="5">
-                <?php echo $dados["enunciado"] ?>
-              </textarea>
+              <textarea class="form-control" name="enunciado" id="enunciado" cols="30" rows="5"><?php echo $dados["enunciado"] ?></textarea>
             </div>
           </div>
           <div class="col-2"></div>
@@ -500,9 +498,7 @@
                 <div class="form-check form-check-inline">
                   <label class="form-check-label" for="alternativa_correta">a.</label>
                   <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="A" <?php if($dados["alternativa_correta"] == 'A'){ echo "checked"; } ?>>
-                  <textarea class="form-control" name="resposta_alt_a" id="resposta_alt_a" cols="88" rows="1" maxlength="2000">
-                    <?php echo $dados["resposta_alt_a"] ?>
-                  </textarea>
+                  <textarea class="form-control" name="resposta_alt_a" id="resposta_alt_a" cols="88" rows="1" maxlength="2000"><?php echo $dados["resposta_alt_a"] ?></textarea>
                 </div>
               </div>
               <div class="col-2"></div>
@@ -515,9 +511,7 @@
                 <div class="form-check form-check-inline">
                   <label class="form-check-label" for="alternativa_correta">b.</label>
                   <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="B" <?php if($dados["alternativa_correta"] == 'B'){ echo "checked"; } ?>>
-                  <textarea class="form-control" name="resposta_alt_b" id="resposta_alt_b" cols="88" rows="1" maxlength="2000">
-                    <?php echo $dados["resposta_alt_b"] ?>
-                  </textarea>
+                  <textarea class="form-control" name="resposta_alt_b" id="resposta_alt_b" cols="88" rows="1" maxlength="2000"><?php echo $dados["resposta_alt_b"] ?></textarea>
                 </div>
               </div>
               <div class="col-2"></div>
@@ -530,9 +524,7 @@
                 <div class="form-check form-check-inline">
                   <label class="form-check-label" for="alternativa_correta">c.</label>
                   <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="C" <?php if($dados["alternativa_correta"] == 'C'){ echo "checked"; } ?>>
-                  <textarea class="form-control" name="resposta_alt_c" id="resposta_alt_c" cols="88" rows="1" maxlength="2000">
-                    <?php echo $dados["resposta_alt_c"] ?>
-                   </textarea>
+                  <textarea class="form-control" name="resposta_alt_c" id="resposta_alt_c" cols="88" rows="1" maxlength="2000"><?php echo $dados["resposta_alt_c"] ?></textarea>
                 </div>
               </div>
               <div class="col-2"></div>
@@ -545,9 +537,7 @@
                 <div class="form-check form-check-inline">
                   <label class="form-check-label" for="alternativa_correta">d.</label>
                   <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="D" <?php if($dados["alternativa_correta"] == 'D'){ echo "checked"; } ?>>
-                  <textarea class="form-control" name="resposta_alt_d" id="resposta_alt_d" cols="88" rows="1" maxlength="2000">
-                    <?php echo $dados["resposta_alt_d"] ?>
-                  </textarea>
+                  <textarea class="form-control" name="resposta_alt_d" id="resposta_alt_d" cols="88" rows="1" maxlength="2000"><?php echo $dados["resposta_alt_d"] ?></textarea>
                 </div>
               </div>
               <div class="col-2"></div>
@@ -560,9 +550,7 @@
                 <div class="form-check form-check-inline">
                   <label class="form-check-label" for="alternativa_correta">e.</label>
                   <input class="form-check-input" type="radio" name="alternativa_correta" id="alternativa_correta" value="E" <?php if($dados["alternativa_correta"] == 'E'){ echo "checked"; } ?>>
-                  <textarea class="form-control" name="resposta_alt_e" id="resposta_alt_e" cols="88" rows="1" maxlength="2000">
-                    <?php echo $dados["resposta_alt_e"] ?>
-                  </textarea>
+                  <textarea class="form-control" name="resposta_alt_e" id="resposta_alt_e" cols="88" rows="1" maxlength="2000"><?php echo $dados["resposta_alt_e"] ?></textarea>
                 </div>
               </div>
               <div class="col-2"></div>
@@ -583,9 +571,7 @@
               <div class="col-8">
                 <div class="form-group">
                   <label for="resposta_dissertativa">Resposta</label>
-                  <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="2000">
-                    <?php echo $dados["resposta_dissertativa"] ?>
-                  </textarea>
+                  <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="2000"><?php echo $dados["resposta_dissertativa"] ?></textarea>
                 </div>
               </div>
               <div class="col-2"></div>

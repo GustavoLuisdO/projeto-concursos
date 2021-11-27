@@ -9,6 +9,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/alerta.css">
+
     <link rel="stylesheet" href="../../css/incluirQuestao.css">
 
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
@@ -23,7 +25,7 @@
 
       /* ********* TRAZER OS CURSOS CADASTRADOS ********* */
       // trazer os dados da tabela curso
-      $sql_curso = "SELECT id, nome FROM curso ORDER BY id";
+      $sql_curso = "SELECT id, nome FROM curso ORDER BY nome ASC";
 
       // trazer a seleção do banco
       $registros_cursos = mysqli_query($con, $sql_curso) or die("ERRO NA BUSCA DOS CURSOS!". mysqli_error($con));
@@ -34,7 +36,7 @@
 
       /* ********* TRAZER AS DISCIPLINAS CADASTRADAS ********* */
       // trazer os dados da tabela disciplina
-      $sql_disciplina = "SELECT id, nome FROM disciplina ORDER BY id";
+      $sql_disciplina = "SELECT id, nome FROM disciplina ORDER BY nome ASC";
 
       // trazer as seleções do banco
       $registros_disciplinas = mysqli_query($con, $sql_disciplina) or die("ERRO NA BUSCA DAS DISCIPLINAS!". mysqli_error($con));
@@ -54,9 +56,44 @@
       // registros encontrados
       $dificuldades = mysqli_num_rows($registros_dificuldades);
     ?>
+
+    <?php
+        // exibir msg de sucesso 
+        $mensagem = "";
+
+        if(isset($_GET["status"])){
+
+            switch($_GET["status"]){
+
+                case 'success': 
+                    $mensagem = "<div class='row fixed-top' id='alerta'>
+                                    <div id='alerta-sucesso' class='alert alert-success alert-dismissible fade show' role='alert'>
+                                        <strong>Ação executada com sucesso!</strong>
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                            <span aria-hidden='true'>&times;</span>
+                                        </button>
+                                    </div>
+                                </div>";
+                    break;
+
+                case 'error' : 
+                    $mensagem = "<div class='row fixed-top' id='alerta'>
+                                    <div id='alerta-erro' class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <strong>Ação não executada!</strong>
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                            <span aria-hidden='true'>&times;</span>
+                                        </button>
+                                    </div>
+                                </div>";
+                break;
+            }
+        }
+    ?>
     
     <!-- container -->
     <div class="container">
+
+      <?=$mensagem?>
 
       <header>
         <div class="row">

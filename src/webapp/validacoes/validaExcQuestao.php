@@ -72,4 +72,4 @@
     mysqli_query($con, $sql) or die("ERRO AO EXCLUIR QUESTÃO". mysqli_error($con));
 
     // redirecionar para listagem de questoes
-    header('location: ../listagens/listaQuestoes.php');
+    header('location: ../listagens/listaQuestoes.php?status=success');

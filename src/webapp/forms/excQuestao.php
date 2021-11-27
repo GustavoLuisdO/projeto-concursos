@@ -314,9 +314,7 @@
           <div class="col-8">
             <div class="form-group">
               <label for="enunciado">Enunciado</label>
-              <textarea class="form-control" name="enunciado" id="enunciado" cols="30" rows="5" readonly>
-                <?php echo $dados["enunciado"] ?>
-              </textarea>
+              <textarea class="form-control" name="enunciado" id="enunciado" cols="30" rows="5" readonly><?php echo $dados["enunciado"] ?></textarea>
             </div>
           </div>
           <div class="col-2"></div>
@@ -355,9 +353,7 @@
                     echo "                  >"; //fechar o input
                                         
                     echo "              <textarea class='form-control' cols='88' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            ".$dados["resposta_alt_a"]."
-                                        </textarea>
+                                                 maxlength='2000' readonly>".$dados["resposta_alt_a"]."</textarea>
                                       </div>
                                     </div>
                                     <div class='col-2'></div>
@@ -380,9 +376,7 @@
                     echo "                  >"; //fechar o input
                                         
                     echo "              <textarea class='form-control' cols='88' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            ".$dados["resposta_alt_b"]."
-                                        </textarea>
+                                                 maxlength='2000' readonly>".$dados["resposta_alt_b"]."</textarea>
                                       </div>
                                     </div>
                                     <div class='col-2'></div>
@@ -405,9 +399,7 @@
                     echo "                  >"; //fechar o input
                                         
                     echo "              <textarea class='form-control' cols='88' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            ".$dados["resposta_alt_c"]."
-                                        </textarea>
+                                                 maxlength='2000' readonly>".$dados["resposta_alt_c"]."</textarea>
                                       </div>
                                     </div>
                                     <div class='col-2'></div>
@@ -430,9 +422,7 @@
                     echo "                  >"; //fechar o input
                                         
                     echo "              <textarea class='form-control' cols='88' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            ".$dados["resposta_alt_d"]."
-                                        </textarea>
+                                                 maxlength='2000' readonly>".$dados["resposta_alt_d"]."</textarea>
                                       </div>
                                     </div>
                                     <div class='col-2'></div>
@@ -455,9 +445,7 @@
                     echo "                  >"; //fechar o input
                                         
                     echo "              <textarea class='form-control' cols='88' rows='1' 
-                                                 maxlength='2000' readonly>
-                                                 ".$dados["resposta_alt_e"]."
-                                        </textarea>
+                                                 maxlength='2000' readonly>".$dados["resposta_alt_e"]."</textarea>
                                       </div>
                                     </div>
                                     <div class='col-2'></div>
@@ -487,9 +475,7 @@
                                 <div class='row'>
                                     <div class='col-2'></div>
                                     <div class='form-group col-8'>
-                                        <textarea class='form-control'cols='30' rows='5' maxlength='2000' readonly>
-                                            ".$dados['resposta_dissertativa']."
-                                        </textarea>
+                                        <textarea class='form-control'cols='30' rows='5' maxlength='2000' readonly>".$dados['resposta_dissertativa']."</textarea>
                                     </div>
                                     <div class='col-2'></div>
                                 </div>

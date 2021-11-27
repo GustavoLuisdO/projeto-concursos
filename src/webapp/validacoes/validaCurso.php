@@ -16,21 +16,17 @@
     // conexao com o banco
     include "../conexao.php";
 
-    // inserir no banco
-    $sql = "INSERT INTO curso (nome, duracao_meses) VALUES ('$nome', '$duracao_meses')";
+    // verificação para ver se já existe
+    $sql_exists = mysqli_query($con, "SELECT nome FROM curso WHERE nome = '$nome'");
+    if(mysqli_fetch_array($sql_exists)){
+        die("<h2>Este curso já está cadastrado! clique <a href='../forms/incluirCurso.html'>aqui</a></h2>");
+    }else{
+        // inserir no banco
+        $sql = "INSERT INTO curso (nome, duracao_meses) VALUES ('$nome', '$duracao_meses')";
 
-    // enviar inserção para o banco
-    mysqli_query($con, $sql) or die("ERRO AO INSERIR CURSO ". mysqli_error($con));
+        // enviar inserção para o banco
+        mysqli_query($con, $sql) or die("ERRO AO INSERIR CURSO ". mysqli_error($con));
 
-    // redirecionar para listagem de cursos
-    $_SESSION['msg'] = "
-        <div class='row fixed-top' id='alerta'>
-            <div id='alerta-sucesso' class='alert alert-success alert-dismissible fade show' role='alert'>
-                <strong>Cadastrado com sucesso!</strong>
-                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
-                    <span aria-hidden='true'>&times;</span>
-                </button>
-            </div>
-        </div>
-    ";
-    header('location: ../listagens/listaCursos.php');
+        // redirecionar para listagem de cursos
+        header('location: ../listagens/listaCursos.php?status=success');
+    }

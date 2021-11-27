@@ -8,6 +8,8 @@
 
     <link rel="stylesheet" href="https://pro.fontawesome.com/releases/v5.10.0/css/all.css" integrity="sha384-AYmEC3Yw5cVb3ZcuHtOA93w35dYTsvhLPVnYs9eStHfGJvOvKxVfELGroGkvsg+p" crossorigin="anonymous"/>
 
+    <link rel="stylesheet" href="../../css/alerta.css">
+
     <link rel="stylesheet" href="../../css/questoes.css">
 
     <link rel="shortcut icon" href="../../img/favicon-16x16.png" type="image/x-icon">
@@ -17,8 +19,43 @@
   </head>
   <body>
 
+    <?php
+        // exibir msg de sucesso 
+        $mensagem = "";
+
+        if(isset($_GET["status"])){
+
+            switch($_GET["status"]){
+
+                case 'success': 
+                    $mensagem = "<div class='row fixed-top' id='alerta'>
+                                    <div id='alerta-sucesso' class='alert alert-success alert-dismissible fade show' role='alert'>
+                                        <strong>Ação executada com sucesso!</strong>
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                            <span aria-hidden='true'>&times;</span>
+                                        </button>
+                                    </div>
+                                </div>";
+                    break;
+
+                case 'error' : 
+                    $mensagem = "<div class='row fixed-top' id='alerta'>
+                                    <div id='alerta-erro' class='alert alert-danger alert-dismissible fade show' role='alert'>
+                                        <strong>Ação não executada!</strong>
+                                        <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                                            <span aria-hidden='true'>&times;</span>
+                                        </button>
+                                    </div>
+                                </div>";
+                break;
+            }
+        }
+    ?>
+
     <div class="container">
 
+        <?=$mensagem?>
+        
         <?php
             // conexao com o banco
             include "../conexao.php";
@@ -800,9 +837,7 @@
                                 <div class='row'>
                                     <div class='col-1'></div>
                                     <div class='form-group col-10'>
-                                        <textarea class='form-control'cols='110' rows='5' readonly>
-                                            $enunciado
-                                        </textarea>
+                                        <textarea class='form-control'cols='110' rows='5' readonly>$enunciado</textarea>
                                     </div>
                                     <div class='col-1'></div>
                                 </div>
@@ -841,9 +876,7 @@
                          
                     ltrim($alt_a);
                     echo "              <textarea class='form-control' cols='110' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            $alt_a
-                                        </textarea>
+                                                 maxlength='2000' readonly>$alt_a</textarea>
                                       </div>
                                     </div>
                                     <div class='col-1'></div>
@@ -866,9 +899,7 @@
                     echo "                  >"; //fechar o input
                     ltrim($alt_b);          
                     echo "              <textarea class='form-control' cols='110' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            $alt_b
-                                        </textarea>
+                                                 maxlength='2000' readonly>$alt_b</textarea>
                                       </div>
                                     </div>
                                     <div class='col-1'></div>
@@ -891,9 +922,7 @@
                     echo "                  >"; //fechar o input
                     ltrim($alt_c);         
                     echo "              <textarea class='form-control' cols='110' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            $alt_c
-                                        </textarea>
+                                                 maxlength='2000' readonly>$alt_c</textarea>
                                       </div>
                                     </div>
                                     <div class='col-1'></div>
@@ -916,9 +945,7 @@
                     echo "                  >"; //fechar o input
                     ltrim($alt_d);        
                     echo "              <textarea class='form-control' cols='110' rows='1' 
-                                                 maxlength='2000' readonly>
-                                            $alt_d
-                                        </textarea>
+                                                 maxlength='2000' readonly>$alt_d</textarea>
                                       </div>
                                     </div>
                                     <div class='col-1'></div>
@@ -941,9 +968,7 @@
                     echo "                  >"; //fechar o input
                     ltrim($alt_e);           
                     echo "              <textarea class='form-control' cols='110' rows='1' 
-                                                 maxlength='2000' readonly style='text-align: left;'>
-                                            $alt_e
-                                        </textarea>
+                                                 maxlength='2000' readonly>$alt_e</textarea>
                                       </div>
                                     </div>
                                     <div class='col-1'></div>
@@ -974,9 +999,7 @@
                                 <div class='row'>
                                     <div class='col-1'></div>
                                     <div class='form-group col-10'>
-                                        <textarea class='form-control'cols='110' rows='5' maxlength='2000' readonly>
-                                            $dissertativa
-                                        </textarea>
+                                        <textarea class='form-control'cols='110' rows='5' maxlength='2000' readonly>$dissertativa</textarea>
                                     </div>
                                     <div class='col-1'></div>
                                 </div>
