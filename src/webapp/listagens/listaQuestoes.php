@@ -417,7 +417,7 @@
                                 <label class="form-check-label" for="id_dificuldade">Dificil</label>
                             </div>
                         </div>
-                    </div><!-- /grau de dificuldade -->           
+                    </div><!-- /grau de dificuldade -->
                 </div>
                     
             </form>  

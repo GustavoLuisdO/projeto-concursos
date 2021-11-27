@@ -23,4 +23,14 @@
     mysqli_query($con, $sql) or die("ERRO AO INSERIR CURSO ". mysqli_error($con));
 
     // redirecionar para listagem de cursos
+    $_SESSION['msg'] = "
+        <div class='row fixed-top' id='alerta'>
+            <div id='alerta-sucesso' class='alert alert-success alert-dismissible fade show' role='alert'>
+                <strong>Cadastrado com sucesso!</strong>
+                <button type='button' class='close' data-dismiss='alert' aria-label='Close'>
+                    <span aria-hidden='true'>&times;</span>
+                </button>
+            </div>
+        </div>
+    ";
     header('location: ../listagens/listaCursos.php');

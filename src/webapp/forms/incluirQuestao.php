@@ -382,7 +382,7 @@
       </section><!-- /tipo de resposta -->
       
       <div class="row float-right">
-        <button class="btn btn-outline-dark m-4" type="submit">Incluir Questão</button>
+        <button class="btn btn-outline-dark m-4" id="btn-message" type="submit">Incluir Questão</button>
       </div>
 
       </form>
