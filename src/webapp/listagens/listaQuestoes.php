@@ -410,10 +410,10 @@
                                 <input class="form-check-input" type="checkbox" name="id_dificuldade" value="1">
                                 <label class="form-check-label mr-2" for="id_dificuldade">Fácil</label>
 
-                                <input class="form-check-input ml-2" type="checkbox" name="id_dificuldade" value="2">
+                                <input class="form-check-input ml-2" type="checkbox" name="id_dificuldade2" value="2">
                                 <label class="form-check-label mr-2" for="id_dificuldade">Mediana</label>
 
-                                <input class="form-check-input ml-2" type="checkbox" name="id_dificuldade" value="3">
+                                <input class="form-check-input ml-2" type="checkbox" name="id_dificuldade3" value="3">
                                 <label class="form-check-label" for="id_dificuldade">Dificil</label>
                             </div>
                         </div>
@@ -493,11 +493,25 @@
                     strlen($tipo_) ? $sql_filtros .= "AND tipo_questao = '$tipo_' " : null;
                 }
 
+                $dificuldade_ = $sql_filtros .= "AND id_dificuldade = '0' ";
                 if(isset($_POST["id_dificuldade"])){
                     $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade", FILTER_VALIDATE_INT);
+                    $dificuldade2_ = filter_input(INPUT_POST, "id_dificuldade2", FILTER_VALIDATE_INT);
+                    $dificuldade3_ = filter_input(INPUT_POST, "id_dificuldade3", FILTER_VALIDATE_INT);
                     $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
-                    strlen($dificuldade_) ? $sql_filtros .= "AND id_dificuldade = '$dificuldade_' " : null;
+                    strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' OR id_dificuldade = '$dificuldade2_' OR id_dificuldade = '$dificuldade3_' " : null;
                 }
+                if(isset($_POST["id_dificuldade2"])){
+                    $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade2", FILTER_VALIDATE_INT);
+                    $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
+                    strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' " : null;
+                }
+                if(isset($_POST["id_dificuldade3"])){
+                    $dificuldade_ = filter_input(INPUT_POST, "id_dificuldade3", FILTER_VALIDATE_INT);
+                    $dificuldade_ = in_array($dificuldade_,['1', '2', '3']) ? $dificuldade_ : "";
+                    strlen($dificuldade_) ? $sql_filtros .= "OR id_dificuldade = '$dificuldade_' " : null;
+                }
+                
            }
            $sql_filtros .= " ORDER BY id_curso";
            //var_dump($sql_filtros);
