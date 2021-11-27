@@ -39,3 +39,10 @@ form{
 textarea{
     text-align: left;
 }
+
+/* border bottom */
+.border-bottom{
+    width: 700px;
+    margin: 0 auto;
+    border-radius: 20px;
+}
