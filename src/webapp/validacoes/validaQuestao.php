@@ -73,14 +73,21 @@
      // conexao com o banco
      include "../conexao.php";
 
-     // inserir na tabela questao
-     $sql = "INSERT INTO questao (id_curso, descricao, ano, numero, id_disciplina_1, id_disciplina_2, id_disciplina_3, id_disciplina_4, id_dificuldade, enunciado, tipo_questao, resposta_dissertativa, resposta_alt_a, resposta_alt_b, resposta_alt_c, resposta_alt_d, resposta_alt_e, alternativa_correta) 
-             VALUES ('$id_curso', '$descricao', '$ano', '$numero', '$id_disciplina_1', '$id_disciplina_2', '$id_disciplina_3', '$id_disciplina_4', '$id_dificuldade', '$enunciado', '$tipo_questao', '$resposta_dissertativa', '$resposta_alt_a', '$resposta_alt_b', '$resposta_alt_c', '$resposta_alt_d', '$resposta_alt_e', '$alternativa_correta')";
+    // verificação para ver se já existe
+    $sql_exists = mysqli_query($con, "SELECT id_curso, descricao, ano, enunciado FROM questao WHERE id_curso = '$id_curso', descricao='$descricao', ano='$ano', enunciado='$enunciado'");
+    if(mysqli_fetch_array($sql_exists)){
+        die("<h2>Esta questão já está cadastrada! clique <a href='../forms/incluirQuestao.php'>aqui</a></h2>");
+    }else{
+        // inserir na tabela questao
+        $sql = "INSERT INTO questao (id_curso, descricao, ano, numero, id_disciplina_1, id_disciplina_2, id_disciplina_3, id_disciplina_4, id_dificuldade, enunciado, tipo_questao, resposta_dissertativa, resposta_alt_a, resposta_alt_b, resposta_alt_c, resposta_alt_d, resposta_alt_e, alternativa_correta) 
+        VALUES ('$id_curso', '$descricao', '$ano', '$numero', '$id_disciplina_1', '$id_disciplina_2', '$id_disciplina_3', '$id_disciplina_4', '$id_dificuldade', '$enunciado', '$tipo_questao', '$resposta_dissertativa', '$resposta_alt_a', '$resposta_alt_b', '$resposta_alt_c', '$resposta_alt_d', '$resposta_alt_e', '$alternativa_correta')";
 
-     // enviar para o banco
-     mysqli_query($con, $sql) or 
-         die("erro ao inserir questão ". mysqli_error($con));
+        // enviar para o banco
+        mysqli_query($con, $sql) or 
+        die("erro ao inserir questão ". mysqli_error($con));
 
-     // redirecionar para página de listagem
-     header('location: ../forms/incluirQuestao.php?status=success');
+        // redirecionar para página de listagem
+        header('location: ../forms/incluirQuestao.php?status=success');
+    }
+     
 ?>

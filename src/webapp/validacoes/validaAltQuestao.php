@@ -73,30 +73,36 @@
     // conexao com o banco
     include "../conexao.php";
 
-    // comando para alteração dos dados
-    $sql = "UPDATE questao SET  id_curso = '$id_curso', 
-                                descricao = '$descricao',
-                                ano = '$ano',
-                                numero = '$numero',
-                                id_disciplina_1 = '$id_disciplina_1',
-                                id_disciplina_2 = '$id_disciplina_2',
-                                id_disciplina_3 = '$id_disciplina_3',
-                                id_disciplina_4 = '$id_disciplina_4',
-                                id_dificuldade = '$id_dificuldade',
-                                enunciado = '$enunciado',
-                                tipo_questao = '$tipo_questao',
-                                resposta_dissertativa = '$resposta_dissertativa',
-                                resposta_alt_a = '$resposta_alt_a',
-                                resposta_alt_b = '$resposta_alt_b',
-                                resposta_alt_c = '$resposta_alt_c',
-                                resposta_alt_d = '$resposta_alt_d',
-                                resposta_alt_e = '$resposta_alt_e',
-                                alternativa_correta = '$alternativa_correta'
-            WHERE id = '$id'";
-    //var_dump($sql);
+    // verificação para ver se já existe
+    $sql_exists = mysqli_query($con, "SELECT id_curso, descricao, ano, enunciado FROM questao WHERE id_curso = '$id_curso', descricao = '$descricao', ano='$ano', enunciado='$enunciado'");
+    if(mysqli_fetch_array($sql_exists)){
+        die("<h2>Esta questão já está cadastrada! clique <a href='../listagens/listaQuestoes.php'>aqui</a></h2>");
+    }else{
+        // comando para alteração dos dados
+        $sql = "UPDATE questao SET  id_curso = '$id_curso', 
+                                    descricao = '$descricao',
+                                    ano = '$ano',
+                                    numero = '$numero',
+                                    id_disciplina_1 = '$id_disciplina_1',
+                                    id_disciplina_2 = '$id_disciplina_2',
+                                    id_disciplina_3 = '$id_disciplina_3',
+                                    id_disciplina_4 = '$id_disciplina_4',
+                                    id_dificuldade = '$id_dificuldade',
+                                    enunciado = '$enunciado',
+                                    tipo_questao = '$tipo_questao',
+                                    resposta_dissertativa = '$resposta_dissertativa',
+                                    resposta_alt_a = '$resposta_alt_a',
+                                    resposta_alt_b = '$resposta_alt_b',
+                                    resposta_alt_c = '$resposta_alt_c',
+                                    resposta_alt_d = '$resposta_alt_d',
+                                    resposta_alt_e = '$resposta_alt_e',
+                                    alternativa_correta = '$alternativa_correta'
+        WHERE id = '$id'";
+        //var_dump($sql);
 
-    // enviar para o banco
-    mysqli_query($con, $sql) or die("ERRO AO ALTERAR QUESTÃO". mysqli_error($con));
+        // enviar para o banco
+        mysqli_query($con, $sql) or die("ERRO AO ALTERAR QUESTÃO". mysqli_error($con));
 
-    // redirecionar para listagem de questoes
-    header('location: ../listagens/listaQuestoes.php?status=success');
+        // redirecionar para listagem de questoes
+        header('location: ../listagens/listaQuestoes.php?status=success');
+    }

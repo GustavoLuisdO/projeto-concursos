@@ -24,7 +24,7 @@
     }else{
         // comando para alteração dos dados
         $sql = "UPDATE curso SET nome = '$nome', duracao_meses = '$duracao_meses' 
-            WHERE id = '$id'"; 
+            WHERE id = '$id'";
         //var_dump($sql);
 
         // enviar para o banco

@@ -90,7 +90,7 @@
 
           <div class="col-4">
             <div class="form-group">
-                <label for="duracao_meses">Duração do Curso (meses)</label>
+                <label for="duracao_meses">Duração do Curso (anos)</label>
                 <input class="form-control" type="number" id="duracao_meses" name="duracao_meses" min="1" required value="<?php echo $dados['duracao_meses'] ?>">
             </div>
           </div>

@@ -63,7 +63,7 @@
 
         <header>
 
-            <div class="row text-center m-0">   
+            <div class="row text-center m-0"> 
                 <!-- Página Inicial -->
                 <div class="col-4">
                     <a href="../../../index.html" class="m-4">
@@ -585,7 +585,7 @@
                 }
                 
            }
-           $sql_filtros .= " ORDER BY id_curso";
+           $sql_filtros .= " ORDER BY id_curso ASC";
            //var_dump($sql_filtros);
 
 
