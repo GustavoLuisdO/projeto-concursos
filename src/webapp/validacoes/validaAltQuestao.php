@@ -11,9 +11,9 @@
     $id_disciplina_3            = filter_input(INPUT_POST, "id_disciplina_3", FILTER_VALIDATE_INT);
     $id_disciplina_4            = filter_input(INPUT_POST, "id_disciplina_4", FILTER_VALIDATE_INT);
     $id_dificuldade             = filter_input(INPUT_POST, "id_dificuldade", FILTER_VALIDATE_INT);
-    $enunciado                  = filter_input(INPUT_POST, "enunciado", FILTER_SANITIZE_STRIPPED);
+    $enunciado                  = $_POST["enunciado"];
     $tipo_questao               = filter_input(INPUT_POST, "tipo_questao", FILTER_SANITIZE_STRIPPED);
-    $resposta_dissertativa      = filter_input(INPUT_POST, "resposta_dissertativa", FILTER_SANITIZE_STRIPPED);
+    $resposta_dissertativa      = $_POST["resposta_dissertativa"];
     $resposta_alt_a             = filter_input(INPUT_POST, "resposta_alt_a", FILTER_SANITIZE_STRIPPED);
     $resposta_alt_b             = filter_input(INPUT_POST, "resposta_alt_b", FILTER_SANITIZE_STRIPPED);
     $resposta_alt_c             = filter_input(INPUT_POST, "resposta_alt_c", FILTER_SANITIZE_STRIPPED);
@@ -59,9 +59,6 @@
     if($enunciado == "" || $enunciado === false){
         die("ESCREVA O ENUNCIADO DA QUESTÃO!");
     }
-    $enunciado = ltrim($enunciado);
-
-    $resposta_dissertativa = ltrim($resposta_dissertativa);
 
     $resposta_alt_a = ltrim($resposta_alt_a);
     $resposta_alt_b = ltrim($resposta_alt_b);
@@ -73,36 +70,30 @@
     // conexao com o banco
     include "../conexao.php";
 
-    // verificação para ver se já existe
-    $sql_exists = mysqli_query($con, "SELECT id_curso, descricao, ano, enunciado FROM questao WHERE id_curso = '$id_curso', descricao = '$descricao', ano='$ano', enunciado='$enunciado'");
-    if(mysqli_fetch_array($sql_exists)){
-        die("<h2>Esta questão já está cadastrada! clique <a href='../listagens/listaQuestoes.php'>aqui</a></h2>");
-    }else{
-        // comando para alteração dos dados
-        $sql = "UPDATE questao SET  id_curso = '$id_curso', 
-                                    descricao = '$descricao',
-                                    ano = '$ano',
-                                    numero = '$numero',
-                                    id_disciplina_1 = '$id_disciplina_1',
-                                    id_disciplina_2 = '$id_disciplina_2',
-                                    id_disciplina_3 = '$id_disciplina_3',
-                                    id_disciplina_4 = '$id_disciplina_4',
-                                    id_dificuldade = '$id_dificuldade',
-                                    enunciado = '$enunciado',
-                                    tipo_questao = '$tipo_questao',
-                                    resposta_dissertativa = '$resposta_dissertativa',
-                                    resposta_alt_a = '$resposta_alt_a',
-                                    resposta_alt_b = '$resposta_alt_b',
-                                    resposta_alt_c = '$resposta_alt_c',
-                                    resposta_alt_d = '$resposta_alt_d',
-                                    resposta_alt_e = '$resposta_alt_e',
-                                    alternativa_correta = '$alternativa_correta'
-        WHERE id = '$id'";
-        //var_dump($sql);
+   // comando para alteração dos dados
+    $sql = "UPDATE questao SET  id_curso = '$id_curso', 
+                                descricao = '$descricao',
+                                ano = '$ano',
+                                numero = '$numero',
+                                id_disciplina_1 = '$id_disciplina_1',
+                                id_disciplina_2 = '$id_disciplina_2',
+                                id_disciplina_3 = '$id_disciplina_3',
+                                id_disciplina_4 = '$id_disciplina_4',
+                                id_dificuldade = '$id_dificuldade',
+                                enunciado = '$enunciado',
+                                tipo_questao = '$tipo_questao',
+                                resposta_dissertativa = '$resposta_dissertativa',
+                                resposta_alt_a = '$resposta_alt_a',
+                                resposta_alt_b = '$resposta_alt_b',
+                                resposta_alt_c = '$resposta_alt_c',
+                                resposta_alt_d = '$resposta_alt_d',
+                                resposta_alt_e = '$resposta_alt_e',
+                                alternativa_correta = '$alternativa_correta'
+    WHERE id = '$id'";
+    //var_dump($sql);
 
-        // enviar para o banco
-        mysqli_query($con, $sql) or die("ERRO AO ALTERAR QUESTÃO". mysqli_error($con));
+    // enviar para o banco
+    mysqli_query($con, $sql) or die("ERRO AO ALTERAR QUESTÃO". mysqli_error($con));
 
-        // redirecionar para listagem de questoes
-        header('location: ../listagens/listaQuestoes.php?status=success');
-    }
+    // redirecionar para listagem de questoes
+    header('location: ../listagens/listaQuestoes.php?status=success');

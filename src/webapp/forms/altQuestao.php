@@ -95,7 +95,7 @@
       <header>
         <div class="row">
           
-          <h1 class="m-3">Incluir Questão</h1>
+          <h1 class="m-3">Alterar Questão</h1>
 
           <a href="../../../index.html" class="m-4">
             <button class="btn btn-outline-dark" type="button">

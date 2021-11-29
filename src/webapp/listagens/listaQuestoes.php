@@ -470,7 +470,7 @@
 
                 // palavra-chave
                 if(isset($_POST["enunciado"])){
-                    $palavras_chave_ = filter_input(INPUT_POST, "enunciado", FILTER_SANITIZE_STRIPPED);
+                    $palavras_chave_ = $_POST["enunciado"];
                     strlen($palavras_chave_) ? $sql_filtros .= "AND enunciado LIKE '%$palavras_chave_%' " : null;
                 }
 

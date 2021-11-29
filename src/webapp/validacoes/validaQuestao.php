@@ -11,9 +11,9 @@
     $id_disciplina_3            = filter_input(INPUT_POST, "id_disciplina_3", FILTER_VALIDATE_INT);
     $id_disciplina_4            = filter_input(INPUT_POST, "id_disciplina_4", FILTER_VALIDATE_INT);
     $id_dificuldade             = filter_input(INPUT_POST, "id_dificuldade", FILTER_VALIDATE_INT);
-    $enunciado                  = filter_input(INPUT_POST, "enunciado", FILTER_SANITIZE_STRIPPED);
+    $enunciado                  = $_POST["enunciado"];
     $tipo_questao               = filter_input(INPUT_POST, "tipo_questao", FILTER_SANITIZE_STRIPPED);
-    $resposta_dissertativa      = filter_input(INPUT_POST, "resposta_dissertativa", FILTER_SANITIZE_STRIPPED);
+    $resposta_dissertativa      = $_POST["resposta_dissertativa"];
     $resposta_alt_a             = filter_input(INPUT_POST, "resposta_alt_a", FILTER_SANITIZE_STRIPPED);
     $resposta_alt_b             = filter_input(INPUT_POST, "resposta_alt_b", FILTER_SANITIZE_STRIPPED);
     $resposta_alt_c             = filter_input(INPUT_POST, "resposta_alt_c", FILTER_SANITIZE_STRIPPED);
@@ -59,9 +59,6 @@
      if($enunciado == "" || $enunciado === false){
          die("ESCREVA O ENUNCIADO DA QUESTÃO!");
      }
-     $enunciado = ltrim($enunciado);
-
-     $resposta_dissertativa = ltrim($resposta_dissertativa);
 
      $resposta_alt_a = ltrim($resposta_alt_a);
      $resposta_alt_b = ltrim($resposta_alt_b);
