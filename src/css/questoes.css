@@ -21,6 +21,12 @@ form{
     border-color: #000;
 }
 
+/* label's */
+label{
+    font-size: 1em;
+    font-weight: bold;
+}
+
 /* todos btn */
 .btn-outline-dark{
     border-radius: 20px;

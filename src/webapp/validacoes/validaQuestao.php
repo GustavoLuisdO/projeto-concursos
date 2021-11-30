@@ -14,61 +14,65 @@
     $enunciado                  = $_POST["enunciado"];
     $tipo_questao               = filter_input(INPUT_POST, "tipo_questao", FILTER_SANITIZE_STRIPPED);
     $resposta_dissertativa      = $_POST["resposta_dissertativa"];
-    $resposta_alt_a             = filter_input(INPUT_POST, "resposta_alt_a", FILTER_SANITIZE_STRIPPED);
-    $resposta_alt_b             = filter_input(INPUT_POST, "resposta_alt_b", FILTER_SANITIZE_STRIPPED);
-    $resposta_alt_c             = filter_input(INPUT_POST, "resposta_alt_c", FILTER_SANITIZE_STRIPPED);
-    $resposta_alt_d             = filter_input(INPUT_POST, "resposta_alt_d", FILTER_SANITIZE_STRIPPED);
-    $resposta_alt_e             = filter_input(INPUT_POST, "resposta_alt_e", FILTER_SANITIZE_STRIPPED);
+    $resposta_alt_a             = $_POST["resposta_alt_a"];
+    $resposta_alt_b             = $_POST["resposta_alt_b"];
+    $resposta_alt_c             = $_POST["resposta_alt_c"];
+    $resposta_alt_d             = $_POST["resposta_alt_d"];
+    $resposta_alt_e             = $_POST["resposta_alt_e"];
     $alternativa_correta        = filter_input(INPUT_POST, "alternativa_correta", FILTER_SANITIZE_STRIPPED);
     
 
-     // validações dos campos
-     if($id_curso == "" || $id_curso === false){
-         die("SELECIONA UM CURSO!");
-     }
-     if($descricao == "" || $descricao === false){
-         die("INFORME A DESCRIÇÃO DA QUESTÃO!");
-     }
-     if($ano == "" || $ano === false){
-         die("INFORME O ANO DA QUESTÃO!");
-     }
-     if($id_disciplina_1 == "" || $id_disciplina_1 === false){
-         die("INFORME UMA DISCIPLINA PARA A QUESTÃO!");
-     }
-     if($id_disciplina_2 == ""){
-         $id_disciplina_2 = 0;
-     }
-     if($id_disciplina_3 == ""){
-         $id_disciplina_3 = 0;
-     }
-     if($id_disciplina_4 == ""){
-         $id_disciplina_4 = 0;
-     }
-     if($id_dificuldade == ""){
-         die("INFORME A DIFICULDADE DA QUESTÃO!");
-     }
+    // validações dos campos
+    if($id_curso == "" || $id_curso === false){
+        die("SELECIONA UM CURSO!");
+    }
+    if($descricao == "" || $descricao === false){
+        die("INFORME A DESCRIÇÃO DA QUESTÃO!");
+    }
+    if($ano == "" || $ano === false){
+        die("INFORME O ANO DA QUESTÃO!");
+    }
+    if($id_disciplina_1 == "" || $id_disciplina_1 === false){
+        die("INFORME UMA DISCIPLINA PARA A QUESTÃO!");
+    }
+    if($id_disciplina_2 == ""){
+        $id_disciplina_2 = 0;
+    }
+    if($id_disciplina_3 == ""){
+        $id_disciplina_3 = 0;
+    }
+    if($id_disciplina_4 == ""){
+        $id_disciplina_4 = 0;
+    }
+    if($id_dificuldade == ""){
+        die("INFORME A DIFICULDADE DA QUESTÃO!");
+    }
 
-     $tipo_questao = "M";
-     if(isset($_POST["tipo_questao"]) || $tipo_questao === false){
-         $tipo_questao = $_POST["tipo_questao"];
-     }
+    if($numero == "" || $numero === false){
+        die("INFORME O NÚMERO DA QUESTÃO!");
+    }
+    if($enunciado == "" || $enunciado === false){
+        die("ESCREVA O ENUNCIADO DA QUESTÃO!");
+    }
 
-     if($numero == "" || $numero === false){
-         die("INFORME O NÚMERO DA QUESTÃO!");
-     }
-     if($enunciado == "" || $enunciado === false){
-         die("ESCREVA O ENUNCIADO DA QUESTÃO!");
-     }
+    $tipo_questao = "M";
+    if(isset($_POST["tipo_questao"])){
+        $tipo_questao = $_POST["tipo_questao"];
+    }
 
-     $resposta_alt_a = ltrim($resposta_alt_a);
-     $resposta_alt_b = ltrim($resposta_alt_b);
-     $resposta_alt_c = ltrim($resposta_alt_c);
-     $resposta_alt_d = ltrim($resposta_alt_d);
-     $resposta_alt_e = ltrim($resposta_alt_e);
+    if(isset($_POST["tipo_questao"]) == 'M'){
+        if(isset($_POST["resposta_alt_a"]) == "" || isset($_POST["resposta_alt_b"]) == "" || isset($_POST["resposta_alt_c"]) == "" || isset($_POST["resposta_alt_d"]) == "" || isset($_POST["resposta_alt_e"]) == "" || isset($_POST["alternativa_correta"]) == ""){
+            die("ESCREVA AS RESPOSTAS E ESCOLHA ALTERNATIVA CORRETA DA QUESTÃO!");
+        }
+    }
+    if(isset($_POST["tipo_questao"]) == 'D'){
+        if(isset($_POST["resposta_dissertativa"]) == ""){
+            die("ESCREVA A RESPOSTA DA QUESTÃO!");
+        }
+    }
 
-
-     // conexao com o banco
-     include "../conexao.php";
+    // conexao com o banco
+    include "../conexao.php";
 
     // verificação para ver se já existe
     $sql_exists = mysqli_query($con, "SELECT id_curso, descricao, ano, enunciado FROM questao WHERE id_curso = '$id_curso', descricao='$descricao', ano='$ano', enunciado='$enunciado'");
