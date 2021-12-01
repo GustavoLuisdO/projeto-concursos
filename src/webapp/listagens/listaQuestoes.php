@@ -19,6 +19,8 @@
   </head>
   <body>
 
+  <a name="TOPO"></a>
+
     <?php
         // exibir msg de sucesso 
         $mensagem = "";
@@ -1001,7 +1003,7 @@
                                 <div class='row'>
                                     <div class='col-1'></div>
                                     <div class='form-group col-10'>
-                                        <textarea class='form-control'cols='110' rows='5' maxlength='2000' readonly>$dissertativa</textarea>
+                                        <textarea class='form-control'cols='110' rows='5' maxlength='4000' readonly>$dissertativa</textarea>
                                     </div>
                                     <div class='col-1'></div>
                                 </div>
@@ -1029,6 +1031,19 @@
         ?><!-- /listagem -->
 
     </div><!-- container -->
+
+        <section id="secao-btn-topo" class="fixed-bottom mb-3">
+            <div class="row">
+                <div class="col-11"></div>
+                <div class="col-1">
+                    <a href="#TOPO">
+                        <button class="btn btn-outline-dark">
+                            <i class="fas fa-chevron-circle-up fas-3x"></i>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </section>
 
     <!-- SCRIPT BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

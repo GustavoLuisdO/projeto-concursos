@@ -475,7 +475,7 @@
                                 <div class='row'>
                                     <div class='col-2'></div>
                                     <div class='form-group col-8'>
-                                        <textarea class='form-control'cols='30' rows='5' maxlength='2000' readonly>".$dados['resposta_dissertativa']."</textarea>
+                                        <textarea class='form-control'cols='30' rows='5' maxlength='4000' readonly>".$dados['resposta_dissertativa']."</textarea>
                                     </div>
                                     <div class='col-2'></div>
                                 </div>

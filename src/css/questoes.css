@@ -1,5 +1,6 @@
 body{
     width: 100%;
+    overflow-x:hidden;
 }
 /* header */
 header{
@@ -51,4 +52,9 @@ textarea{
     width: 700px;
     margin: 0 auto;
     border-radius: 20px;
+}
+
+/*  */
+secao-btn-topo{
+    background: rgba(0, 0, 0, 0);
 }

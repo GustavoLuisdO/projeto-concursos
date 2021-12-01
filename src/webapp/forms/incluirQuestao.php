@@ -409,7 +409,7 @@
               <div class="col-8">
                 <div class="form-group">
                   <label for="resposta_dissertativa">Resposta</label>
-                  <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="2000"></textarea>
+                  <textarea class="form-control" name="resposta_dissertativa" id="resposta_dissertativa" cols="30" rows="5" maxlength="4000"></textarea>
                 </div>
               </div>
               <div class="col-2"></div>

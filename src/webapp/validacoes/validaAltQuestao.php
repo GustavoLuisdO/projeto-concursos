@@ -70,9 +70,9 @@
         }
     }
 
-    var_dump($_POST["tipo_questao"]);
+    //var_dump($_POST["tipo_questao"]);
 
-    /*
+    
     // conexao com o banco
     include "../conexao.php";
 
@@ -102,4 +102,4 @@
     mysqli_query($con, $sql) or die("ERRO AO ALTERAR QUESTÃO". mysqli_error($con));
 
     // redirecionar para listagem de questoes
-    header('location: ../listagens/listaQuestoes.php?status=success');*/
+    header('location: ../listagens/listaQuestoes.php?status=success');
