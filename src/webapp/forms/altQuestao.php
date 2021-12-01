@@ -60,7 +60,7 @@
 
             /* ********* TRAZER OS CURSOS CADASTRADOS ********* */
             // trazer os dados da tabela curso
-            $sql_curso = "SELECT id, nome FROM curso ORDER BY id";
+            $sql_curso = "SELECT id, nome FROM curso ORDER BY nome ASC";
 
             // trazer a seleção do banco
             $registros_cursos = mysqli_query($con, $sql_curso) or die("ERRO NA BUSCA DOS CURSOS!". mysqli_error($con));
@@ -71,7 +71,7 @@
 
             /* ********* TRAZER AS DISCIPLINAS CADASTRADAS ********* */
             // trazer os dados da tabela disciplina
-            $sql_disciplina = "SELECT id, nome FROM disciplina ORDER BY id";
+            $sql_disciplina = "SELECT id, nome FROM disciplina ORDER BY nome ASC";
 
             // trazer as seleções do banco
             $registros_disciplinas = mysqli_query($con, $sql_disciplina) or die("ERRO NA BUSCA DAS DISCIPLINAS!". mysqli_error($con));

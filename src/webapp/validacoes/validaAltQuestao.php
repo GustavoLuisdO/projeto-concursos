@@ -48,11 +48,6 @@
         die("INFORME A DIFICULDADE DA QUESTÃO!");
     }
 
-    $tipo_questao = "M";
-    if(isset($_POST["tipo_questao"]) || $tipo_questao === false){
-        $tipo_questao = $_POST["tipo_questao"];
-    }
-
     if($numero == "" || $numero === false){
         die("INFORME O NÚMERO DA QUESTÃO!");
     }
@@ -60,13 +55,17 @@
         die("ESCREVA O ENUNCIADO DA QUESTÃO!");
     }
 
-    if(isset($_POST["tipo_questao"]) == 'M'){
-        if(isset($_POST["resposta_alt_a"]) == "" || isset($_POST["resposta_alt_b"]) == "" || isset($_POST["resposta_alt_c"]) == "" || isset($_POST["resposta_alt_d"]) == "" || isset($_POST["resposta_alt_e"]) == "" || isset($_POST["alternativa_correta"]) == ""){
+    if(isset($_POST["tipo_questao"])){
+        $tipo_questao = $_POST["tipo_questao"];
+    }
+
+    if(isset($_POST["tipo_questao"]) === "M"){
+        if(strlen($_POST["resposta_alt_a"]) == "" || strlen($_POST["resposta_alt_b"]) == "" || strlen($_POST["resposta_alt_c"]) == "" || strlen($_POST["resposta_alt_d"]) == "" || strlen($_POST["resposta_alt_e"]) == "" || strlen($_POST["alternativa_correta"]) == ""){
             die("ESCREVA AS RESPOSTAS E ESCOLHA ALTERNATIVA CORRETA DA QUESTÃO!");
         }
     }
-    if(isset($_POST["tipo_questao"]) == 'D'){
-        if(isset($_POST["resposta_dissertativa"]) == ""){
+    if(isset($_POST["tipo_questao"]) === "D"){
+        if(strlen($_POST["resposta_dissertativa"]) === ""){
             die("ESCREVA A RESPOSTA DA QUESTÃO!");
         }
     }

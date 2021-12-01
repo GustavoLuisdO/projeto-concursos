@@ -588,7 +588,7 @@
                 
            }
            $sql_filtros .= " ORDER BY id_curso ASC";
-           var_dump($sql_filtros);
+           //var_dump($sql_filtros);
 
 
             // resultado   
