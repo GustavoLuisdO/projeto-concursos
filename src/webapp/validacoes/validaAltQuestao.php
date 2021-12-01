@@ -59,18 +59,20 @@
         $tipo_questao = $_POST["tipo_questao"];
     }
 
-    if(isset($_POST["tipo_questao"]) === "M"){
-        if(strlen($_POST["resposta_alt_a"]) == "" || strlen($_POST["resposta_alt_b"]) == "" || strlen($_POST["resposta_alt_c"]) == "" || strlen($_POST["resposta_alt_d"]) == "" || strlen($_POST["resposta_alt_e"]) == "" || strlen($_POST["alternativa_correta"]) == ""){
+    if($_POST["tipo_questao"] === "M"){
+        if($_POST["resposta_alt_a"] === "" || $_POST["resposta_alt_b"] === "" || $_POST["resposta_alt_c"] === "" || $_POST["resposta_alt_d"] === "" || $_POST["resposta_alt_e"] === "" || $_POST["alternativa_correta"] === ""){
             die("ESCREVA AS RESPOSTAS E ESCOLHA ALTERNATIVA CORRETA DA QUESTÃO!");
         }
     }
-    if(isset($_POST["tipo_questao"]) === "D"){
-        if(strlen($_POST["resposta_dissertativa"]) === ""){
+    if($_POST["tipo_questao"] === "D"){
+        if($_POST["resposta_dissertativa"] === ""){
             die("ESCREVA A RESPOSTA DA QUESTÃO!");
         }
     }
 
+    var_dump($_POST["tipo_questao"]);
 
+    /*
     // conexao com o banco
     include "../conexao.php";
 
@@ -100,4 +102,4 @@
     mysqli_query($con, $sql) or die("ERRO AO ALTERAR QUESTÃO". mysqli_error($con));
 
     // redirecionar para listagem de questoes
-    header('location: ../listagens/listaQuestoes.php?status=success');
+    header('location: ../listagens/listaQuestoes.php?status=success');*/

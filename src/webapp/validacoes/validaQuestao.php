@@ -59,13 +59,14 @@
         $tipo_questao = $_POST["tipo_questao"];
     }
 
-    if(isset($_POST["tipo_questao"]) === 'M'){
-        if(isset($_POST["resposta_alt_a"]) == "" || isset($_POST["resposta_alt_b"]) == "" || isset($_POST["resposta_alt_c"]) == "" || isset($_POST["resposta_alt_d"]) == "" || isset($_POST["resposta_alt_e"]) == "" || isset($_POST["alternativa_correta"]) == ""){
+    // validação para as respostas da questao
+    if($_POST["tipo_questao"] === "M"){
+        if($_POST["resposta_alt_a"] === "" || $_POST["resposta_alt_b"] === "" || $_POST["resposta_alt_c"] === "" || $_POST["resposta_alt_d"] === "" || $_POST["resposta_alt_e"] === "" || $_POST["alternativa_correta"] === ""){
             die("ESCREVA AS RESPOSTAS E ESCOLHA ALTERNATIVA CORRETA DA QUESTÃO!");
         }
     }
-    if(isset($_POST["tipo_questao"]) === 'D'){
-        if(isset($_POST["resposta_dissertativa"]) == ""){
+    if($_POST["tipo_questao"] === "D"){
+        if($_POST["resposta_dissertativa"] === ""){
             die("ESCREVA A RESPOSTA DA QUESTÃO!");
         }
     }

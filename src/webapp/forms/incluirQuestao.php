@@ -308,7 +308,7 @@
           <div class="col-2"></div>
           <div class="form-group col-8">
             <label for="enunciado">Enunciado</label>
-            <textarea class="form-control" name="enunciado" id="enunciado" rows="5"></textarea>
+            <textarea class="form-control" name="enunciado" id="enunciado" rows="5" require></textarea>
           </div>
           <div class="col-2"></div>
         </div><!-- /enunciado -->
