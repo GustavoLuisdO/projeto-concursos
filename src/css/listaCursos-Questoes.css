@@ -10,8 +10,13 @@ label{
     font-weight: bold;
 }
 
-/* btn */
+/* todos btn */
 .btn-outline-dark{
     border-radius: 20px;
     font-weight: bold;
+}
+
+/* section do btn para voltar ao topo da pag */
+secao-btn-topo{
+    background: rgba(0, 0, 0, 0);
 }
