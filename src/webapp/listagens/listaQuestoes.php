@@ -464,8 +464,8 @@
 
         <!-- condições e concatenções para os filtros -->
         <?php 
-
-           $sql_filtros = "SELECT * FROM questao";
+            // para uma melhor performace na hora da consulta
+           $sql_filtros = "SELECT id, id_curso, descricao, ano, numero, id_disciplina_1, id_disciplina_2, id_disciplina_3, id_disciplina_4, id_dificuldade, enunciado, tipo_questao, resposta_dissertativa, resposta_alt_a, resposta_alt_b, resposta_alt_c, resposta_alt_d, resposta_alt_e, alternativa_correta FROM questao";
 
            if(!empty($_POST)){
                 $sql_filtros .= " WHERE (1=1) ";
@@ -499,19 +499,19 @@
                 // disciplinas
                 if(isset($_POST["id_disciplina_1"])){
                     $disciplina1_ = filter_input(INPUT_POST, "id_disciplina_1", FILTER_VALIDATE_INT);
-                    strlen($disciplina1_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina1_' OR id_disciplina_2 = '$disciplina1_' OR id_disciplina_3 = '$disciplina1_' Or id_disciplina_4 = '$disciplina1_' " : null;
+                    strlen($disciplina1_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina1_' OR id_disciplina_2 = '$disciplina1_' OR id_disciplina_3 = '$disciplina1_' OR id_disciplina_4 = '$disciplina1_' " : null;
 
                     if(strlen($_POST["id_disciplina_2"]) != ""){
                         $disciplina2_ = filter_input(INPUT_POST, "id_disciplina_2", FILTER_VALIDATE_INT);
-                        strlen($disciplina2_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina2_' OR id_disciplina_2 = '$disciplina2_' OR id_disciplina_3 = '$disciplina2_' Or id_disciplina_4 = '$disciplina2_' " : null;
+                        strlen($disciplina2_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina2_' OR id_disciplina_2 = '$disciplina2_' OR id_disciplina_3 = '$disciplina2_' OR id_disciplina_4 = '$disciplina2_' " : null;
                     }
                     if(strlen($_POST["id_disciplina_3"]) != ""){
                         $disciplina3_ = filter_input(INPUT_POST, "id_disciplina_3", FILTER_VALIDATE_INT);
-                        strlen($disciplina3_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina3_' OR id_disciplina_2 = '$disciplina3_' OR id_disciplina_3 = '$disciplina3_' Or id_disciplina_4 = '$disciplina3_' " : null;
+                        strlen($disciplina3_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina3_' OR id_disciplina_2 = '$disciplina3_' OR id_disciplina_3 = '$disciplina3_' OR id_disciplina_4 = '$disciplina3_' " : null;
                     }
                     if(strlen($_POST["id_disciplina_4"]) != ""){
                         $disciplina4_ = filter_input(INPUT_POST, "id_disciplina_4", FILTER_VALIDATE_INT);
-                        strlen($disciplina4_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina4_' OR id_disciplina_2 = '$disciplina4_' OR id_disciplina_3 = '$disciplina4_' Or id_disciplina_4 = '$disciplina4_' " : null;
+                        strlen($disciplina4_) ? $sql_filtros .= "AND id_disciplina_1 = '$disciplina4_' OR id_disciplina_2 = '$disciplina4_' OR id_disciplina_3 = '$disciplina4_' OR id_disciplina_4 = '$disciplina4_' " : null;
                     }
                 }
                 
