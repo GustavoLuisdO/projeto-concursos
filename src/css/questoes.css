@@ -2,6 +2,12 @@ body{
     width: 100%;
     overflow-x:hidden;
 }
+
+/* container */
+.container{
+    margin-bottom: 20px;
+}
+
 /* header */
 header{
     width: 100%;
