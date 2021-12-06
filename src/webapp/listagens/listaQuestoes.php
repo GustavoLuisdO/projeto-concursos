@@ -453,7 +453,7 @@
                                 <label class="form-check-label mr-2" for="id_dificuldade">Mediana</label>
 
                                 <input class="form-check-input ml-2" type="checkbox" name="id_dificuldade3" value="3">
-                                <label class="form-check-label" for="id_dificuldade">Dificil</label>
+                                <label class="form-check-label" for="id_dificuldade">Difícil</label>
                             </div>
                         </div>
                     </div><!-- /grau de dificuldade -->
@@ -589,7 +589,7 @@
                 }
                 
            }
-           $sql_filtros .= " ORDER BY id_curso ASC";
+           $sql_filtros .= " ORDER BY id_curso, ano DESC";
            //var_dump($sql_filtros);
 
 
