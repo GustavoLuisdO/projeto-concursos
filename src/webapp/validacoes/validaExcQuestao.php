@@ -20,46 +20,6 @@
     $resposta_alt_d             = filter_input(INPUT_POST, "resposta_alt_d", FILTER_SANITIZE_STRIPPED);
     $resposta_alt_e             = filter_input(INPUT_POST, "resposta_alt_e", FILTER_SANITIZE_STRIPPED);
     $alternativa_correta        = filter_input(INPUT_POST, "alternativa_correta", FILTER_SANITIZE_STRIPPED);
-    
-
-    // validações dos campos
-    if($id_curso == "" || $id_curso === false){
-        die("SELECIONA UM CURSO!");
-    }
-    if($descricao == "" || $descricao === false){
-        die("INFORME A DESCRIÇÃO DA QUESTÃO!");
-    }
-    if($ano == "" || $ano === false){
-        die("INFORME O ANO DA QUESTÃO!");
-    }
-    if($id_disciplina_1 == "" || $id_disciplina_1 === false){
-        die("INFORME UMA DISCIPLINA PARA A QUESTÃO!");
-    }
-    if($id_disciplina_2 == ""){
-        $id_disciplina_2 = 0;
-    }
-    if($id_disciplina_3 == ""){
-        $id_disciplina_3 = 0;
-    }
-    if($id_disciplina_4 == ""){
-        $id_disciplina_4 = 0;
-    }
-    if($id_dificuldade == ""){
-        die("INFORME A DIFICULDADE DA QUESTÃO!");
-    }
-
-    $tipo_questao = "M";
-    if(isset($_POST["tipo_questao"]) || $tipo_questao === false){
-        $tipo_questao = $_POST["tipo_questao"];
-    }
-
-    if($numero == "" || $numero === false){
-        die("INFORME O NÚMERO DA QUESTÃO!");
-    }
-    if($enunciado == "" || $enunciado === false){
-        die("ESCREVA O ENUNCIADO DA QUESTÃO!");
-    }
-
 
     // conexao com o banco
     include "../conexao.php";

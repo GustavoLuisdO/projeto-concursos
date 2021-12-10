@@ -19,7 +19,7 @@
   </head>
   <body>
 
-    <a name="TOPO"></a>
+    <!-- <a name="TOPO"></a> -->
 
     <?php
         // exibir msg de sucesso 
@@ -464,10 +464,10 @@
 
         <!-- condições e concatenções para os filtros -->
         <?php 
-            // para uma melhor performace na hora da consulta
+           // para uma melhor performace na hora da consulta
            $sql_filtros = "SELECT id, id_curso, descricao, ano, numero, id_disciplina_1, id_disciplina_2, id_disciplina_3, id_disciplina_4, id_dificuldade, enunciado, tipo_questao, resposta_dissertativa, resposta_alt_a, resposta_alt_b, resposta_alt_c, resposta_alt_d, resposta_alt_e, alternativa_correta FROM questao";
 
-           if(!empty($_POST)){
+            if(!empty($_POST)){
                 $sql_filtros .= " WHERE (1=1) ";
 
                 // palavra-chave
@@ -1032,7 +1032,7 @@
 
     </div><!-- container -->
 
-    <!-- btn para voltar ao inicio da página -->
+    <!-- btn para voltar ao inicio da página 
     <section id="secao-btn-topo" class="fixed-bottom mb-3">
         <div class="row">
             <div class="col-11"></div>
@@ -1044,7 +1044,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section>-->
 
     <!-- SCRIPT BOOTSTRAP -->
     <script src="https://cdn.jsdelivr.net/npm/jquery@3.5.1/dist/jquery.slim.min.js" integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj" crossorigin="anonymous"></script>

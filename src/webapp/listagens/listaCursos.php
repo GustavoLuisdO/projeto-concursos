@@ -18,7 +18,7 @@
     <title>Listagem de Cursos</title>
   </head>
   <body>
-      <a name="TOPO"></a>
+      <!-- <a name="TOPO"></a> -->
 
     <?php
         // exibir msg de sucesso 
@@ -158,7 +158,7 @@
 
     </div>
 
-    <!-- btn para voltar ao inicio da página -->
+    <!-- btn para voltar ao inicio da página 
     <section id="secao-btn-topo" class="fixed-bottom mb-3">
         <div class="row">
             <div class="col-11"></div>
@@ -170,7 +170,7 @@
                 </a>
             </div>
         </div>
-    </section>
+    </section>-->
 
 
     <!-- SCRIPT BOOTSTRAP -->
